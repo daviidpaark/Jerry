@@ -1,3 +1,4 @@
+import { SettingsInputAntennaTwoTone } from "@mui/icons-material";
 import { Tooltip, Typography } from "@mui/material";
 import React, { memo } from "react";
 import {
@@ -7,7 +8,7 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 
-const CountyChart = ({ state, setHideMap }) => {
+const CountyChart = ({ state, setHideMap, selectState }) => {
   const geo = "/maps/" + state + ".json";
 
   return (
@@ -42,6 +43,7 @@ const CountyChart = ({ state, setHideMap }) => {
                     }}
                     onClick={() => {
                       setHideMap(false);
+                      selectState("");
                     }}
                   />
                 </Tooltip>
