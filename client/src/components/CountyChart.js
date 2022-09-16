@@ -42,8 +42,7 @@ const CountyChart = ({ state, setHideMap, selectState }) => {
                       hover: { fill: "#F53" },
                     }}
                     onClick={() => {
-                      setHideMap(false);
-                      selectState("");
+                      selectState(geo.properties.NAME);
                     }}
                   />
                 </Tooltip>
