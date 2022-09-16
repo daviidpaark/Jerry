@@ -2,48 +2,52 @@ import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ButtonAppBar from "./components/ButtonAppBar";
 import MapChart from "./components/MapChart";
-import ReactTooltip from "react-tooltip";
 import DataTable from "./components/SampleData";
-import { Box, CssBaseline, Paper, Typography } from "@mui/material";
+import { Box, CssBaseline, Grid, Typography } from "@mui/material";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { Container } from "@mui/system";
+import CountyChart from "./components/CountyChart";
 
 const lightTheme = createTheme({
-	palette: {
-		mode: "light",
-	},
+  palette: {
+    mode: "light",
+  },
 });
 
 function App() {
-	const [content, setContent] = useState("");
-	return (
-		<div>
-			<ThemeProvider theme={lightTheme}>
-				<Box>
-					<CssBaseline />
-					<ButtonAppBar />
-					<ReactTooltip>{content}</ReactTooltip>
-					<Container maxWidth="xl" sx={{ position: "relative", top: "-70px" }}>
-						<MapChart setTooltipContent={setContent} />
-						<Paper sx={{ padding: 2 }}>
-							<Typography
-								component="h2"
-								variant="h6"
-								color="primary"
-								gutterBottom
-							>
-								Sample Data
-							</Typography>
-							<DataTable></DataTable>
-						</Paper>
-					</Container>
-				</Box>
-			</ThemeProvider>
-		</div>
-	);
+  const [state, setState] = useState("");
+  const [hideMap, setMap] = useState("");
+  return (
+    <div>
+      <ThemeProvider theme={lightTheme}>
+        <Box sx={{ flexGrow: 1 }}>
+          <CssBaseline />
+          <ButtonAppBar />
+          <Grid container spacing={0}>
+            <Grid item xs={7}>
+              {!hideMap && (
+                <MapChart selectState={setState} setHideMap={setMap} />
+              )}
+              {hideMap && <CountyChart state={state} setHideMap={setMap} />}
+            </Grid>
+            <Grid item xs={5} sx={{ padding: 2 }}>
+              <Typography
+                component="h2"
+                variant="h6"
+                color="primary"
+                gutterBottom
+              >
+                Sample Data
+              </Typography>
+              <DataTable></DataTable>
+            </Grid>
+          </Grid>
+        </Box>
+      </ThemeProvider>
+    </div>
+  );
 }
 
 export default App;
