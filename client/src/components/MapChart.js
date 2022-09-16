@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -62,22 +62,13 @@ const FIPS = new Map([
 ]);
 
 const MapChart = ({ selectState, setHideMap }) => {
-  const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
-  function handleMoveEnd(position) {
-    setPosition(position);
-  }
-
   return (
     <div data-tip="">
       <ComposableMap
         projection="geoAlbersUsa"
         style={{ width: "100%", height: "800px" }}
       >
-        <ZoomableGroup
-          zoom={position.zoom}
-          center={position.coordinates}
-          onMoveEnd={handleMoveEnd}
-        >
+        <ZoomableGroup zoom={1} center={[0, 0]}>
           <Geographies geography="/maps/us-albers.json">
             {({ geographies }) =>
               geographies.map((geo) => (

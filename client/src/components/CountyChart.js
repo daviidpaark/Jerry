@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -8,11 +8,6 @@ import {
 } from "react-simple-maps";
 
 const CountyChart = ({ state, setHideMap }) => {
-  const [position, setPosition] = useState({ coordinates: [0, 0], zoom: 1 });
-  function handleMoveEnd(position) {
-    setPosition(position);
-  }
-
   const geo = "/maps/" + state + ".json";
 
   return (
@@ -21,11 +16,7 @@ const CountyChart = ({ state, setHideMap }) => {
         projection="geoAlbersUsa"
         style={{ width: "100%", height: "800px" }}
       >
-        <ZoomableGroup
-          zoom={position.zoom}
-          center={position.coordinates}
-          onMoveEnd={handleMoveEnd}
-        >
+        <ZoomableGroup zoom={1} center={[0, 0]}>
           <Geographies geography={geo}>
             {({ geographies }) =>
               geographies.map((geo) => (
