@@ -3,7 +3,15 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ButtonAppBar from "./components/ButtonAppBar";
 import MapChart from "./components/MapChart";
 import DataTable from "./components/SampleData";
-import { Box, CssBaseline, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  CssBaseline,
+  Grid,
+  Typography,
+  IconButton,
+  Paper,
+} from "@mui/material";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -27,10 +35,25 @@ function App() {
           <ButtonAppBar />
           <Grid container spacing={0}>
             <Grid item xs={7}>
-              {!hideMap && (
-                <MapChart selectState={setState} setHideMap={setMap} />
-              )}
-              {hideMap && <CountyChart state={state} setHideMap={setMap} />}
+              <Paper>
+                {!hideMap && (
+                  <MapChart selectState={setState} setHideMap={setMap} />
+                )}
+                {hideMap && <CountyChart state={state} setHideMap={setMap} />}
+                <IconButton
+                  aria-label="zoom out"
+                  size="large"
+                  style={{
+                    position: "absolute",
+                    top: "7vh",
+                  }}
+                  onClick={() => {
+                    setMap(false);
+                  }}
+                >
+                  <RestartAltIcon fontSize="inherit" />
+                </IconButton>
+              </Paper>
             </Grid>
             <Grid item xs={5} sx={{ padding: 2 }}>
               <Typography
