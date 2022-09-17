@@ -41,14 +41,14 @@ function App() {
           <Grid container spacing={0}>
             <Grid item xs={7}>
               {!hideMap && <MapChart setState={setState} setMap={setMap} />}
-              {hideMap && toggleMap && (
+              {hideMap && !toggleMap && (
                 <DistrictChart state={state} setSelection={setSelection} />
               )}
-              {hideMap && !toggleMap && (
+              {hideMap && toggleMap && (
                 <CountyChart state={state} setSelection={setSelection} />
               )}
               <IconButton
-                aria-label="zoom out"
+                aria-label="reset"
                 size="large"
                 style={{
                   position: "absolute",
@@ -57,14 +57,15 @@ function App() {
                 onClick={() => {
                   setMap(false);
                   setSelection("");
-                  setToggle(true);
+                  setToggle(false);
                 }}
               >
                 <RestartAltIcon fontSize="inherit" />
               </IconButton>
               {hideMap && (
                 <ButtonGroup
-                  variant="contained"
+                  variant="outlined"
+                  disableElevation
                   aria-label="map toggle"
                   style={{
                     position: "absolute",
@@ -74,14 +75,24 @@ function App() {
                 >
                   <Button
                     onClick={() => {
-                      setToggle(true);
+                      setToggle(false);
+                      setSelection("");
+                    }}
+                    style={{
+                      backgroundColor: !toggleMap ? "#42a5f5" : "#e3f2fd",
+                      color: !toggleMap ? "#e3f2fd" : "#42a5f5",
                     }}
                   >
                     SMD
                   </Button>
                   <Button
                     onClick={() => {
-                      setToggle(false);
+                      setToggle(true);
+                      setSelection("");
+                    }}
+                    style={{
+                      backgroundColor: toggleMap ? "#42a5f5" : "#e3f2fd",
+                      color: toggleMap ? "#e3f2fd" : "#42a5f5",
                     }}
                   >
                     MMD
