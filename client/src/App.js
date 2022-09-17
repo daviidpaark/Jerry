@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ButtonAppBar from "./components/ButtonAppBar";
 import MapChart from "./components/MapChart";
-import DataTable from "./components/SampleData";
 import {
   Box,
   CssBaseline,
@@ -20,6 +19,9 @@ import "@fontsource/roboto/700.css";
 import CountyChart from "./components/CountyChart";
 import DistrictChart from "./components/DistrictChart";
 import GraphSelect from "./components/GraphSelect";
+import SampleData from "./components/SampleData";
+import SampleData2 from "./components/SampleData2";
+import SampleData3 from "./components/SampleData3";
 
 const lightTheme = createTheme({
   palette: {
@@ -32,6 +34,7 @@ function App() {
   const [selection, setSelection] = useState("");
   const [hideMap, setMap] = useState("");
   const [toggleMap, setToggle] = useState("");
+  const [graph, selectGraph] = useState("1");
   return (
     <div>
       <ThemeProvider theme={lightTheme}>
@@ -40,7 +43,13 @@ function App() {
           <ButtonAppBar />
           <Grid container spacing={0}>
             <Grid item xs={7}>
-              {!hideMap && <MapChart setState={setState} setMap={setMap} />}
+              {!hideMap && (
+                <MapChart
+                  setState={setState}
+                  setSelection={setSelection}
+                  setMap={setMap}
+                />
+              )}
               {hideMap && !toggleMap && (
                 <DistrictChart state={state} setSelection={setSelection} />
               )}
@@ -76,7 +85,7 @@ function App() {
                   <Button
                     onClick={() => {
                       setToggle(false);
-                      setSelection("");
+                      setSelection(state);
                     }}
                     style={{
                       backgroundColor: !toggleMap ? "#42a5f5" : "#e3f2fd",
@@ -88,7 +97,7 @@ function App() {
                   <Button
                     onClick={() => {
                       setToggle(true);
-                      setSelection("");
+                      setSelection(state);
                     }}
                     style={{
                       backgroundColor: toggleMap ? "#42a5f5" : "#e3f2fd",
@@ -111,9 +120,12 @@ function App() {
               </Typography>
 
               <GraphSelect
+                selectGraph={selectGraph}
                 style={{ position: "absolute", top: "0vh", left: "0vh" }}
               ></GraphSelect>
-              <DataTable selection={selection}></DataTable>
+              {graph == 1 && <SampleData selection={selection}></SampleData>}
+              {graph == 2 && <SampleData2 selection={selection}></SampleData2>}
+              {graph == 3 && <SampleData3 selection={selection}></SampleData3>}
             </Grid>
           </Grid>
         </Box>

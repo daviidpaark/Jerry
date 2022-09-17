@@ -34,7 +34,7 @@ const rows = [
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-export default function SampleData() {
+export default function SampleData2() {
   return (
     <div style={{ height: "690px", width: "100%" }}>
       <DataGrid
