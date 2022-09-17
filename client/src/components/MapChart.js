@@ -61,7 +61,7 @@ const FIPS = new Map([
   [56, "WYOMING"],
 ]);
 
-const MapChart = ({ selectState, setHideMap }) => {
+const MapChart = ({ setState, setMap }) => {
   return (
     <div data-tip="">
       <ComposableMap
@@ -91,8 +91,8 @@ const MapChart = ({ selectState, setHideMap }) => {
                         geo.properties.name === "Mississippi" ||
                         geo.properties.name === "Georgia"
                       ) {
-                        selectState(`${geo.properties.name}`);
-                        setHideMap(true);
+                        setState(geo.properties.name);
+                        setMap(true);
                       }
                     }}
                     style={{

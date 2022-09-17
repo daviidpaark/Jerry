@@ -2636,7 +2636,7 @@
     ]
   ],
   "objects": {
-    "cb_2015_georgia_county_20m": {
+    "georgia-counties": {
       "type": "GeometryCollection",
       "geometries": [
         {

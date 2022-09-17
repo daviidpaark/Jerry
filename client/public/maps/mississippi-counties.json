@@ -1574,7 +1574,7 @@
     ]
   ],
   "objects": {
-    "cb_2015_mississippi_county_20m": {
+    "mississippi-counties": {
       "type": "GeometryCollection",
       "geometries": [
         {

@@ -7,8 +7,8 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 
-const CountyChart = ({ state, setSelection }) => {
-  const geo = "/maps/" + state + "-counties.json";
+const DistrictChart = ({ state, setSelection }) => {
+  const geo = "/maps/" + state + "-districts.json";
 
   return (
     <div data-tip="">
@@ -22,7 +22,9 @@ const CountyChart = ({ state, setSelection }) => {
               geographies.map((geo) => (
                 <Tooltip
                   title={
-                    <Typography fontSize={20}>{geo.properties.NAME}</Typography>
+                    <Typography fontSize={20}>
+                      {geo.properties.CD114FP}
+                    </Typography>
                   }
                   placement="top"
                   arrow
@@ -41,7 +43,7 @@ const CountyChart = ({ state, setSelection }) => {
                       hover: { fill: "#F53" },
                     }}
                     onClick={() => {
-                      setSelection(geo.properties.NAME);
+                      setSelection(geo.properties.CD114FP);
                     }}
                   />
                 </Tooltip>
@@ -54,4 +56,4 @@ const CountyChart = ({ state, setSelection }) => {
   );
 };
 
-export default memo(CountyChart);
+export default memo(DistrictChart);

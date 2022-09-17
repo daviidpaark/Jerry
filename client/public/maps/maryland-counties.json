@@ -622,7 +622,7 @@
     ]
   ],
   "objects": {
-    "cb_2015_maryland_county_20m": {
+    "maryland-counties": {
       "type": "GeometryCollection",
       "geometries": [
         {

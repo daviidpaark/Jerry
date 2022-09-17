@@ -18,6 +18,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import CountyChart from "./components/CountyChart";
+import DistrictChart from "./components/DistrictChart";
 import GraphSelect from "./components/GraphSelect";
 
 const lightTheme = createTheme({
@@ -28,7 +29,9 @@ const lightTheme = createTheme({
 
 function App() {
   const [state, setState] = useState("");
+  const [selection, setSelection] = useState("");
   const [hideMap, setMap] = useState("");
+  const [toggleMap, setToggle] = useState("");
   return (
     <div>
       <ThemeProvider theme={lightTheme}>
@@ -37,15 +40,12 @@ function App() {
           <ButtonAppBar />
           <Grid container spacing={0}>
             <Grid item xs={7}>
-              {!hideMap && (
-                <MapChart selectState={setState} setHideMap={setMap} />
+              {!hideMap && <MapChart setState={setState} setMap={setMap} />}
+              {hideMap && toggleMap && (
+                <DistrictChart state={state} setSelection={setSelection} />
               )}
-              {hideMap && (
-                <CountyChart
-                  state={state}
-                  selectState={setState}
-                  setHideMap={setMap}
-                />
+              {hideMap && !toggleMap && (
+                <CountyChart state={state} setSelection={setSelection} />
               )}
               <IconButton
                 aria-label="zoom out"
@@ -56,12 +56,13 @@ function App() {
                 }}
                 onClick={() => {
                   setMap(false);
-                  setState("");
+                  setSelection("");
+                  setToggle(true);
                 }}
               >
                 <RestartAltIcon fontSize="inherit" />
               </IconButton>
-              {state && (
+              {hideMap && (
                 <ButtonGroup
                   variant="contained"
                   aria-label="map toggle"
@@ -71,8 +72,20 @@ function App() {
                     left: "85vh",
                   }}
                 >
-                  <Button>SMD</Button>
-                  <Button>MMD</Button>
+                  <Button
+                    onClick={() => {
+                      setToggle(true);
+                    }}
+                  >
+                    SMD
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setToggle(false);
+                    }}
+                  >
+                    MMD
+                  </Button>
                 </ButtonGroup>
               )}
             </Grid>
@@ -83,13 +96,13 @@ function App() {
                 color="primary"
                 gutterBottom
               >
-                {state}
+                {selection}
               </Typography>
 
               <GraphSelect
                 style={{ position: "absolute", top: "0vh", left: "0vh" }}
               ></GraphSelect>
-              <DataTable state={state}></DataTable>
+              <DataTable selection={selection}></DataTable>
             </Grid>
           </Grid>
         </Box>
