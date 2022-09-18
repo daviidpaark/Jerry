@@ -1,11 +1,12 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
+import MapControls from "./MapControls";
 
 const FIPS = new Map([
   [1, "ALABAMA"],
@@ -61,14 +62,55 @@ const FIPS = new Map([
   [56, "WYOMING"],
 ]);
 
-const MapChart = ({ setState, setSelection, setMap }) => {
+const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
+  const [position, setPosition] = useState({
+    coordinates: [-96.6, 38.7],
+    zoom: 1,
+  });
+
+  function handleZoomIn() {
+    if (position.zoom >= 4) return;
+    setPosition((pos) => ({ ...pos, zoom: pos.zoom * 1.5 }));
+  }
+
+  function handleZoomOut() {
+    if (position.zoom <= 1) return;
+    setPosition((pos) => ({ ...pos, zoom: pos.zoom / 1.5 }));
+  }
+
+  function handleMoveEnd(position) {
+    setPosition(position);
+    console.log(position);
+  }
+
+  function handleReset() {
+    setPosition((position) => ({
+      ...position,
+      coordinates: [-96.6, 38.7],
+      zoom: 1,
+    }));
+    setMap(false);
+    setState("");
+    setSelection("");
+    setToggle(false);
+  }
+
   return (
     <div data-tip="">
+      <MapControls
+        handleZoomIn={handleZoomIn}
+        handleZoomOut={handleZoomOut}
+        handleReset={handleReset}
+      ></MapControls>
       <ComposableMap
         projection="geoAlbersUsa"
         style={{ width: "100%", height: "800px" }}
       >
-        <ZoomableGroup zoom={1} center={[0, 0]}>
+        <ZoomableGroup
+          zoom={position.zoom}
+          center={position.coordinates}
+          onMoveEnd={handleMoveEnd}
+        >
           <Geographies geography="/maps/us-albers.json">
             {({ geographies }) =>
               geographies.map((geo) => (

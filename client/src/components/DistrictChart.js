@@ -1,11 +1,12 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import {
   ComposableMap,
   Geographies,
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
+import MapControls from "./MapControls";
 
 const xy = new Map([
   ["Maryland", [-77.35486519706453, 39.056005538826696]],
@@ -19,16 +20,53 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
-const DistrictChart = ({ state, selection, setSelection }) => {
+const DistrictChart = ({ state, selection, setMap, setSelection }) => {
   const geo = "/maps/" + state + "-districts.json";
+  const [position, setPosition] = useState({
+    coordinates: xy.get(state),
+    zoom: z.get(state),
+  });
 
+  function handleZoomIn() {
+    if (position.zoom >= 8) return;
+    setPosition((pos) => ({ ...pos, zoom: pos.zoom * 1.5 }));
+  }
+
+  function handleZoomOut() {
+    if (position.zoom <= 1) return;
+    setPosition((pos) => ({ ...pos, zoom: pos.zoom / 1.5 }));
+  }
+
+  function handleMoveEnd(position) {
+    setPosition(position);
+  }
+
+  function handleReset() {
+    setPosition((position) => ({
+      ...position,
+      coordinates: xy.get(state),
+      zoom: z.get(state),
+    }));
+    setSelection(state);
+  }
   return (
     <div data-tip="">
+      <MapControls
+        exit={1}
+        setMap={setMap}
+        handleZoomIn={handleZoomIn}
+        handleZoomOut={handleZoomOut}
+        handleReset={handleReset}
+      ></MapControls>
       <ComposableMap
         projection="geoAlbersUsa"
         style={{ width: "100%", height: "800px" }}
       >
-        <ZoomableGroup zoom={z.get(state)} center={xy.get(state)}>
+        <ZoomableGroup
+          zoom={position.zoom}
+          center={position.coordinates}
+          onMoveEnd={handleMoveEnd}
+        >
           <Geographies geography={geo}>
             {({ geographies }) =>
               geographies.map((geo) => (

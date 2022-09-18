@@ -7,11 +7,9 @@ import {
   CssBaseline,
   Grid,
   Typography,
-  IconButton,
   ButtonGroup,
   Button,
 } from "@mui/material";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -36,7 +34,7 @@ function App() {
   const [selection, setSelection] = useState("");
   const [hideMap, setMap] = useState("");
   const [toggleMap, setToggle] = useState("");
-  const [graph, selectGraph] = useState("1");
+  const [graph, selectGraph] = useState(1);
   return (
     <div>
       <ThemeProvider theme={lightTheme}>
@@ -55,12 +53,14 @@ function App() {
                   setState={setState}
                   setSelection={setSelection}
                   setMap={setMap}
+                  setToggle={setToggle}
                 />
               )}
               {hideMap && !toggleMap && (
                 <DistrictChart
                   state={state}
                   selection={selection}
+                  setMap={setMap}
                   setSelection={setSelection}
                 />
               )}
@@ -68,27 +68,14 @@ function App() {
                 <CountyChart
                   state={state}
                   selection={selection}
+                  setMap={setMap}
                   setSelection={setSelection}
                 />
               )}
-              <IconButton
-                aria-label="reset"
-                size="large"
-                style={{
-                  position: "absolute",
-                  top: "7vh",
-                }}
-                onClick={() => {
-                  // Center and reset zoom
-                }}
-              >
-                <RestartAltIcon fontSize="inherit" />
-              </IconButton>
               {hideMap && (
                 <ButtonGroup
                   variant="outlined"
                   disableElevation
-                  aria-label="map toggle"
                   style={{
                     position: "absolute",
                     top: "10vh",

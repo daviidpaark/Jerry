@@ -20,7 +20,6 @@ export default function GraphSelect({ selectGraph }) {
             variant="scrollable"
             scrollButtons="auto"
             onChange={handleChange}
-            aria-label="graph select"
           >
             <Tab wrapped label="Population Equality" value="1" />
             <Tab wrapped label="Compactness" value="2" />
