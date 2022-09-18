@@ -19,7 +19,7 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
-const DistrictChart = ({ state, setSelection }) => {
+const DistrictChart = ({ state, selection, setSelection }) => {
   const geo = "/maps/" + state + "-districts.json";
 
   return (
@@ -49,13 +49,22 @@ const DistrictChart = ({ state, setSelection }) => {
                     strokeWidth={0.1}
                     style={{
                       default: {
-                        fill: "#EEEEEE",
+                        fill:
+                          selection == geo.properties.CD114FP
+                            ? "#f52900"
+                            : "#EEEEEE",
                         outline: "none",
                       },
-                      hover: { fill: "#F53" },
+                      hover: {
+                        fill: "#F53",
+                        cursor: "pointer",
+                        outline: "none",
+                      },
                     }}
                     onClick={() => {
-                      setSelection(geo.properties.CD114FP);
+                      if (selection == geo.properties.CD114FP) {
+                        setSelection(state);
+                      } else setSelection(geo.properties.CD114FP);
                     }}
                   />
                 </Tooltip>

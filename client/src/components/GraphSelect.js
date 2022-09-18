@@ -16,10 +16,23 @@ export default function GraphSelect({ selectGraph }) {
     <Box sx={{ width: "100%", typography: "body1" }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Graph One" value="1" />
-            <Tab label="Graph Two" value="2" />
-            <Tab label="Graph Three" value="3" />
+          <TabList
+            variant="scrollable"
+            scrollButtons="auto"
+            onChange={handleChange}
+            aria-label="graph select"
+          >
+            <Tab wrapped label="Population Equality" value="1" />
+            <Tab wrapped label="Compactness" value="2" />
+            <Tab wrapped label="Racial Fairness" value="3" />
+            <Tab wrapped label="Political Fairness" value="4" />
+            <Tab wrapped label="Seat Share" value="5" />
+            <Tab wrapped label="Number of Opportunity Districts" value="6" />
+            <Tab
+              wrapped
+              label="Opportunity District Threshold Sensitivity"
+              value="7"
+            />
           </TabList>
         </Box>
       </TabContext>

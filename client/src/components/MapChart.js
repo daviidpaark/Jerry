@@ -114,6 +114,7 @@ const MapChart = ({ setState, setSelection, setMap }) => {
                             ? "#F53"
                             : "#D6D6DA",
                         outline: "none",
+                        cursor: "pointer",
                       },
                       pressed: {
                         fill:

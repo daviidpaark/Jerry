@@ -22,6 +22,8 @@ import GraphSelect from "./components/GraphSelect";
 import SampleData from "./components/SampleData";
 import SampleData2 from "./components/SampleData2";
 import SampleData3 from "./components/SampleData3";
+import SampleData4 from "./components/SampleData4";
+import SelectionLabel from "./components/SelectionLabel";
 
 const lightTheme = createTheme({
   palette: {
@@ -40,9 +42,14 @@ function App() {
       <ThemeProvider theme={lightTheme}>
         <Box sx={{ flexGrow: 1 }}>
           <CssBaseline />
-          <ButtonAppBar />
+          <ButtonAppBar
+            setMap={setMap}
+            setState={setState}
+            setSelection={setSelection}
+            setToggle={setToggle}
+          />
           <Grid container spacing={0}>
-            <Grid item xs={7}>
+            <Grid item xs={4}>
               {!hideMap && (
                 <MapChart
                   setState={setState}
@@ -51,10 +58,18 @@ function App() {
                 />
               )}
               {hideMap && !toggleMap && (
-                <DistrictChart state={state} setSelection={setSelection} />
+                <DistrictChart
+                  state={state}
+                  selection={selection}
+                  setSelection={setSelection}
+                />
               )}
               {hideMap && toggleMap && (
-                <CountyChart state={state} setSelection={setSelection} />
+                <CountyChart
+                  state={state}
+                  selection={selection}
+                  setSelection={setSelection}
+                />
               )}
               <IconButton
                 aria-label="reset"
@@ -64,9 +79,7 @@ function App() {
                   top: "7vh",
                 }}
                 onClick={() => {
-                  setMap(false);
-                  setSelection("");
-                  setToggle(false);
+                  // Center and reset zoom
                 }}
               >
                 <RestartAltIcon fontSize="inherit" />
@@ -79,7 +92,7 @@ function App() {
                   style={{
                     position: "absolute",
                     top: "10vh",
-                    left: "85vh",
+                    left: "40vh",
                   }}
                 >
                   <Button
@@ -109,23 +122,36 @@ function App() {
                 </ButtonGroup>
               )}
             </Grid>
-            <Grid item xs={5} sx={{ padding: 2 }}>
-              <Typography
-                component="h2"
-                variant="h6"
-                color="primary"
-                gutterBottom
-              >
-                {selection}
-              </Typography>
-
-              <GraphSelect
-                selectGraph={selectGraph}
-                style={{ position: "absolute", top: "0vh", left: "0vh" }}
-              ></GraphSelect>
-              {graph == 1 && <SampleData selection={selection}></SampleData>}
-              {graph == 2 && <SampleData2 selection={selection}></SampleData2>}
-              {graph == 3 && <SampleData3 selection={selection}></SampleData3>}
+            <Grid container item xs={8} sx={{ padding: 2 }}>
+              <Grid item xs={6} sx={{ padding: 1 }}>
+                <SelectionLabel
+                  state={state}
+                  selection={selection}
+                  setSelection={setSelection}
+                ></SelectionLabel>
+                <GraphSelect
+                  selectGraph={selectGraph}
+                  style={{ position: "absolute", top: "0vh", left: "0vh" }}
+                ></GraphSelect>
+                {graph == 1 && <SampleData selection={selection}></SampleData>}
+                {graph == 2 && (
+                  <SampleData2 selection={selection}></SampleData2>
+                )}
+                {graph == 3 && (
+                  <SampleData3 selection={selection}></SampleData3>
+                )}
+              </Grid>
+              <Grid item xs={6} sx={{ padding: 1 }}>
+                <Typography
+                  component="h2"
+                  variant="h6"
+                  color="primary"
+                  gutterBottom
+                >
+                  {state + "(SMD + MMD)"}
+                </Typography>
+                <SampleData4 selection={selection}></SampleData4>
+              </Grid>
             </Grid>
           </Grid>
         </Box>

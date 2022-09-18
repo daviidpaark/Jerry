@@ -19,7 +19,7 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
-const CountyChart = ({ state, setSelection }) => {
+const CountyChart = ({ state, selection, setSelection }) => {
   const geo = "/maps/" + state + "-counties.json";
 
   return (
@@ -47,13 +47,22 @@ const CountyChart = ({ state, setSelection }) => {
                     strokeWidth={0.1}
                     style={{
                       default: {
-                        fill: "#EEEEEE",
+                        fill:
+                          selection == geo.properties.NAME
+                            ? "#f52900"
+                            : "#EEEEEE",
                         outline: "none",
                       },
-                      hover: { fill: "#F53" },
+                      hover: {
+                        fill: "#F53",
+                        cursor: "pointer",
+                        outline: "none",
+                      },
                     }}
                     onClick={() => {
-                      setSelection(geo.properties.NAME);
+                      if (selection == geo.properties.NAME) {
+                        setSelection(state);
+                      } else setSelection(geo.properties.NAME);
                     }}
                   />
                 </Tooltip>
