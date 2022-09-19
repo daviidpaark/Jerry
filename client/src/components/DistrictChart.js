@@ -21,6 +21,7 @@ const z = new Map([
 ]);
 
 const DistrictChart = ({ state, selection, setMap, setSelection }) => {
+  //const geo = "/maps/" + state + "-districts.json";
   const geo = "/maps/" + state + "_Approved_Districts_2022.json";
   const [position, setPosition] = useState({
     coordinates: xy.get(state),
@@ -73,7 +74,7 @@ const DistrictChart = ({ state, selection, setMap, setSelection }) => {
                 <Tooltip
                   title={
                     <Typography fontSize={20}>
-                      {geo.properties.CD114FP}
+                      {geo.properties.DISTRICT}
                     </Typography>
                   }
                   placement="top"
@@ -88,7 +89,7 @@ const DistrictChart = ({ state, selection, setMap, setSelection }) => {
                     style={{
                       default: {
                         fill:
-                          selection === geo.properties.CD114FP
+                          selection === geo.properties.DISTRICT
                             ? "#f52900"
                             : "#EEEEEE",
                         outline: "none",
@@ -100,9 +101,9 @@ const DistrictChart = ({ state, selection, setMap, setSelection }) => {
                       },
                     }}
                     onClick={() => {
-                      if (selection === geo.properties.CD114FP) {
+                      if (selection === geo.properties.DISTRICT) {
                         setSelection(state);
-                      } else setSelection(geo.properties.CD114FP);
+                      } else setSelection(geo.properties.DISTRICT);
                     }}
                   />
                 </Tooltip>
