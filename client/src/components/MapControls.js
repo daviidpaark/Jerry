@@ -6,14 +6,25 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export default function MapControls({
   exit,
   setMap,
+  setSelection,
+  setState,
+  setToggle,
   handleZoomIn,
   handleZoomOut,
   handleReset,
 }) {
+  function handleExit() {
+    setMap(false);
+    setState("");
+    setSelection("");
+    setToggle(false);
+    console.log("EXIT");
+  }
+
   var back;
   if (exit) {
     back = (
-      <IconButton size="large" onClick={() => setMap(false)}>
+      <IconButton size="large" onClick={handleExit}>
         <ArrowBackIcon fontSize="inherit"></ArrowBackIcon>
       </IconButton>
     );

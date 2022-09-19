@@ -80,7 +80,6 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
 
   function handleMoveEnd(position) {
     setPosition(position);
-    console.log(position);
   }
 
   function handleReset() {

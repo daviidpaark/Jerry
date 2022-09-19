@@ -20,7 +20,14 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
-const DistrictChart = ({ state, selection, setMap, setSelection }) => {
+const DistrictChart = ({
+  state,
+  selection,
+  setMap,
+  setSelection,
+  setState,
+  setToggle,
+}) => {
   const geo = "/maps/" + state + "-districts.json";
   const [position, setPosition] = useState({
     coordinates: xy.get(state),
@@ -54,6 +61,10 @@ const DistrictChart = ({ state, selection, setMap, setSelection }) => {
       <MapControls
         exit={1}
         setMap={setMap}
+        setSelection={setSelection}
+        setState={setState}
+        setToggle={setToggle}
+        state={state}
         handleZoomIn={handleZoomIn}
         handleZoomOut={handleZoomOut}
         handleReset={handleReset}
