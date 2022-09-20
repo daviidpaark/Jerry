@@ -9,7 +9,7 @@ const columns = [
 
 export default function SampleData({ selection }) {
   const rows = [
-    { id: 1, sample: "Sample", data: "Comparison" },
+    { id: 1, sample: "Sample", data: "Data" },
     { id: 2, sample: "For", data: selection },
   ];
   return (
