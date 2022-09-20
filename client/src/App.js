@@ -17,10 +17,12 @@ import "@fontsource/roboto/700.css";
 import CountyChart from "./components/CountyChart";
 import DistrictChart from "./components/DistrictChart";
 import GraphSelect from "./components/GraphSelect";
+import GraphSelect2 from "./components/GraphSelect2";
 import SampleData from "./components/SampleData";
 import SampleData2 from "./components/SampleData2";
 import SampleData3 from "./components/SampleData3";
 import SampleData4 from "./components/SampleData4";
+import SampleData5 from "./components/SampleData5";
 import SelectionLabel from "./components/SelectionLabel";
 
 const lightTheme = createTheme({
@@ -35,6 +37,7 @@ function App() {
   const [hideMap, setMap] = useState("");
   const [toggleMap, setToggle] = useState("");
   const [graph, selectGraph] = useState(1);
+  const [comparisonGraph, selectComparisonGraph] = useState(1);
   return (
     <div>
       <ThemeProvider theme={lightTheme}>
@@ -139,7 +142,16 @@ function App() {
                 >
                   {state + "(SMD + MMD)"}
                 </Typography>
-                <SampleData4 state={state}></SampleData4>
+                <GraphSelect2
+                  selectComparisonGraph={selectComparisonGraph}
+                  style={{ position: "absolute", top: "0vh", left: "0vh" }}
+                ></GraphSelect2>
+                {comparisonGraph == 1 && (
+                  <SampleData4 state={state}></SampleData4>
+                )}
+                {comparisonGraph == 2 && (
+                  <SampleData5 state={state}></SampleData5>
+                )}
               </Grid>
             </Grid>
           </Grid>
