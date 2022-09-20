@@ -78,6 +78,7 @@ const DistrictChart = ({
           center={position.coordinates}
           onMoveEnd={handleMoveEnd}
         >
+          {/* <ClickAwayListener onClickAway={() => setSelection(state)}> */}
           <Geographies geography={geo}>
             {({ geographies }) =>
               geographies.map((geo) => (
@@ -120,6 +121,7 @@ const DistrictChart = ({
               ))
             }
           </Geographies>
+          {/* </ClickAwayListener> */}
         </ZoomableGroup>
       </ComposableMap>
     </div>

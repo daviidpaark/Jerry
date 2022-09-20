@@ -78,6 +78,7 @@ const CountyChart = ({
           center={position.coordinates}
           onMoveEnd={handleMoveEnd}
         >
+          {/* <ClickAwayListener onClickAway={() => setSelection(state)}> */}
           <Geographies geography={geo}>
             {({ geographies }) =>
               geographies.map((geo) => (
@@ -118,6 +119,7 @@ const CountyChart = ({
               ))
             }
           </Geographies>
+          {/* </ClickAwayListener> */}
         </ZoomableGroup>
       </ComposableMap>
     </div>
