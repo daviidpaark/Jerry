@@ -139,7 +139,7 @@ function App() {
                 >
                   {state + "(SMD + MMD)"}
                 </Typography>
-                <SampleData4 selection={selection}></SampleData4>
+                <SampleData4 state={state}></SampleData4>
               </Grid>
             </Grid>
           </Grid>

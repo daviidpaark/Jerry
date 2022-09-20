@@ -91,6 +91,8 @@ const DistrictChart = ({
                   placement="top"
                   arrow
                   followCursor
+                  enterDelay={0}
+                  leaveDelay={0}
                 >
                   <Geography
                     key={geo.rsmKey}

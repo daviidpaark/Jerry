@@ -23,7 +23,7 @@ export default function GraphSelect({ selectGraph }) {
           >
             <Tab wrapped label="Population Equality" value="1" />
             <Tab wrapped label="Compactness" value="2" />
-            <Tab wrapped label="Racial Fairness" value="3" />
+            <Tab wrapped label="Ranked Choice Voting" value="3" />
             <Tab wrapped label="Political Fairness" value="4" />
             <Tab wrapped label="Seat Share" value="5" />
             <Tab wrapped label="Number of Opportunity Districts" value="6" />
