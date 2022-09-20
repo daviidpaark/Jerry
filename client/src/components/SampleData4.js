@@ -13,7 +13,7 @@ export default function SampleData4({ state }) {
     { id: 2, sample: "For", comparison: state },
   ];
   return (
-    <div style={{ height: "730px", width: "100%" }}>
+    <div style={{ height: "690px", width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
