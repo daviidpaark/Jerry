@@ -18,7 +18,6 @@ export default function MapControls({
     setState("");
     setSelection("");
     setToggle(false);
-    console.log("EXIT");
   }
 
   var back;

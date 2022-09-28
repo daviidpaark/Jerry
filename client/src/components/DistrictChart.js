@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -20,6 +20,8 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
+var geo = "";
+
 const DistrictChart = ({
   state,
   selection,
@@ -28,7 +30,22 @@ const DistrictChart = ({
   setState,
   setToggle,
 }) => {
-  const geo = "/maps/" + state + "-districts.json";
+  useEffect(() => {
+    const fetchMap = async () => {
+      const request = new Request("/maps/" + state, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const response = await fetch(request);
+      const json = await response.json();
+      geo = json;
+    };
+    fetchMap();
+  }, [state]);
+  console.log(geo);
+
   const [position, setPosition] = useState({
     coordinates: xy.get(state),
     zoom: z.get(state),

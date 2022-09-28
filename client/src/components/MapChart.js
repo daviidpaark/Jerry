@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -62,7 +62,24 @@ const FIPS = new Map([
   [56, "WYOMING"],
 ]);
 
+var geo = "";
+
 const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
+  useEffect(() => {
+    const fetchMap = async () => {
+      const request = new Request("/maps/us", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const response = await fetch(request);
+      const json = await response.json();
+      geo = json;
+    };
+    fetchMap();
+  }, []);
+
   const [position, setPosition] = useState({
     coordinates: [-96.6, 38.7],
     zoom: 1,
@@ -110,7 +127,7 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
           center={position.coordinates}
           onMoveEnd={handleMoveEnd}
         >
-          <Geographies geography="/maps/us-albers.json">
+          <Geographies geography={geo}>
             {({ geographies }) =>
               geographies.map((geo) => (
                 <Tooltip
