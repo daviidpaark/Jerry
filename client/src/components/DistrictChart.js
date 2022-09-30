@@ -30,19 +30,17 @@ const DistrictChart = ({
   setState,
   setToggle,
 }) => {
+  var [geo, fetchMap] = useState(null);
   useEffect(() => {
-    const fetchMap = async () => {
-      const request = new Request("/maps/" + state, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const response = await fetch(request);
-      const json = await response.json();
-      geo = json;
-    };
-    fetchMap();
+    const request = new Request("/maps/" + state, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    fetch(request)
+      .then((response) => response.json())
+      .then((data) => fetchMap(data));
   }, [state]);
 
   const [position, setPosition] = useState({

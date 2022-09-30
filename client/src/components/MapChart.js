@@ -62,22 +62,18 @@ const FIPS = new Map([
   [56, "WYOMING"],
 ]);
 
-var geo = "";
-
 const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
+  var [geo, fetchMap] = useState(null);
   useEffect(() => {
-    const fetchMap = async () => {
-      const request = new Request("/maps/us", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const response = await fetch(request);
-      const json = await response.json();
-      geo = json;
-    };
-    fetchMap();
+    const request = new Request("/maps/us", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    fetch(request)
+      .then((response) => response.json())
+      .then((data) => fetchMap(data));
   }, []);
 
   const [position, setPosition] = useState({
