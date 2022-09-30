@@ -66,6 +66,7 @@ function App() {
                   setMap={setMap}
                   setSelection={setSelection}
                   setState={setState}
+                  setToggle={setToggle}
                 />
               )}
               {hideMap && toggleMap && (
@@ -75,6 +76,7 @@ function App() {
                   setMap={setMap}
                   setSelection={setSelection}
                   setState={setState}
+                  setToggle={setToggle}
                 />
               )}
               {hideMap && (

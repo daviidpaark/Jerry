@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,

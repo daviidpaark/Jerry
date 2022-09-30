@@ -44,7 +44,6 @@ const DistrictChart = ({
     };
     fetchMap();
   }, [state]);
-  console.log(geo);
 
   const [position, setPosition] = useState({
     coordinates: xy.get(state),
@@ -102,7 +101,7 @@ const DistrictChart = ({
                 <Tooltip
                   title={
                     <Typography fontSize={20}>
-                      {geo.properties.CD114FP}
+                      {geo.properties.DISTRICT}
                     </Typography>
                   }
                   placement="top"
@@ -119,7 +118,7 @@ const DistrictChart = ({
                     style={{
                       default: {
                         fill:
-                          selection == geo.properties.CD114FP
+                          selection == geo.properties.DISTRICT
                             ? "#f52900"
                             : "#EEEEEE",
                         outline: "none",
@@ -131,9 +130,9 @@ const DistrictChart = ({
                       },
                     }}
                     onClick={() => {
-                      if (selection == geo.properties.CD114FP) {
+                      if (selection == geo.properties.DISTRICT) {
                         setSelection(state);
-                      } else setSelection(geo.properties.CD114FP);
+                      } else setSelection(geo.properties.DISTRICT);
                     }}
                   />
                 </Tooltip>
