@@ -20,8 +20,6 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
-var geo = "";
-
 const DistrictChart = ({
   state,
   selection,
