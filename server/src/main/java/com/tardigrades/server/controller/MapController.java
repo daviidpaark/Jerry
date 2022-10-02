@@ -23,17 +23,17 @@ public class MapController {
         TypeReference<HashMap> typeReference = new TypeReference<HashMap>() {
         };
         InputStream inputStream = TypeReference.class.getResourceAsStream("/maps/us-albers.json");
-        HashMap<String, Object> map = objectMapper.readValue(inputStream, HashMap.class);
+        HashMap<String, Object> map = objectMapper.readValue(inputStream, typeReference);
         return map;
     }
 
-    @GetMapping("/{state}")
+    @GetMapping(value = "/{state}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> getStateDistricts(@PathVariable String state) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         TypeReference<HashMap> typeReference = new TypeReference<HashMap>() {
         };
         InputStream inputStream = TypeReference.class.getResourceAsStream("/maps/" + state + "-districts.json");
-        HashMap<String, Object> map = objectMapper.readValue(inputStream, HashMap.class);
+        HashMap<String, Object> map = objectMapper.readValue(inputStream, typeReference);
         return map;
     }
 
