@@ -65,7 +65,7 @@ const FIPS = new Map([
 const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
   var [geo, fetchMap] = useState(null);
   useEffect(() => {
-    const request = new Request("/maps/us", {
+    const request = new Request("/api/maps/us", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

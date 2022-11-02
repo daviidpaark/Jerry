@@ -1,7 +1,9 @@
 package com.tardigrades.server.db;
 
-import com.tardigrades.server.model.Map;
-import org.springframework.data.repository.CrudRepository;
+import com.tardigrades.server.model.State;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MapRepository extends CrudRepository<Map, Long> {
+@Repository
+public interface MapRepository extends MongoRepository<State, Long> {
 }

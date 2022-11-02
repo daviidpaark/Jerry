@@ -30,7 +30,7 @@ const DistrictChart = ({
 }) => {
   var [geo, fetchMap] = useState(null);
   useEffect(() => {
-    const request = new Request("/maps/" + state, {
+    const request = new Request("/api/maps/" + state, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
