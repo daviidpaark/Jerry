@@ -15,4 +15,8 @@ public class MapService {
     public List<State> getStates() {
         return mapRepository.findAll();
     }
+
+    public State getState(String state) {
+        return mapRepository.findByState(state);
+    }
 }

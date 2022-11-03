@@ -9,12 +9,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection = "states")
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class State {
 
     @Id
-    private int id;
-    private String name;
+    private String state;
+    private Demographics demographics;
+    private DistrictPlan[] samplePlansSMD;
+    private DistrictPlan[] samplePlansMMD;
+    private DistrictPlan enactedPlan;
+    private int seats;
+    private Ensemble ensembleSMD;
+    private Ensemble ensembleMMD;
 
 }

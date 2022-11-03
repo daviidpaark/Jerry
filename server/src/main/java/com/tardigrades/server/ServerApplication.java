@@ -1,6 +1,7 @@
 package com.tardigrades.server;
 
 import com.tardigrades.server.db.MapRepository;
+import com.tardigrades.server.model.Demographics;
 import com.tardigrades.server.model.State;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +21,7 @@ public class ServerApplication {
     @Bean
     CommandLineRunner runner(MapRepository mapRepository) {
         return args -> {
-            State state = new State(1, "Georgia");
+            State state = new State();
             mapRepository.insert(state);
         };
 

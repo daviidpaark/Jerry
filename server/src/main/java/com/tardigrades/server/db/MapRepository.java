@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MapRepository extends MongoRepository<State, Long> {
+    State findByState(String state);
 }
