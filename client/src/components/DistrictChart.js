@@ -20,6 +20,12 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
+const POSTAL = new Map([
+  ["Georgia", "ga"],
+  ["Maryland", "md"],
+  ["Mississippi", "ms"],
+]);
+
 const DistrictChart = ({
   state,
   selection,
@@ -30,7 +36,7 @@ const DistrictChart = ({
 }) => {
   var [geo, fetchMap] = useState(null);
   useEffect(() => {
-    const request = new Request("/api/maps/" + state, {
+    const request = new Request("/api/maps/" + POSTAL.get(state), {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -90,7 +96,6 @@ const DistrictChart = ({
           center={position.coordinates}
           onMoveEnd={handleMoveEnd}
         >
-          {/* <ClickAwayListener onClickAway={() => setSelection(state)}> */}
           <Geographies geography={geo}>
             {({ geographies }) =>
               geographies.map((geo) => (
@@ -135,7 +140,6 @@ const DistrictChart = ({
               ))
             }
           </Geographies>
-          {/* </ClickAwayListener> */}
         </ZoomableGroup>
       </ComposableMap>
     </div>

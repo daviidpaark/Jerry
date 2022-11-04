@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -11,7 +12,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class District {
     private Demographics demographics;
-    private Representative[] representatives;
+    private List<Representative> representatives;
     private int seats;
     private Map<Representative, Integer[]> votingResults;
 }

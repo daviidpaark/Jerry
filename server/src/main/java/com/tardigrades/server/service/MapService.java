@@ -1,22 +1,16 @@
 package com.tardigrades.server.service;
 
 import com.tardigrades.server.db.MapRepository;
-import com.tardigrades.server.model.State;
+import com.tardigrades.server.model.Geography;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @AllArgsConstructor
 @Service
 public class MapService {
     private final MapRepository mapRepository;
 
-    public List<State> getStates() {
-        return mapRepository.findAll();
-    }
-
-    public State getState(String state) {
-        return mapRepository.findByState(state);
+    public Geography getMap(String name) {
+        return mapRepository.findByName(name);
     }
 }
