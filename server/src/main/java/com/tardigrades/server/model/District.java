@@ -15,4 +15,6 @@ public class District {
     private List<Representative> representatives;
     private int seats;
     private Map<Representative, Integer[]> votingResults;
+    private boolean MMD;
+    private boolean opportunityDistrict;
 }

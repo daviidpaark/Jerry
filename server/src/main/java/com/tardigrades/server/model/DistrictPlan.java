@@ -13,10 +13,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DistrictPlan {
+    private DistrictPlanSummary districtPlanSummary;
     private String state;
     private TagEnum tag;
     private boolean enacted;
     private boolean MMD;
     private List<District> districts;
     private Geography geography;
+
+    public Object getMap() {
+        return geography.getMap();
+    }
 }

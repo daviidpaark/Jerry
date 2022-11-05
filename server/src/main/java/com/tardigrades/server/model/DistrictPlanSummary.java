@@ -9,8 +9,9 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoxAndWhisker {
-    private TagEnum tag;
-    private Map<Integer, Double[]> data;
-    private boolean MMD;
+public class DistrictPlanSummary {
+    private int districts;
+    private int numberOfOpportunityDistricts;
+    private int numberOfSafeDistricts;
+    private Map<PartyEnum, Integer> split;
 }
