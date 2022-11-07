@@ -7,6 +7,7 @@ import com.tardigrades.server.service.StateService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -70,7 +71,7 @@ public class Controller {
     }
 
     @GetMapping(value = "/data/ensemble/summary", produces = MediaType.APPLICATION_JSON_VALUE)
-    public EnsembleSummary getEnsembleSummary(@RequestParam String mmd) {
+    public List<EnsembleSummary> getEnsembleSummary(@RequestParam String mmd) {
         if (mmd.equals("false")) {
             return currentState.getEnsemble(false).getEnsembleSummary();
         } else {

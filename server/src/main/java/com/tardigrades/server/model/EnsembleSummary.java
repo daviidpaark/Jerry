@@ -10,6 +10,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnsembleSummary {
+    private String layout;
     private int numberOfPlans;
     private double averageOpportunityDistricts;
     private double averageEqualPopulation;

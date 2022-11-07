@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ensemble {
-    private EnsembleSummary ensembleSummary;
+    private List<EnsembleSummary> ensembleSummary;
     private List<BoxAndWhisker> boxAndWhiskers;
     private BarChart seatShare;
     private BarChart opportunityDistricts;
