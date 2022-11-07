@@ -36,13 +36,11 @@ public class Controller {
 
     @GetMapping(value = "/maps/{state}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Object getStateMap(@PathVariable String state) {
-        if (currentState == null || !currentState.getState().equals(state)) {
-            currentState = stateService.getState(state);
-            currentPlan = planService.getEnactedPlan(state);
-            currentState.setEnactedPlan(currentPlan);
-            currentState.setSamplePlansSMD(planService.getPlansSMD(state));
-            currentState.setSamplePlansMMD(planService.getPlansMMD(state));
-        }
+        currentState = stateService.getState(state);
+        currentPlan = planService.getEnactedPlan(state);
+        currentState.setEnactedPlan(currentPlan);
+        currentState.setSamplePlansSMD(planService.getPlansSMD(state));
+        currentState.setSamplePlansMMD(planService.getPlansMMD(state));
         return currentState.getMap();
     }
 
