@@ -47,7 +47,7 @@ public class Controller {
     }
 
     @GetMapping(value = "/maps/plan", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Object getDistrictPlan(@RequestParam Map<String, String> params) {
+    public Object getDistrictPlanMap(@RequestParam Map<String, String> params) {
         TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
         if (params.get("mmd").equals("false")) {
             currentPlan = currentState.getDistrictPlan(false, tag);
@@ -81,7 +81,7 @@ public class Controller {
     }
 
     @GetMapping(value = "/data/ensemble/box-and-whisker", produces = MediaType.APPLICATION_JSON_VALUE)
-    public BoxAndWhisker getBoxAndWhisker(@RequestParam Map<String, String> params) {
+    public BoxAndWhisker getEnsembleBoxAndWhisker(@RequestParam Map<String, String> params) {
         TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
         if (params.get("mmd").equals("false")) {
             return currentState.getEnsemble(false).getBoxAndWhisker(tag);
