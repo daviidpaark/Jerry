@@ -56,6 +56,11 @@ public class Controller {
         return currentPlan.getMap();
     }
 
+    @GetMapping(value = "/data/plan", produces = MediaType.APPLICATION_JSON_VALUE)
+    public DistrictPlan getDistrictPlan() {
+        return currentPlan;
+    }
+
     @GetMapping(value = "/data/plan/summary", produces = MediaType.APPLICATION_JSON_VALUE)
     public DistrictPlanSummary getDistrictPlanSummary() {
         return currentPlan.getDistrictPlanSummary();
