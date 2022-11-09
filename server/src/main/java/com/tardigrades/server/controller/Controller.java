@@ -66,6 +66,11 @@ public class Controller {
         return currentPlan.getDistrictPlanSummary();
     }
 
+    @GetMapping(value = "/data/plan/districts", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<District> getDistricts() {
+        return currentPlan.getDistricts();
+    }
+
     @GetMapping(value = "/data/ensemble", produces = MediaType.APPLICATION_JSON_VALUE)
     public Ensemble getEnsemble(@RequestParam String mmd) {
         if (mmd.equals("false")) {
