@@ -75,6 +75,7 @@ const UsMap = ({ setState, setMap }) => {
 									placement="top"
 									arrow
 									followCursor
+									key={geo.rsmKey}
 								>
 									<Geography
 										key={geo.rsmKey}
