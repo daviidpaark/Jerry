@@ -1,4 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { memo, useState, useEffect } from "react";
 import {
 	ComposableMap,
@@ -103,13 +104,45 @@ const StateMap = ({
 							geographies.map((geo) => (
 								<Tooltip
 									title={
-										<Typography fontSize={20}>
-											{geo.properties.DISTRICT}
-										</Typography>
+                    <Box>
+                      <Typography fontSize={16}>
+                        District {geo.properties.DISTRICT}
+                      </Typography>
+                      <Typography fontsize={10}>
+                        Number of reps: {3}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        1: {geo.properties.DISTRICT%2==0 ? "Republican" : "Democratic"}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        2: {geo.properties.DISTRICT%2==0 ? "Republican" : "Democratic"}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        3: {geo.properties.DISTRICT%2==0 ? "Republican" : "Democratic"}
+                      </Typography>
+                      <Typography fontsize={10}>
+                        Total pop: {10000}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        AfricanA. pop: {1000}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        AsianA. pop: {1000}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        Latino pop: {1000}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        White pop: {5000}
+                      </Typography>
+                      <Typography fontsize={10} paddingLeft={1}>
+                        Others pop: {1000}
+                      </Typography>
+                    </Box>
+										
 									}
 									placement="top"
 									arrow
-									followCursor
 									enterDelay={0}
 									leaveDelay={0}
 								>

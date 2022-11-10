@@ -16,7 +16,7 @@ export default function MmdCharts({
           <ListItemButton onClick={() => handleClick(9)} value={9} divider>
             <ListItemText primary="MMD vs Enacted Plan" sx={{textAlign: "right"}} />
           </ListItemButton>
-          <ListItemButton onClick={() => handleClick(10)} value={10} divider>
+          <ListItemButton disabled onClick={() => handleClick(10)} value={10} divider>
             <ListItemText primary="Variation of Proportionality by Seat Share" sx={{textAlign: "right"}} />
           </ListItemButton>
         </List>
