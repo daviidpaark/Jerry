@@ -2,17 +2,15 @@ import { VictoryAxis, VictoryBoxPlot, VictoryChart, VictoryLabel } from 'victory
 
 export default function BoxAndWhisker() {
   return(
-    <VictoryChart padding={{left: 80, bottom: 60}}>
+    <VictoryChart padding={{left: 80, bottom: 60, top: 10}}>
       <VictoryBoxPlot 
       boxWidth={20}
       whiskerWidth={10}
-      categories={{x: ["District 1", "District 2", "District 3", "District 4"]}}
-      data={[{ x: "District 1", min: 2000, median: 5000, max: 10000, q1: 3020, q3: 7450 },
-              { x: "District 2", min: 1120, median: 4000, max: 9340, q1: 3120, q3: 6430 },
-              { x: "District 3", min: 1030, median: 4000, max: 9230, q1: 3430, q3: 6700 },
-              { x: "District 4", min: 1000, median: 6000, max: 9100, q1: 4010, q3: 8010 }]}
-      domain={{x: [0, 5], y: [0, 10000]}}
-      domainPadding={{x: 0}}
+      data={[{ x: "1", min: .05, median: .3, max: .6, q1: .1, q3: .45 },
+              { x: "2", min: .08, median: .35, max: .7, q1: .15, q3: .5 },
+              { x: "3", min: .1, median: .5, max: .8, q1: .2, q3: .65 },
+              { x: "4", min: .25, median: .75, max: .9, q1: .4, q3: .8 }]}
+      domain={{x: [0, 5], y: [0, 1]}}
       ></VictoryBoxPlot>
       <VictoryAxis 
       independentAxis
@@ -21,7 +19,7 @@ export default function BoxAndWhisker() {
       ></VictoryAxis>
       <VictoryAxis
       dependentAxis
-      label="Number of plans"
+      label="Percentage"
       style={{axisLabel: {padding: 60}}}
       ></VictoryAxis>
     </VictoryChart>

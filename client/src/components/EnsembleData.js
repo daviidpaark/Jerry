@@ -1,4 +1,5 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
+import BoxAndWhisker from "./BoxAndWhisker";
 
 import SampleData2 from "./SampleData2";
 
@@ -21,10 +22,10 @@ export default function EnsembleData() {
       </TableHead>
       <TableBody>
         <TableCell width="50%">
-          <SampleData2/>
+          <BoxAndWhisker/>
         </TableCell>
         <TableCell width="50%">
-          <SampleData2/>
+          <BoxAndWhisker/>
         </TableCell>
       </TableBody>
     </Table>
