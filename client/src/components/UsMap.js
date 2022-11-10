@@ -8,8 +8,8 @@ import {
 } from "react-simple-maps";
 import MapControls from "./MapControls";
 
-const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
-  var [geo, fetchMap] = useState(null);
+const UsMap = ({ setState, setMap }) => {
+  const [geo, fetchMap] = useState(null);
   useEffect(() => {
     const request = new Request("/api/maps/us", {
       method: "GET",
@@ -47,10 +47,6 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
       coordinates: [-96.6, 38.7],
       zoom: 1,
     }));
-    setMap(false);
-    setState("");
-    setSelection("");
-    setToggle(false);
   }
 
   return (
@@ -67,7 +63,7 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
         <ZoomableGroup
           zoom={position.zoom}
           center={position.coordinates}
-          onMoveEnd={handleMoveEnd}
+          onMoveEnd={() => handleMoveEnd}
         >
           <Geographies geography={geo}>
             {({ geographies }) =>
@@ -92,7 +88,6 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
                         geo.properties.name === "Georgia"
                       ) {
                         setState(geo.properties.name);
-                        setSelection(geo.properties.name);
                         setMap(true);
                       }
                     }}
@@ -102,7 +97,7 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
                           geo.properties.name === "Maryland" ||
                           geo.properties.name === "Mississippi" ||
                           geo.properties.name === "Georgia"
-                            ? "#90caf9"
+                            ? "#6B8E02"
                             : "#EEEEEE",
                         outline: "none",
                       },
@@ -111,7 +106,7 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
                           geo.properties.name === "Maryland" ||
                           geo.properties.name === "Mississippi" ||
                           geo.properties.name === "Georgia"
-                            ? "#F53"
+                            ? "#ae5bd7"
                             : "#D6D6DA",
                         outline: "none",
                         cursor: "pointer",
@@ -137,4 +132,4 @@ const MapChart = ({ setState, setSelection, setMap, setToggle }) => {
   );
 };
 
-export default memo(MapChart);
+export default memo(UsMap);

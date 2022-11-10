@@ -15,23 +15,22 @@ export default function GraphSelect({ selectGraph }) {
   return (
     <Box sx={{ width: "100%", typography: "body1" }}>
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Box sx={{ borderTop: 1, borderColor: "divider" }}>
           <TabList
             variant="scrollable"
             scrollButtons="auto"
             onChange={handleChange}
+            orientation="vertical"
           >
-            <Tab wrapped label="Population Equality" value="1" />
-            <Tab wrapped label="Compactness" value="2" />
-            <Tab wrapped label="Ranked Choice Voting" value="3" />
-            <Tab wrapped label="Political Fairness" value="4" />
-            <Tab wrapped label="Seat Share" value="5" />
-            <Tab wrapped label="Number of Opportunity Districts" value="6" />
-            <Tab
-              wrapped
-              label="Opportunity District Threshold Sensitivity"
-              value="7"
-            />
+            <Tab wrapped label="Summary" value="1" />
+            <Tab wrapped label="Seat Share-Vote Share Plot" value="2" />
+            <Tab wrapped label="Opportunity District Threshold Sensitivity" value="3" />
+            <Tab wrapped label="Range of Opportunity Representatives" value="4" />
+            <Tab wrapped label="Range of Republican/Democratic splits" value="5" />
+            <Tab wrapped label="Vote Share" value="6" />
+            <Tab wrapped label="Average Seat Share" value="7"/>
+            <Tab wrapped label="Box and Whiskers" value="8"/>
+            <Tab wrapped label="Box and Whiskers Comparison" value="9"/>
           </TabList>
         </Box>
       </TabContext>

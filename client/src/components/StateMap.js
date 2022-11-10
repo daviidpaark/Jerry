@@ -1,5 +1,5 @@
 import { Tooltip, Typography } from "@mui/material";
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -20,22 +20,41 @@ const z = new Map([
   ["Georgia", 8],
 ]);
 
-const CountyChart = ({
+const POSTAL = new Map([
+  ["Georgia", "ga"],
+  ["Maryland", "md"],
+  ["Mississippi", "ms"],
+]);
+
+const StateMap = ({
   state,
-  selection,
+  district,
+  switchMap,
   setMap,
-  setSelection,
+  setDistrict,
   setState,
-  setToggle,
+  setSwitchMap,
 }) => {
-  const geo = "/maps/" + state + "-counties.json";
+  let [geo, fetchMap] = useState(null);
+  useEffect(() => {
+    const request = new Request("/api/maps/" + POSTAL.get(state), {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    fetch(request)
+      .then((response) => response.json())
+      .then((data) => fetchMap(data));
+  }, [state]);
+
   const [position, setPosition] = useState({
     coordinates: xy.get(state),
     zoom: z.get(state),
   });
 
   function handleZoomIn() {
-    if (position.zoom >= 8) return;
+    if (position.zoom >= 12) return;
     setPosition((pos) => ({ ...pos, zoom: pos.zoom * 1.5 }));
   }
 
@@ -54,16 +73,17 @@ const CountyChart = ({
       coordinates: xy.get(state),
       zoom: z.get(state),
     }));
-    setSelection(state);
   }
+
   return (
     <div data-tip="">
       <MapControls
         exit={1}
         setMap={setMap}
-        setSelection={setSelection}
+        setDistrict={setDistrict}
         setState={setState}
-        setToggle={setToggle}
+        switchMap={switchMap}
+        setSwitchMap={setSwitchMap}
         state={state}
         handleZoomIn={handleZoomIn}
         handleZoomOut={handleZoomOut}
@@ -76,15 +96,16 @@ const CountyChart = ({
         <ZoomableGroup
           zoom={position.zoom}
           center={position.coordinates}
-          onMoveEnd={handleMoveEnd}
+          onMoveEnd={() => handleMoveEnd}
         >
-          {/* <ClickAwayListener onClickAway={() => setSelection(state)}> */}
           <Geographies geography={geo}>
             {({ geographies }) =>
               geographies.map((geo) => (
                 <Tooltip
                   title={
-                    <Typography fontSize={20}>{geo.properties.NAME}</Typography>
+                    <Typography fontSize={20}>
+                      {geo.properties.DISTRICT}
+                    </Typography>
                   }
                   placement="top"
                   arrow
@@ -95,37 +116,34 @@ const CountyChart = ({
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
+                    onClick={() => {
+                      if(switchMap && district!==geo.properties.DISTRICT) setDistrict(geo.properties.DISTRICT)
+                    }}
                     stroke="#AAA"
                     strokeWidth={0.1}
                     style={{
                       default: {
                         fill:
-                          selection == geo.properties.NAME
-                            ? "#f52900"
+                          district === geo.properties.DISTRICT
+                            ? "#6B8E02"
                             : "#EEEEEE",
                         outline: "none",
                       },
                       hover: {
-                        fill: "#F53",
+                        fill: "#ae5bd7",
                         cursor: "pointer",
                         outline: "none",
                       },
-                    }}
-                    onClick={() => {
-                      if (selection == geo.properties.NAME) {
-                        setSelection(state);
-                      } else setSelection(geo.properties.NAME);
                     }}
                   />
                 </Tooltip>
               ))
             }
           </Geographies>
-          {/* </ClickAwayListener> */}
         </ZoomableGroup>
       </ComposableMap>
     </div>
   );
 };
 
-export default memo(CountyChart);
+export default memo(StateMap);

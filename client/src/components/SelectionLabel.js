@@ -1,32 +1,37 @@
 import * as React from "react";
-import { Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
-export default function SelectionLabel({ state, selection, setSelection }) {
-  var label;
+export default function SelectionLabel({ 
+  state, 
+  district,
+  setDistrict
+  }) {
+  let label;
   if (state) {
-    if (state == selection) {
-      label = state;
+    if (district>-1) {
+      label = state + " -> District " + district;
     } else {
-      label = state + " -> " + selection;
+      label = state;
     }
   } else label = "Select A State";
 
+  const handleDeselect = () => {
+    setDistrict(-1);
+  }
   return (
-    <Typography
-      component="h2"
-      variant="h6"
-      color="primary"
-      gutterBottom
-      style={{
-        hover: {
-          cursor: "pointer",
-        },
-      }}
-      onClick={() => {
-        setSelection(state);
-      }}
-    >
-      {label}
-    </Typography>
+    <Box sx={{cursor: "pointer"}} >
+      <Typography
+        component="h2"
+        variant="h6"
+        color="lightgreen"
+        align="center"
+        onClick={() => handleDeselect}
+        paddingTop={1}
+        gutterBottom
+      >
+        {label}
+      </Typography>
+    </Box>
+    
   );
 }

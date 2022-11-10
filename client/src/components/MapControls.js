@@ -1,26 +1,34 @@
-import { ButtonGroup, IconButton } from "@mui/material";
+import { Button, ButtonGroup, Chip, IconButton, Input, Typography } from "@mui/material";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import CachedIcon from '@mui/icons-material/Cached';
 export default function MapControls({
   exit,
+  state,
+  switchMap,
   setMap,
-  setSelection,
+  setDistrict,
   setState,
-  setToggle,
+  setSwitchMap,
   handleZoomIn,
   handleZoomOut,
   handleReset,
 }) {
-  function handleExit() {
+  const handleExit = () => {
     setMap(false);
     setState("");
-    setSelection("");
-    setToggle(false);
+    setDistrict(-1);
+    setSwitchMap(false);
   }
 
-  var back;
+  const handleSwitch = () => {
+    setDistrict(-1);
+    setSwitchMap(!switchMap);
+  }
+
+  let back;
   if (exit) {
     back = (
       <IconButton size="large" onClick={handleExit}>
@@ -28,11 +36,22 @@ export default function MapControls({
       </IconButton>
     );
   }
+  let toggle;
+  if(state) {
+    toggle = (
+      <ButtonGroup>
+        <IconButton onClick={handleSwitch}>
+          <CachedIcon></CachedIcon>
+        </IconButton>
+        <Chip label={switchMap ? "Sample Plan" : "Enacted Plan"} sx={{marginTop: "10px"}} />
+      </ButtonGroup>
+    );
+  }
 
   return (
     <ButtonGroup
       style={{
-        position: "absolute",
+        position: "absolute",    
       }}
     >
       {back}
@@ -45,6 +64,7 @@ export default function MapControls({
       <IconButton size="large" onClick={handleZoomIn}>
         <ZoomInIcon fontSize="inherit"></ZoomInIcon>
       </IconButton>
+      {toggle}
     </ButtonGroup>
   );
 }

@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 export default function ButtonAppBar({
   setMap,
   setState,
-  setSelection,
-  setToggle,
+  setSwitchMap,
+  setDistrict
 }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -21,8 +21,8 @@ export default function ButtonAppBar({
             onClick={() => {
               setMap(false);
               setState("");
-              setSelection("");
-              setToggle(false);
+              setSwitchMap(false);
+              setDistrict(-1);
             }}
           >
             Tardigrades H.R.3863
