@@ -145,6 +145,7 @@ const StateMap = ({
 									arrow
 									enterDelay={0}
 									leaveDelay={0}
+									key={geo.rsmKey}
 								>
 									<Geography
 										key={geo.rsmKey}
