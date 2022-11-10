@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, Typography } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead } from "@mui/material";
 
 export default function MmdVsEnactedTable() {
   return (

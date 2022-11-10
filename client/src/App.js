@@ -18,6 +18,7 @@ import StateMap from "./components/StateMap";
 import EnsembleData from "./components/EnsembleData";
 import MmdVsEnactedTable from "./components/MmdVsEnactedTable";
 import SampleData from "./components/SampleData";
+import BoxAndWhisker from "./components/BoxAndWhisker";
 
 const lightTheme = createTheme({
   palette: {
@@ -58,6 +59,9 @@ function App() {
             <Grid item xs={7}>
               {graph>-1 && graph<8 && (
                 <EnsembleData></EnsembleData>
+              )}
+              {graph===8 && (   
+                <BoxAndWhisker></BoxAndWhisker>
               )}
               {graph===9 && (
                 <MmdVsEnactedTable></MmdVsEnactedTable>

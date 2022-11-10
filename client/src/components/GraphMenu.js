@@ -1,6 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { List, ListItemButton, ListItemText } from "@mui/material";
 import EnsembleCharts from "./EnsembleCharts";
 import MmdCharts from "./MmdCharts";
 import SamplePlanCharts from "./SamplePlanCharts";
