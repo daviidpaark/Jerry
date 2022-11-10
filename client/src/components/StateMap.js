@@ -30,6 +30,7 @@ const POSTAL = new Map([
 const StateMap = ({
 	state,
 	district,
+  random,
 	switchMap,
 	setMap,
 	setDistrict,
@@ -80,6 +81,7 @@ const StateMap = ({
 		<div data-tip="">
 			<MapControls
 				exit={1}
+        random={random}
 				setMap={setMap}
 				setDistrict={setDistrict}
 				setState={setState}

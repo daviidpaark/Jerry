@@ -19,6 +19,7 @@ import EnsembleData from "./components/EnsembleData";
 import MmdVsEnactedTable from "./components/MmdVsEnactedTable";
 import SampleData from "./components/SampleData";
 import BoxAndWhisker from "./components/BoxAndWhisker";
+import RandomSamplePlan from "./components/RandomSamplePlan";
 
 const lightTheme = createTheme({
   palette: {
@@ -32,6 +33,7 @@ function App() {
   const [graph, setGraph] = useState(-1);
   const [switchMap, setSwitchMap] = useState(false); //false for enacted plan, true for sample plan
   const [district, setDistrict] = useState(-1);
+  const [random, setRandom] = useState(-1) //no sample plan retrieved
   return (
     <div>
       <ThemeProvider theme={lightTheme}>
@@ -53,6 +55,9 @@ function App() {
               <Divider></Divider>
               <GraphMenu
                 setGraph={setGraph}
+                district={district}
+                random={random}
+                setRandom={setRandom}
                 style={{ position: "absolute", top: "0vh", left: "0vh" }}
               ></GraphMenu>
             </Grid>
@@ -82,17 +87,19 @@ function App() {
                   state={state}
                   district={district}
                   switchMap={switchMap}
+                  random={random}
                   setMap={setMap}
                   setDistrict={setDistrict}
                   setState={setState}
                   setSwitchMap={setSwitchMap}
                 />
               )}
-              {hideMap && switchMap && (
+              {hideMap && switchMap && random>-1 && (
                 <StateMap
                   state={state}
                   district={district}
                   switchMap={switchMap}
+                  random={random}
                   setMap={setMap}
                   setDistrict={setDistrict}
                   setState={setState}

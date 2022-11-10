@@ -5,7 +5,7 @@ import EnsembleCharts from "./EnsembleCharts";
 import MmdCharts from "./MmdCharts";
 import SamplePlanCharts from "./SamplePlanCharts";
 
-export default function GraphMenu({ setGraph }) {
+export default function GraphMenu({ setGraph, district, random, setRandom}) {
   const [open, setOpen] = React.useState(-1);
   const handleClick = (index) => {
     setOpen(open === index ? -1 : index)
@@ -32,7 +32,11 @@ export default function GraphMenu({ setGraph }) {
           </ListItemButton>
           <SamplePlanCharts
           open={open===2}
-          setGraph={setGraph}>
+          setGraph={setGraph}
+          district={district}
+          random={random}
+          setRandom={setRandom}
+          >
           </SamplePlanCharts>
       </List>
     </Box>

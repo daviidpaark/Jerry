@@ -7,6 +7,7 @@ import CachedIcon from '@mui/icons-material/Cached';
 export default function MapControls({
   exit,
   state,
+  random,
   switchMap,
   setMap,
   setDistrict,
@@ -40,7 +41,7 @@ export default function MapControls({
   if(state) {
     toggle = (
       <ButtonGroup>
-        <IconButton onClick={handleSwitch}>
+        <IconButton onClick={handleSwitch} disabled={random>-1 ? false : true}>
           <CachedIcon></CachedIcon>
         </IconButton>
         <Chip label={switchMap ? "Sample Plan" : "Enacted Plan"} sx={{marginTop: "10px"}} />
