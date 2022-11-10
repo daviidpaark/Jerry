@@ -63,7 +63,7 @@ const UsMap = ({ setState, setMap }) => {
         <ZoomableGroup
           zoom={position.zoom}
           center={position.coordinates}
-          onMoveEnd={() => handleMoveEnd}
+          onMoveEnd={handleMoveEnd}
         >
           <Geographies geography={geo}>
             {({ geographies }) =>
@@ -97,7 +97,7 @@ const UsMap = ({ setState, setMap }) => {
                           geo.properties.name === "Maryland" ||
                           geo.properties.name === "Mississippi" ||
                           geo.properties.name === "Georgia"
-                            ? "#6B8E02"
+                            ? "#a5d6a7"
                             : "#EEEEEE",
                         outline: "none",
                       },
@@ -106,7 +106,7 @@ const UsMap = ({ setState, setMap }) => {
                           geo.properties.name === "Maryland" ||
                           geo.properties.name === "Mississippi" ||
                           geo.properties.name === "Georgia"
-                            ? "#ae5bd7"
+                            ? "#ce93d8"
                             : "#D6D6DA",
                         outline: "none",
                         cursor: "pointer",

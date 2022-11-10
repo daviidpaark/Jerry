@@ -66,7 +66,7 @@ function App() {
                 <SampleData></SampleData>
               )}
             </Grid>
-            <Grid item xs={3} backgroundColor="lightskyblue">
+            <Grid item xs={3} backgroundColor="#e3f2fd">
               {!hideMap && (
                 <UsMap
                   setState={setState}

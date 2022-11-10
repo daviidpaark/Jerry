@@ -16,14 +16,14 @@ export default function MapControls({
   handleZoomOut,
   handleReset,
 }) {
-  const handleExit = () => {
+  function handleExit() {
     setMap(false);
     setState("");
     setDistrict(-1);
     setSwitchMap(false);
   }
 
-  const handleSwitch = () => {
+  function handleSwitch() {
     setDistrict(-1);
     setSwitchMap(!switchMap);
   }

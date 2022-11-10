@@ -96,7 +96,7 @@ const StateMap = ({
         <ZoomableGroup
           zoom={position.zoom}
           center={position.coordinates}
-          onMoveEnd={() => handleMoveEnd}
+          onMoveEnd={handleMoveEnd}
         >
           <Geographies geography={geo}>
             {({ geographies }) =>
@@ -125,12 +125,12 @@ const StateMap = ({
                       default: {
                         fill:
                           district === geo.properties.DISTRICT
-                            ? "#6B8E02"
+                            ? "#a5d6a7"
                             : "#EEEEEE",
                         outline: "none",
                       },
                       hover: {
-                        fill: "#ae5bd7",
+                        fill: "#ce93d8",
                         cursor: "pointer",
                         outline: "none",
                       },
