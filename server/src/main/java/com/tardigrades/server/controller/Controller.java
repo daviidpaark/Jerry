@@ -40,8 +40,8 @@ public class Controller {
         currentState = stateService.getState(state);
         currentPlan = planService.getEnactedPlan(state);
         currentState.setEnactedPlan(currentPlan);
-        currentState.setSamplePlansSMD(planService.getPlansSMD(state));
-        currentState.setSamplePlansMMD(planService.getPlansMMD(state));
+        currentState.setSamplePlansSMD(planService.getPlans(false, state));
+        currentState.setSamplePlansMMD(planService.getPlans(true, state));
         return currentState.getMap();
     }
 
