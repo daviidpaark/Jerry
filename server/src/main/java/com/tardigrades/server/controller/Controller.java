@@ -36,12 +36,12 @@ public class Controller {
     }
 
     @GetMapping(value = "/maps/{state}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Object getStateMap(@PathVariable String state) {
+    public Object getStateMap(@PathVariable String state) throws InterruptedException {
         currentState = stateService.getState(state);
         currentPlan = planService.getEnactedPlan(state);
         currentState.setEnactedPlan(currentPlan);
-        currentState.setSamplePlansSMD(planService.getPlans(false, state));
-        currentState.setSamplePlansMMD(planService.getPlans(true, state));
+        planService.getPlans(currentState, false, state);
+        planService.getPlans(currentState, true, state);
         return currentState.getMap();
     }
 

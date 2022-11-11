@@ -2,11 +2,11 @@ package com.tardigrades.server.service;
 
 import com.tardigrades.server.db.PlanRepository;
 import com.tardigrades.server.model.DistrictPlan;
+import com.tardigrades.server.model.State;
 import lombok.AllArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -18,11 +18,11 @@ public class PlanService {
     }
 
     @Async
-    public List<DistrictPlan> getPlans(boolean MMD, String state) {
+    public void getPlans(State currentState, boolean MMD, String state) throws InterruptedException {
         if (!MMD) {
-            return planRepository.findAllByStateAndMMDIsFalse(state);
+            currentState.setSamplePlansSMD(planRepository.findAllByStateAndMMDIsFalse(state));
         } else {
-            return planRepository.findAllByStateAndMMDIsTrue(state);
+            currentState.setSamplePlansMMD(planRepository.findAllByStateAndMMDIsTrue(state));
         }
     }
 
