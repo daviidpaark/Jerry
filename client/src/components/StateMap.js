@@ -65,10 +65,6 @@ const StateMap = ({
 		setPosition((pos) => ({ ...pos, zoom: pos.zoom / 1.5 }));
 	}
 
-	function handleMoveEnd(position) {
-		setPosition(position);
-	}
-
 	function handleReset() {
 		setPosition((position) => ({
 			...position,
@@ -99,7 +95,6 @@ const StateMap = ({
 				<ZoomableGroup
 					zoom={position.zoom}
 					center={position.coordinates}
-					onMoveEnd={handleMoveEnd}
 				>
 					<Geographies geography={geo}>
 						{({ geographies }) =>

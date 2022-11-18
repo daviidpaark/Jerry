@@ -38,7 +38,13 @@ const UsMap = ({ setState, setMap }) => {
 	}
 
 	function handleMoveEnd(position) {
-		setPosition(position);
+		let lowX = -120.6;
+		let highX = -72.6;
+		let lowY = 28.7;
+		let highY = 48.7;
+		let x = position.coordinates[0];
+		let y = position.coordinates[1];
+		if(x>lowX && x<highX && y>lowY && y<highY) setPosition(position);
 	}
 
 	function handleReset() {

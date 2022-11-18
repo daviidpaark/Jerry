@@ -19,7 +19,6 @@ import EnsembleData from "./components/EnsembleData";
 import MmdVsEnactedTable from "./components/MmdVsEnactedTable";
 import SampleData from "./components/SampleData";
 import BoxAndWhisker from "./components/BoxAndWhisker";
-import RandomSamplePlan from "./components/RandomSamplePlan";
 
 const lightTheme = createTheme({
   palette: {
@@ -28,11 +27,11 @@ const lightTheme = createTheme({
 });
 
 function App() {
-  const [state, setState] = useState("");
+  const [state, setState] = useState(""); //which state is selected
   const [hideMap, setMap] = useState(false); //decides whether to hide the US map/show state map
-  const [graph, setGraph] = useState(-1);
+  const [graph, setGraph] = useState(-1); //which graph/chart to display
   const [switchMap, setSwitchMap] = useState(false); //false for enacted plan, true for sample plan
-  const [district, setDistrict] = useState(-1);
+  const [district, setDistrict] = useState(-1); //which district is chosen for a sample plan
   const [random, setRandom] = useState(-1) //no sample plan retrieved
   return (
     <div>
@@ -63,7 +62,9 @@ function App() {
             </Grid>
             <Grid item xs={7}>
               {graph>-1 && graph<8 && (
-                <EnsembleData></EnsembleData>
+                <EnsembleData
+                graph={graph}
+                ></EnsembleData>
               )}
               {graph===8 && (   
                 <BoxAndWhisker></BoxAndWhisker>

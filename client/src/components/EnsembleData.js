@@ -1,9 +1,8 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
+import BarChart from "./BarChart";
 import BoxAndWhisker from "./BoxAndWhisker";
 
-import SampleData2 from "./SampleData2";
-
-export default function EnsembleData() {
+export default function EnsembleData({graph}) {
   return (
     <Table>
       <TableHead>
@@ -22,10 +21,10 @@ export default function EnsembleData() {
       </TableHead>
       <TableBody>
         <TableCell width="50%">
-          <BoxAndWhisker/>
+          {graph===7 ? (<BoxAndWhisker></BoxAndWhisker>) : (<BarChart graph={graph}></BarChart>)}
         </TableCell>
         <TableCell width="50%">
-          <BoxAndWhisker/>
+          {graph===7 ? (<BoxAndWhisker></BoxAndWhisker>) : (<BarChart graph={graph}></BarChart>)}
         </TableCell>
       </TableBody>
     </Table>

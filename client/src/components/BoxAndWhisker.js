@@ -1,27 +1,28 @@
-import { VictoryAxis, VictoryBoxPlot, VictoryChart, VictoryLabel } from 'victory';
+import Plot from 'react-plotly.js';
+import React from 'react';
 
 export default function BoxAndWhisker() {
   return(
-    <VictoryChart padding={{left: 80, bottom: 60, top: 10}}>
-      <VictoryBoxPlot 
-      boxWidth={20}
-      whiskerWidth={10}
-      data={[{ x: "1", min: .05, median: .3, max: .6, q1: .1, q3: .45 },
-              { x: "2", min: .08, median: .35, max: .7, q1: .15, q3: .5 },
-              { x: "3", min: .1, median: .5, max: .8, q1: .2, q3: .65 },
-              { x: "4", min: .25, median: .75, max: .9, q1: .4, q3: .8 }]}
-      domain={{x: [0, 5], y: [0, 1]}}
-      ></VictoryBoxPlot>
-      <VictoryAxis 
-      independentAxis
-      label="Districts"
-      style={{axisLabel: {padding: 40}}}
-      ></VictoryAxis>
-      <VictoryAxis
-      dependentAxis
-      label="Percentage"
-      style={{axisLabel: {padding: 60}}}
-      ></VictoryAxis>
-    </VictoryChart>
+    <Plot
+      data={[{
+        type: 'box',
+        name: 'SMD',
+        x: [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3],
+        y: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500]
+      }, {
+        type: 'box',
+        name: 'MMD',
+        x: [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3],
+        y: [200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600]
+      }
+    ]}
+      layout={{
+        title: "Box and Whiskers",
+        boxmode: 'group'
+      }}
+      style={{
+        position: 'relative',
+      }}
+    />
   );
 }
