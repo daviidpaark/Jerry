@@ -11,10 +11,11 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class District {
+    private int districtNumber;
     private Demographics demographics;
     private List<Representative> representatives;
     private int seats;
-    private Map<Representative, Integer[]> votingResults;
+    private Object votingResults;
     private boolean MMD;
     private boolean opportunityDistrict;
 }
