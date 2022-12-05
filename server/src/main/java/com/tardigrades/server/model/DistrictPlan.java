@@ -17,6 +17,7 @@ public class DistrictPlan {
     private String state;
     private TagEnum tag;
     private boolean enacted;
+    private int year;
     private boolean MMD;
     private List<District> districts;
     private Geography geography;
