@@ -6,6 +6,7 @@ import {
   CssBaseline,
   Grid,
   Divider,
+  Typography,
 } from "@mui/material";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -17,8 +18,11 @@ import UsMap from "./components/UsMap";
 import StateMap from "./components/StateMap";
 import EnsembleData from "./components/EnsembleData";
 import MmdVsEnactedTable from "./components/MmdVsEnactedTable";
-import SampleData from "./components/SampleData";
 import BoxAndWhisker from "./components/BoxAndWhisker";
+import EnsembleSummary from "./components/EnsembleSummary";
+import SeatSharePlot from "./components/SeatSharePlot";
+import DoublePlot from "./components/DoublePlot";
+import RangeOfSplitsPlotSMD from "./components/RangeOfSplitsPlotSMD";
 
 const lightTheme = createTheme({
   palette: {
@@ -32,7 +36,10 @@ function App() {
   const [graph, setGraph] = useState(-1); //which graph/chart to display
   const [switchMap, setSwitchMap] = useState(false); //false for enacted plan, true for sample plan
   const [district, setDistrict] = useState(-1); //which district is chosen for a sample plan
-  const [random, setRandom] = useState(-1) //no sample plan retrieved
+  const [random, setRandom] = useState(-1) //which sample plan selected
+  const [ensembleSMD, setEnsembleSMD] = useState(null);
+  const [ensembleMMD, setEnsembleMMD] = useState(null);
+  const seats = {"Georgia": 14, "Maryland": 8, "Mississippi": 4};
   return (
     <div>
       <ThemeProvider theme={lightTheme}>
@@ -53,18 +60,28 @@ function App() {
               ></SelectionLabel>
               <Divider></Divider>
               <GraphMenu
+                state={state}
                 setGraph={setGraph}
                 district={district}
-                random={random}
                 setRandom={setRandom}
                 style={{ position: "absolute", top: "0vh", left: "0vh" }}
               ></GraphMenu>
             </Grid>
             <Grid item xs={7}>
-              {graph>-1 && graph<8 && (
-                <EnsembleData
+              {graph===0 && (
+                <EnsembleSummary
+                ensembleSMD={ensembleSMD}
+                ensembleMMD={ensembleMMD}
+                ></EnsembleSummary>
+              )}
+              {graph===4 && (
+                <DoublePlot
+                ensembleSMD={ensembleSMD}
+                ensembleMMD={ensembleMMD}
+                state={state}
+                seats={seats}
                 graph={graph}
-                ></EnsembleData>
+                ></DoublePlot>
               )}
               {graph===8 && (   
                 <BoxAndWhisker></BoxAndWhisker>
@@ -73,7 +90,7 @@ function App() {
                 <MmdVsEnactedTable></MmdVsEnactedTable>
               )}
               {graph===11 && (
-                <SampleData></SampleData>
+                <MmdVsEnactedTable></MmdVsEnactedTable>
               )}
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">
@@ -93,6 +110,11 @@ function App() {
                   setDistrict={setDistrict}
                   setState={setState}
                   setSwitchMap={setSwitchMap}
+                  setGraph={setGraph}
+                  ensembleSMD={ensembleSMD}
+                  setEnsembleSMD={setEnsembleSMD}
+                  ensembleMMD={ensembleMMD}
+                  setEnsembleMMD={setEnsembleMMD}
                 />
               )}
               {hideMap && switchMap && random>-1 && (

@@ -36,19 +36,54 @@ const StateMap = ({
 	setDistrict,
 	setState,
 	setSwitchMap,
+	setGraph,
+	ensembleSMD,
+	setEnsembleSMD,
+	ensembleMMD,
+	setEnsembleMMD
 }) => {
 	let [geo, fetchMap] = useState(null);
 	useEffect(() => {
-		const request = new Request("/api/maps/" + POSTAL.get(state), {
+		fetchStateMap();
+		fetchEnsembleSMD();
+		//fetchEnsembleMMD();
+	}, [state]);
+
+	async function fetchStateMap() {
+    const request = new Request("/api/maps/" + POSTAL.get(state), {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
-		fetch(request)
+		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => fetchMap(data));
-	}, [state]);
+  }
+
+	async function fetchEnsembleSMD() {
+    const request = new Request("/api/data/ensemble?mmd=false", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		await fetch(request)
+			.then((response) => response.json())
+			.then((data) => setEnsembleSMD(data));
+  }
+
+	async function fetchEnsembleMMD() {
+    const request = new Request("/api/data/ensemble?mmd=true", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		await fetch(request)
+			.then((response) => response.json())
+			.then((data) => setEnsembleMMD(data));
+  }
 
 	const [position, setPosition] = useState({
 		coordinates: xy.get(state),
@@ -83,6 +118,7 @@ const StateMap = ({
 				setState={setState}
 				switchMap={switchMap}
 				setSwitchMap={setSwitchMap}
+				setGraph={setGraph}
 				state={state}
 				handleZoomIn={handleZoomIn}
 				handleZoomOut={handleZoomOut}
@@ -105,34 +141,34 @@ const StateMap = ({
                       <Typography fontSize={16}>
                         District {geo.properties.DISTRICT}
                       </Typography>
-                      <Typography fontsize={10}>
+                      <Typography fontSize={10}>
                         Number of reps: {3}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
-                        1: {geo.properties.DISTRICT%2==0 ? "Republican" : "Democratic"}
+                      <Typography fontSize={10} paddingLeft={1}>
+                        1: {geo.properties.DISTRICT%2===0 ? "Republican" : "Democratic"}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
-                        2: {geo.properties.DISTRICT%2==0 ? "Republican" : "Democratic"}
+                      <Typography fontSize={10} paddingLeft={1}>
+                        2: {geo.properties.DISTRICT%2===0 ? "Republican" : "Democratic"}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
-                        3: {geo.properties.DISTRICT%2==0 ? "Republican" : "Democratic"}
+                      <Typography fontSize={10} paddingLeft={1}>
+                        3: {geo.properties.DISTRICT%2===0 ? "Republican" : "Democratic"}
                       </Typography>
-                      <Typography fontsize={10}>
+                      <Typography fontSize={10}>
                         Total pop: {10000}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
+                      <Typography fontSize={10} paddingLeft={1}>
                         AfricanA. pop: {1000}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
+                      <Typography fontSize={10} paddingLeft={1}>
                         AsianA. pop: {1000}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
+                      <Typography fontSize={10} paddingLeft={1}>
                         Latino pop: {1000}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
+                      <Typography fontSize={10} paddingLeft={1}>
                         White pop: {5000}
                       </Typography>
-                      <Typography fontsize={10} paddingLeft={1}>
+                      <Typography fontSize={10} paddingLeft={1}>
                         Others pop: {1000}
                       </Typography>
                     </Box>

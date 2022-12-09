@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
 
-export default function RandomSamplePlan({setRandom}) {
+export default function RandomSamplePlan({setRandom, state}) {
   const [plan, setPlan] = useState("")
   const handleChange = (event) => {
     setPlan(event.target.value);
@@ -9,10 +9,11 @@ export default function RandomSamplePlan({setRandom}) {
   }
   return(
     <FormControl fullWidth variant="outlined">
-      <InputLabel>Characteristics</InputLabel>
+      <InputLabel color="info">Characteristics</InputLabel>
       <Select
       label="Characteristics"
       onChange={handleChange}
+      disabled={state==="" ? true : false}
       >
         <MenuItem value={0}>Favorable Republican</MenuItem>
         <MenuItem value={1}>Favorable Democratic</MenuItem>

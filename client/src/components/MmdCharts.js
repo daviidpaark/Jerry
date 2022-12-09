@@ -4,8 +4,10 @@ import { List, ListItemButton, ListItemText } from "@mui/material";
 
 export default function MmdCharts({
   open,
-  setGraph
+  setGraph,
+  state
 }) {
+
   const handleClick = (index) => {
     setGraph(index);
   };
@@ -13,11 +15,11 @@ export default function MmdCharts({
     <Box backgroundColor="gray">
       <Collapse in={open}>
         <List dense disablePadding>
-          <ListItemButton onClick={() => handleClick(9)} value={9} divider>
-            <ListItemText primary="MMD vs Enacted Plan" sx={{textAlign: "right"}} />
+          <ListItemButton onClick={() => handleClick(9)} value={9} divider disabled={state=="" ? true : false}>
+            <ListItemText primary="MMD vs Enacted Plan" sx={{paddingLeft: 2}} />
           </ListItemButton>
-          <ListItemButton disabled onClick={() => handleClick(10)} value={10} divider>
-            <ListItemText primary="Variation of Proportionality by Seat Share" sx={{textAlign: "right"}} />
+          <ListItemButton onClick={() => handleClick(10)} value={10} divider disabled>
+            <ListItemText primary="Variation of Proportionality by Seat Share" sx={{paddingLeft: 2}} />
           </ListItemButton>
         </List>
       </Collapse>

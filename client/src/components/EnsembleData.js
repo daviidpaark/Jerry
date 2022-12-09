@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
-import BarChart from "./BarChart";
+import BarChart from "./DoublePlot";
 import BoxAndWhisker from "./BoxAndWhisker";
 
 export default function EnsembleData({graph}) {
@@ -9,12 +9,12 @@ export default function EnsembleData({graph}) {
         <TableRow>
           <TableCell align="center">
             <Typography>
-              Single-Member District
+              SMD
             </Typography>
           </TableCell>
           <TableCell align="center">
             <Typography>
-              Multi-Member District
+              MMD
             </Typography>
           </TableCell>
         </TableRow>

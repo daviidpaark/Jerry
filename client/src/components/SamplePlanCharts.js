@@ -5,10 +5,10 @@ import RandomSamplePlan from "./RandomSamplePlan";
 
 export default function SamplePlanCharts({
   open,
-  random,
   district,
   setGraph,
-  setRandom
+  setRandom,
+  state
 }) {
   const handleClick = (index) => {
     setGraph(index);
@@ -17,12 +17,14 @@ export default function SamplePlanCharts({
     <Box backgroundColor="gray">
       <Collapse in={open}>
         <List dense disablePadding>
-          <ListItemButton onClick={() => handleClick(11)} value={11} divider disabled={random>-1 && district>-1 ? false : true}>
-            <ListItemText primary="Election Results" sx={{textAlign: "right"}} />
+          <ListItemButton onClick={() => handleClick(11)} value={11} divider disabled={district>-1 ? false : true}>
+            <ListItemText primary="Election Results" sx={{paddingLeft: 2}} />
           </ListItemButton>
           <br></br>
           <RandomSamplePlan
-          setRandom={setRandom}></RandomSamplePlan>
+          setRandom={setRandom}
+          state={state}
+          ></RandomSamplePlan>
         </List>
       </Collapse>
     </Box>
