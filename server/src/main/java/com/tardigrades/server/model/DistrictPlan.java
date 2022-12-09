@@ -19,7 +19,7 @@ public class DistrictPlan {
     private boolean enacted;
     private int year;
     private boolean MMD;
-    private List<District> districts;
+    private List<Object> districts;
     private Geography geography;
 
     public Object getMap() {

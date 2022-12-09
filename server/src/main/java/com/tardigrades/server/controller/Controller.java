@@ -67,7 +67,7 @@ public class Controller {
     }
 
     @GetMapping(value = "/data/plan/districts", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<District> getDistricts() {
+    public List<Object> getDistricts() {
         return currentPlan.getDistricts();
     }
 
