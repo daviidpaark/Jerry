@@ -12,7 +12,7 @@ import java.util.Map;
 public class EnsembleSummary {
     private String layout;
     private int numberOfPlans;
-    private double averageOpportunityDistricts;
+    private double averageOpportunityReps;
     private double averageEqualPopulation;
     private Map<PartyEnum, Double> averageSplit;
 }

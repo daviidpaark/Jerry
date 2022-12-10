@@ -11,7 +11,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class DistrictPlanSummary {
     private int districts;
-    private int numberOfOpportunityDistricts;
+    private int numberOfOpportunityReps;
     private int numberOfSafeDistricts;
     private Map<PartyEnum, Integer> split;
 }

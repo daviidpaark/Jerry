@@ -109,12 +109,12 @@ public class Controller {
         }
     }
 
-    @GetMapping(value = "/data/ensemble/opportunity-districts", produces = MediaType.APPLICATION_JSON_VALUE)
-    public BarChart getEnsembleOpportunityDistricts(@RequestParam String mmd) {
+    @GetMapping(value = "/data/ensemble/opportunity-reps", produces = MediaType.APPLICATION_JSON_VALUE)
+    public BarChart getEnsembleOpportunityReps(@RequestParam String mmd) {
         if (mmd.equals("false")) {
-            return currentState.getEnsemble(false).getOpportunityDistricts();
+            return currentState.getEnsemble(false).getOpportunityReps();
         } else {
-            return currentState.getEnsemble(true).getOpportunityDistricts();
+            return currentState.getEnsemble(true).getOpportunityReps();
         }
     }
 }

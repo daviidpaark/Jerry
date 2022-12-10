@@ -13,7 +13,7 @@ public class Ensemble {
     private List<EnsembleSummary> ensembleSummary;
     private List<BoxAndWhisker> boxAndWhiskers;
     private BarChart seatShare;
-    private BarChart opportunityDistricts;
+    private BarChart opportunityReps;
     private boolean MMD;
 
     public BoxAndWhisker getBoxAndWhisker(TagEnum tag) {
