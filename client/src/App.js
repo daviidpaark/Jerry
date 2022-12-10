@@ -6,7 +6,6 @@ import {
   CssBaseline,
   Grid,
   Divider,
-  Typography,
 } from "@mui/material";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -16,13 +15,14 @@ import SelectionLabel from "./components/SelectionLabel";
 import GraphMenu from "./components/GraphMenu";
 import UsMap from "./components/UsMap";
 import StateMap from "./components/StateMap";
-import EnsembleData from "./components/EnsembleData";
 import MmdVsEnactedTable from "./components/MmdVsEnactedTable";
 import BoxAndWhisker from "./components/BoxAndWhisker";
 import EnsembleSummary from "./components/EnsembleSummary";
-import SeatSharePlot from "./components/SeatSharePlot";
-import DoublePlot from "./components/DoublePlot";
-import RangeOfSplitsPlotSMD from "./components/RangeOfSplitsPlotSMD";
+import SplitsDoublePlot from "./components/SplitsDoublePlot";
+import OpportunityDoublePlot from "./components/OpportunityDoublePlot";
+import ThresholdDoublePlot from "./components/ThresholdDoublePlot";
+import BoxWhiskersDoublePlot from "./components/BoxWhiskersDoublePlot";
+import SeatShareDoublePlot from "./components/SeatShareDoublePlot";
 
 const lightTheme = createTheme({
   palette: {
@@ -39,6 +39,8 @@ function App() {
   const [random, setRandom] = useState(-1) //which sample plan selected
   const [ensembleSMD, setEnsembleSMD] = useState(null);
   const [ensembleMMD, setEnsembleMMD] = useState(null);
+  const [samplePlan, setSamplePlan] = useState(null);
+  const [enactedPlan, setEnactedPlan] = useState(null);
   const seats = {"Georgia": 14, "Maryland": 8, "Mississippi": 4};
   return (
     <div>
@@ -74,22 +76,46 @@ function App() {
                 ensembleMMD={ensembleMMD}
                 ></EnsembleSummary>
               )}
+              {graph===1 && (
+                <SeatShareDoublePlot>
+                ensembleSMD={ensembleSMD}
+                ensembleMMD={ensembleMMD}
+                </SeatShareDoublePlot>
+              )}
+              {graph===2 && (
+                <ThresholdDoublePlot>
+                ensembleSMD={ensembleSMD}
+                ensembleMMD={ensembleMMD}
+                </ThresholdDoublePlot>
+              )}
+              {graph===3 && (
+                <OpportunityDoublePlot
+                ensembleSMD={ensembleSMD}
+                ensembleMMD={ensembleMMD}
+                ></OpportunityDoublePlot>
+              )}
               {graph===4 && (
-                <DoublePlot
+                <SplitsDoublePlot
                 ensembleSMD={ensembleSMD}
                 ensembleMMD={ensembleMMD}
                 state={state}
                 seats={seats}
                 graph={graph}
-                ></DoublePlot>
+                ></SplitsDoublePlot>
               )}
-              {graph===8 && (   
+              {graph===5 && (
+                <BoxWhiskersDoublePlot
+                ensembleSMD={ensembleSMD}
+                ensembleMMD={ensembleMMD}
+                ></BoxWhiskersDoublePlot>
+              )}
+              {graph===6 && (   
                 <BoxAndWhisker></BoxAndWhisker>
               )}
-              {graph===9 && (
+              {graph===7 && (
                 <MmdVsEnactedTable></MmdVsEnactedTable>
               )}
-              {graph===11 && (
+              {graph===9 && (
                 <MmdVsEnactedTable></MmdVsEnactedTable>
               )}
             </Grid>
@@ -115,6 +141,7 @@ function App() {
                   setEnsembleSMD={setEnsembleSMD}
                   ensembleMMD={ensembleMMD}
                   setEnsembleMMD={setEnsembleMMD}
+                  setEnactedPlan={setEnactedPlan}
                 />
               )}
               {hideMap && switchMap && random>-1 && (

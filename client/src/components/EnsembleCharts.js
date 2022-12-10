@@ -31,15 +31,9 @@ export default function EnsembleCharts({
             <ListItemText primary="Range of Republican/Democratic splits" sx={{paddingLeft: 2}} />
           </ListItemButton>
           <ListItemButton onClick={() => handleClick(5)} value={5} divider disabled={state==="" ? true : false}>
-            <ListItemText primary="Vote Share" sx={{paddingLeft: 2}} />
-          </ListItemButton>
-          <ListItemButton onClick={() => handleClick(6)} value={6} divider disabled={state==="" ? true : false}>
-            <ListItemText primary="Average Seat Share" sx={{paddingLeft: 2}} />
-          </ListItemButton>
-          <ListItemButton onClick={() => handleClick(7)} value={7} divider disabled={state==="" ? true : false}>
             <ListItemText primary="Box and Whiskers" sx={{paddingLeft: 2}} />
           </ListItemButton>
-          <ListItemButton onClick={() => handleClick(8)} value={8} divider disabled={state==="" ? true : false}>
+          <ListItemButton onClick={() => handleClick(6)} value={6} divider disabled={state==="" ? true : false}>
             <ListItemText primary="Box and Whiskers Comparison" sx={{paddingLeft: 2}} />
           </ListItemButton>
         </List>

@@ -17,7 +17,7 @@ export default function SamplePlanCharts({
     <Box backgroundColor="gray">
       <Collapse in={open}>
         <List dense disablePadding>
-          <ListItemButton onClick={() => handleClick(11)} value={11} divider disabled={district>-1 ? false : true}>
+          <ListItemButton onClick={() => handleClick(9)} value={9} divider disabled={district>-1 ? false : true}>
             <ListItemText primary="Election Results" sx={{paddingLeft: 2}} />
           </ListItemButton>
           <br></br>

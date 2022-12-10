@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
-import BarChart from "./DoublePlot";
+import BarChart from "./SplitsDoublePlot";
 import BoxAndWhisker from "./BoxAndWhisker";
 
 export default function EnsembleData({graph}) {

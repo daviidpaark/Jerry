@@ -27,8 +27,7 @@ export default function RangeOfSplitsPlotSMD({
             type: 'bar', 
             x: dataX, 
             y: dataY
-        }
-      ]}
+        }]}
         layout={{
           title: "Range of Republican/Democratic Splits SMD",
           xaxis: {title: "Republican/Democratic"},

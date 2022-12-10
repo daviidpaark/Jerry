@@ -15,10 +15,10 @@ export default function MmdCharts({
     <Box backgroundColor="gray">
       <Collapse in={open}>
         <List dense disablePadding>
-          <ListItemButton onClick={() => handleClick(9)} value={9} divider disabled={state=="" ? true : false}>
+          <ListItemButton onClick={() => handleClick(7)} value={7} divider disabled={state=="" ? true : false}>
             <ListItemText primary="MMD vs Enacted Plan" sx={{paddingLeft: 2}} />
           </ListItemButton>
-          <ListItemButton onClick={() => handleClick(10)} value={10} divider disabled>
+          <ListItemButton onClick={() => handleClick(8)} value={8} divider disabled>
             <ListItemText primary="Variation of Proportionality by Seat Share" sx={{paddingLeft: 2}} />
           </ListItemButton>
         </List>

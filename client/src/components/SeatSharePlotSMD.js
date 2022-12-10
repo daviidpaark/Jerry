@@ -1,16 +1,10 @@
 import Plot from 'react-plotly.js';
 import React from 'react';
 
-export default function SeatSharePlot({
-  ensembleSMD,
-  state,
-  seats
+export default function SeatSharePlotSMD({
+  ensembleSMD
 }) {
-	let seat = seats[state];
   let dataX = [];
-  for(let i = 0; i<=seat; i++) {
-    dataX.push(i+"/"+(seat-i));
-  }
   let dataY = [];
   let dataMap = ensembleSMD.seatShare.data;
   for(let key in dataMap) {

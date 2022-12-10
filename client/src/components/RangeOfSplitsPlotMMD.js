@@ -27,8 +27,7 @@ export default function RangeOfSplitsPlotMMD({
             type: 'bar', 
             x: dataX, 
             y: dataY
-        }
-      ]}
+        }]}
         layout={{
           title: "Range of Republican/Democratic Splits MMD",
           xaxis: {title: "Republican/Democratic"},

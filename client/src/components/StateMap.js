@@ -8,6 +8,7 @@ import {
 	ZoomableGroup,
 } from "react-simple-maps";
 import MapControls from "./MapControls";
+import TooltipData from "./TooltipData";
 
 const xy = new Map([
 	["Maryland", [-77.35486519706453, 39.056005538826696]],
@@ -40,11 +41,14 @@ const StateMap = ({
 	ensembleSMD,
 	setEnsembleSMD,
 	ensembleMMD,
-	setEnsembleMMD
+	setEnsembleMMD,
+	setEnactedPlan
 }) => {
 	let [geo, fetchMap] = useState(null);
+	let [districts, setDistricts] = useState(null);
 	useEffect(() => {
 		fetchStateMap();
+		fetchDistricts();
 		fetchEnsembleSMD();
 		//fetchEnsembleMMD();
 	}, [state]);
@@ -83,6 +87,18 @@ const StateMap = ({
 		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => setEnsembleMMD(data));
+  }
+
+	async function fetchDistricts() {
+    const request = new Request("/api/data/plan/districts", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		await fetch(request)
+			.then((response) => response.json())
+			.then((data) => setDistricts(data));
   }
 
 	const [position, setPosition] = useState({
@@ -136,43 +152,8 @@ const StateMap = ({
 						{({ geographies }) =>
 							geographies.map((geo) => (
 								<Tooltip
-									title={
-                    <Box>
-                      <Typography fontSize={16}>
-                        District {geo.properties.DISTRICT}
-                      </Typography>
-                      <Typography fontSize={10}>
-                        Number of reps: {3}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        1: {geo.properties.DISTRICT%2===0 ? "Republican" : "Democratic"}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        2: {geo.properties.DISTRICT%2===0 ? "Republican" : "Democratic"}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        3: {geo.properties.DISTRICT%2===0 ? "Republican" : "Democratic"}
-                      </Typography>
-                      <Typography fontSize={10}>
-                        Total pop: {10000}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        AfricanA. pop: {1000}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        AsianA. pop: {1000}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        Latino pop: {1000}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        White pop: {5000}
-                      </Typography>
-                      <Typography fontSize={10} paddingLeft={1}>
-                        Others pop: {1000}
-                      </Typography>
-                    </Box>
-										
+									title={ 
+                    "District " + geo.properties.districtNumber
 									}
 									placement="top"
 									arrow
@@ -184,15 +165,15 @@ const StateMap = ({
 										key={geo.rsmKey}
 										geography={geo}
 										onClick={() => {
-											if (switchMap && district !== geo.properties.DISTRICT)
-												setDistrict(geo.properties.DISTRICT);
+											if (switchMap && district !== geo.properties.districtNumber)
+												setDistrict(geo.properties.districtNumber);
 										}}
 										stroke="#000"
 										strokeWidth={0.1}
 										style={{
 											default: {
 												fill:
-													district === geo.properties.DISTRICT
+													district === geo.properties.districtNumber
 														? "#a5d6a7"
 														: "#EEEEEE",
 												outline: "none",

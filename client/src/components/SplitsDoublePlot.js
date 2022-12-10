@@ -1,10 +1,8 @@
-import { Box, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
-import BoxAndWhisker from "./BoxAndWhisker";
+import { Box } from "@mui/material";
 import RangeOfSplitsPlotMMD from "./RangeOfSplitsPlotMMD";
 import RangeOfSplitsPlotSMD from "./RangeOfSplitsPlotSMD";
-import SeatSharePlot from "./SeatSharePlot";
 
-export default function DoublePlot({graph, ensembleSMD, state, seats}) {
+export default function SplitsDoublePlot({graph, ensembleSMD, state, seats}) {
   return (
     <Box
     flex={1}
