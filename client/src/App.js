@@ -33,7 +33,9 @@ function App() {
   const [ensembleSMD, setEnsembleSMD] = useState(null);
   const [ensembleMMD, setEnsembleMMD] = useState(null);
   const [samplePlan, setSamplePlan] = useState(null);
+  const [sampleDistricts, setSampleDistricts] = useState(null);
   const [enactedPlan, setEnactedPlan] = useState(null);
+  const [open, setOpen] = useState(-1);
   const seats = {"Georgia": 14, "Maryland": 8, "Mississippi": 4};
   return (
     <div>
@@ -58,8 +60,12 @@ function App() {
                 state={state}
                 setGraph={setGraph}
                 district={district}
+                random={random}
                 setRandom={setRandom}
                 setSamplePlan={setSamplePlan}
+                setSampleDistricts={setSampleDistricts}
+                open={open}
+                setOpen={setOpen}
                 style={{ position: "absolute", top: "0vh", left: "0vh" }}
               ></GraphMenu>
             </Grid>
@@ -71,6 +77,8 @@ function App() {
               state={state}
               seats={seats}
               samplePlan={samplePlan}
+              sampleDistricts={sampleDistricts}
+              district={district}
               ></DisplayCharts>
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">
@@ -96,6 +104,7 @@ function App() {
                   ensembleMMD={ensembleMMD}
                   setEnsembleMMD={setEnsembleMMD}
                   setEnactedPlan={setEnactedPlan}
+                  setOpen={setOpen}
                 />
               )}
               {hideMap && switchMap && random>-1 && (

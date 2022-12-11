@@ -14,6 +14,7 @@ export default function MapControls({
   setState,
   setSwitchMap,
   setGraph,
+  setOpen,
   handleZoomIn,
   handleZoomOut,
   handleReset,
@@ -24,6 +25,7 @@ export default function MapControls({
     setDistrict(-1);
     setSwitchMap(false);
     setGraph(-1);
+    setOpen(-1);
   }
 
   function handleSwitch() {

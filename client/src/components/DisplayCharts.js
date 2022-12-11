@@ -5,9 +5,13 @@ import EnsembleSummary from "./EnsembleSummary";
 import SplitsDoublePlot from "./SplitsDoublePlot";
 import OpportunityDoublePlot from "./OpportunityDoublePlot";
 import ThresholdDoublePlot from "./ThresholdDoublePlot";
-import BoxWhiskersDoublePlot from "./BoxWhiskersDoublePlot";
 import SeatShareDoublePlot from "./SeatShareDoublePlot";
 import SamplePlanSummary from "./SamplePlanSummary";
+import BoxWhiskersPlotMMD from "./BoxWhiskersPlotMMD";
+import BoxWhiskersPlotSMD from "./BoxWhiskersPlotSMD";
+import ElectionData from "./ElectionData";
+import SummaryMMDLayouts from "./SummaryMMDLayouts";
+import SamplePlanDistrictSummary from "./SamplePlanDistrictSummary";
 
 export default function DisplayCharts({
   graph,
@@ -15,7 +19,9 @@ export default function DisplayCharts({
   ensembleMMD,
   state,
   seats,
-  samplePlan
+  samplePlan,
+  sampleDistricts,
+  district,
 }) {
   return (
     <Box>
@@ -26,24 +32,29 @@ export default function DisplayCharts({
         ></EnsembleSummary>
       )}
       {graph===1 && (
+        <SummaryMMDLayouts>
+          ensembleMMD={ensembleMMD}
+        </SummaryMMDLayouts>
+      )}
+      {graph===2 && (
         <SeatShareDoublePlot>
         ensembleSMD={ensembleSMD}
         ensembleMMD={ensembleMMD}
         </SeatShareDoublePlot>
       )}
-      {graph===2 && (
+      {graph===3 && (
         <ThresholdDoublePlot>
         ensembleSMD={ensembleSMD}
         ensembleMMD={ensembleMMD}
         </ThresholdDoublePlot>
       )}
-      {graph===3 && (
+      {graph===4 && (
         <OpportunityDoublePlot
         ensembleSMD={ensembleSMD}
         ensembleMMD={ensembleMMD}
         ></OpportunityDoublePlot>
       )}
-      {graph===4 && (
+      {graph===5 && (
         <SplitsDoublePlot
         ensembleSMD={ensembleSMD}
         ensembleMMD={ensembleMMD}
@@ -52,25 +63,35 @@ export default function DisplayCharts({
         graph={graph}
         ></SplitsDoublePlot>
       )}
-      {graph===5 && (
-        <BoxWhiskersDoublePlot
-        ensembleSMD={ensembleSMD}
-        ensembleMMD={ensembleMMD}
-        ></BoxWhiskersDoublePlot>
-      )}
-      {graph===6 && (   
-        <BoxAndWhisker></BoxAndWhisker>
-      )}
-      {graph===7 && (
+      {graph===6 && (
         <MmdVsEnactedTable></MmdVsEnactedTable>
       )}
+      {graph===7 && (
+        <BoxWhiskersPlotSMD
+        ensembleSMD={ensembleSMD}
+        ></BoxWhiskersPlotSMD>
+      )}
+      {graph===8 && (   
+        <BoxWhiskersPlotMMD
+        ensembleMMD={ensembleMMD}
+        ></BoxWhiskersPlotMMD>
+      )}
       {graph===9 && (
+        <BoxAndWhisker></BoxAndWhisker>
+      )}
+      {graph===10 && (
         <SamplePlanSummary
         samplePlan={samplePlan}
         ></SamplePlanSummary>
       )}
-      {graph===10 && (
-        <MmdVsEnactedTable></MmdVsEnactedTable>
+      {graph===11 && (
+        <SamplePlanDistrictSummary>
+          sampleDistricts={sampleDistricts}
+          district={district}
+        </SamplePlanDistrictSummary>
+      )}
+      {graph===12 && (
+        <ElectionData></ElectionData>
       )}
     </Box>
   );

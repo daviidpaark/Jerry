@@ -7,9 +7,11 @@ export default function SamplePlanCharts({
   open,
   district,
   setGraph,
+  random,
   setRandom,
   state,
-  setSamplePlan
+  setSamplePlan,
+  setSampleDistricts,
 }) {
   const handleClick = (index) => {
     setGraph(index);
@@ -18,10 +20,13 @@ export default function SamplePlanCharts({
     <Box backgroundColor="gray">
       <Collapse in={open}>
         <List dense disablePadding>
-          <ListItemButton onClick={() => handleClick(9)} value={9} divider disabled={district>-1 ? false : true}>
-            <ListItemText primary="Summary" sx={{paddingLeft: 2}} />
+          <ListItemButton onClick={() => handleClick(10)} divider disabled={random>-1 ? false : true}>
+            <ListItemText primary="Plan Summary" sx={{paddingLeft: 2}} />
           </ListItemButton>
-          <ListItemButton onClick={() => handleClick(10)} value={10} divider disabled={district>-1 ? false : true}>
+          <ListItemButton onClick={() => handleClick(11)} divider disabled={district>-1 ? false : true}>
+            <ListItemText primary="District Summary" sx={{paddingLeft: 2}} />
+          </ListItemButton>
+          <ListItemButton onClick={() => handleClick(12)} divider disabled={district>-1 ? false : true}>
             <ListItemText primary="Election Results" sx={{paddingLeft: 2}} />
           </ListItemButton>
           <br></br>
@@ -29,6 +34,7 @@ export default function SamplePlanCharts({
           setRandom={setRandom}
           state={state}
           setSamplePlan={setSamplePlan}
+          setSampleDistricts={setSampleDistricts}
           ></RandomSamplePlan>
         </List>
       </Collapse>

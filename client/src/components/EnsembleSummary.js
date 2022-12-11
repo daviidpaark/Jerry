@@ -42,7 +42,7 @@ export default function EnsembleSummary({
             Representatives per Plan: 
           </TableCell>
           <TableCell>
-            {ensembleSMD.ensembleSummary[0].averageOpportunityDistricts}
+            {ensembleSMD.ensembleSummary[0].averageOpportunityReps}
           </TableCell>
           <TableCell>
             mmd

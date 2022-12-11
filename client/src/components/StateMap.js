@@ -1,5 +1,4 @@
-import { Tooltip, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Tooltip } from "@mui/material";
 import React, { memo, useState, useEffect } from "react";
 import {
 	ComposableMap,
@@ -8,7 +7,6 @@ import {
 	ZoomableGroup,
 } from "react-simple-maps";
 import MapControls from "./MapControls";
-import TooltipData from "./TooltipData";
 
 const xy = new Map([
 	["Maryland", [-77.35486519706453, 39.056005538826696]],
@@ -38,14 +36,12 @@ const StateMap = ({
 	setState,
 	setSwitchMap,
 	setGraph,
-	ensembleSMD,
 	setEnsembleSMD,
-	ensembleMMD,
 	setEnsembleMMD,
-	setEnactedPlan
+	setOpen,
 }) => {
-	let [geo, fetchMap] = useState(null);
-	let [districts, setDistricts] = useState(null);
+	const [geo, fetchMap] = useState(null);
+	const [districts, setDistricts] = useState(null);
 	useEffect(() => {
 		fetchStateMap();
 		fetchDistricts();
@@ -135,6 +131,7 @@ const StateMap = ({
 				switchMap={switchMap}
 				setSwitchMap={setSwitchMap}
 				setGraph={setGraph}
+				setOpen={setOpen}
 				state={state}
 				handleZoomIn={handleZoomIn}
 				handleZoomOut={handleZoomOut}
