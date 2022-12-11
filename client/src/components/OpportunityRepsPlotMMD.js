@@ -3,16 +3,13 @@ import Plot from "react-plotly.js";
 import React from 'react';
 
 export default function OpportunityRepsPlotMMD(ensembleMMD) {
-  let dataX = [];
-  for(let i = 0; i<8; i++) {
-    dataX.push(i);
-  }
-  dataX.push("8+");
+  let dataX = ["None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight or<br>higher"];
+  //let dataMap = ensembleMMD.opportunityDistricts;
+  let dataMap = [2316, 3541, 2495, 1130, 401, 36, 0, 0, 0];
+  //for(let key in dataMap) {
+  //  dataY.push(dataMap[key]);
+  //}
   let dataY = [];
-  let dataMap = ensembleMMD.opportunityDistricts;
-  for(let key in dataMap) {
-    dataY.push(dataMap[key]);
-  }
 
   return(
     <Box
@@ -22,7 +19,7 @@ export default function OpportunityRepsPlotMMD(ensembleMMD) {
         data={[{
           type: 'bar',
           x: dataX,
-          y: dataY
+          y: dataMap
         }]}
         layout={{
           title: "Range of Opportunity Representatives MMD",

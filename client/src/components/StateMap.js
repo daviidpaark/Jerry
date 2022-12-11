@@ -72,7 +72,7 @@ const StateMap = ({
 				"Content-Type": "application/json",
 			},
 		});
-		await fetch(request)
+		await fetch(request, {importance: "low"})
 			.then((response) => response.json())
 			.then((data) => setEnsembleSMD(data));
   }
@@ -84,7 +84,7 @@ const StateMap = ({
 				"Content-Type": "application/json",
 			},
 		});
-		await fetch(request)
+		await fetch(request, {importance: "low"})
 			.then((response) => response.json())
 			.then((data) => setEnsembleMMD(data));
   }
@@ -96,7 +96,7 @@ const StateMap = ({
 				"Content-Type": "application/json",
 			},
 		});
-		await fetch(request)
+		await fetch(request, {importance: "low"})
 			.then((response) => response.json())
 			.then((data) => setDistricts(data));
   }

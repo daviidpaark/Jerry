@@ -15,14 +15,7 @@ import SelectionLabel from "./components/SelectionLabel";
 import GraphMenu from "./components/GraphMenu";
 import UsMap from "./components/UsMap";
 import StateMap from "./components/StateMap";
-import MmdVsEnactedTable from "./components/MmdVsEnactedTable";
-import BoxAndWhisker from "./components/BoxAndWhisker";
-import EnsembleSummary from "./components/EnsembleSummary";
-import SplitsDoublePlot from "./components/SplitsDoublePlot";
-import OpportunityDoublePlot from "./components/OpportunityDoublePlot";
-import ThresholdDoublePlot from "./components/ThresholdDoublePlot";
-import BoxWhiskersDoublePlot from "./components/BoxWhiskersDoublePlot";
-import SeatShareDoublePlot from "./components/SeatShareDoublePlot";
+import DisplayCharts from "./components/DisplayCharts";
 
 const lightTheme = createTheme({
   palette: {
@@ -66,58 +59,19 @@ function App() {
                 setGraph={setGraph}
                 district={district}
                 setRandom={setRandom}
+                setSamplePlan={setSamplePlan}
                 style={{ position: "absolute", top: "0vh", left: "0vh" }}
               ></GraphMenu>
             </Grid>
             <Grid item xs={7}>
-              {graph===0 && (
-                <EnsembleSummary
-                ensembleSMD={ensembleSMD}
-                ensembleMMD={ensembleMMD}
-                ></EnsembleSummary>
-              )}
-              {graph===1 && (
-                <SeatShareDoublePlot>
-                ensembleSMD={ensembleSMD}
-                ensembleMMD={ensembleMMD}
-                </SeatShareDoublePlot>
-              )}
-              {graph===2 && (
-                <ThresholdDoublePlot>
-                ensembleSMD={ensembleSMD}
-                ensembleMMD={ensembleMMD}
-                </ThresholdDoublePlot>
-              )}
-              {graph===3 && (
-                <OpportunityDoublePlot
-                ensembleSMD={ensembleSMD}
-                ensembleMMD={ensembleMMD}
-                ></OpportunityDoublePlot>
-              )}
-              {graph===4 && (
-                <SplitsDoublePlot
-                ensembleSMD={ensembleSMD}
-                ensembleMMD={ensembleMMD}
-                state={state}
-                seats={seats}
-                graph={graph}
-                ></SplitsDoublePlot>
-              )}
-              {graph===5 && (
-                <BoxWhiskersDoublePlot
-                ensembleSMD={ensembleSMD}
-                ensembleMMD={ensembleMMD}
-                ></BoxWhiskersDoublePlot>
-              )}
-              {graph===6 && (   
-                <BoxAndWhisker></BoxAndWhisker>
-              )}
-              {graph===7 && (
-                <MmdVsEnactedTable></MmdVsEnactedTable>
-              )}
-              {graph===9 && (
-                <MmdVsEnactedTable></MmdVsEnactedTable>
-              )}
+              <DisplayCharts 
+              graph={graph}
+              ensembleSMD={ensembleSMD}
+              ensembleMMD={ensembleMMD}
+              state={state}
+              seats={seats}
+              samplePlan={samplePlan}
+              ></DisplayCharts>
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">
               {!hideMap && (

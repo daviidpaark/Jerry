@@ -34,6 +34,5 @@ export default function BoxWhiskersPlotSMD({ensembleSMD}) {
         }}
       ></Plot>
     </Box>
-    
   );
 }

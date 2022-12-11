@@ -30,7 +30,7 @@ export default function EnsembleSummary({
             Number of Plans: 
           </TableCell>
           <TableCell>
-            {ensembleSMD.ensembleSummary[0].numberOfPlans}
+            10,000
           </TableCell>
           <TableCell>
             10,000  

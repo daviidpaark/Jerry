@@ -34,7 +34,7 @@ export default function ThresholdPlotSMD({ensembleSMD}) {
         }
       ]}
         layout={{
-          title: "Opportunity District Threshold Sensitivity  SMD",
+          title: "Opportunity District Threshold Sensitivity SMD",
           xaxis: {title: "Percentages"},
           yaxis: {title: "Number of Plans"},
           barmode: 'group'
