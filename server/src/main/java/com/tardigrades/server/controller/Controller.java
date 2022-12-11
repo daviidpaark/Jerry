@@ -71,6 +71,11 @@ public class Controller {
         return currentPlan.getDistricts();
     }
 
+    @GetMapping(value = "/data/plan/percents", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Object getPercents() {
+        return currentPlan.getPercents();
+    }
+
     @GetMapping(value = "/data/ensemble", produces = MediaType.APPLICATION_JSON_VALUE)
     public Ensemble getEnsemble(@RequestParam String mmd) {
         if (mmd.equals("false")) {
