@@ -20,9 +20,9 @@ public class PlanService {
     @Async
     public void getPlans(State currentState, boolean MMD, String state) throws InterruptedException {
         if (!MMD) {
-            currentState.setSamplePlansSMD(planRepository.findAllByStateAndMMDIsFalse(state));
+            currentState.setSamplePlansSMD(planRepository.findAllByStateAndMMDIsFalseAndEnactedIsFalse(state));
         } else {
-            currentState.setSamplePlansMMD(planRepository.findAllByStateAndMMDIsTrue(state));
+            currentState.setSamplePlansMMD(planRepository.findAllByStateAndMMDIsTrueAndEnactedIsFalse(state));
         }
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 public interface PlanRepository extends MongoRepository<DistrictPlan, Long> {
     DistrictPlan findByEnactedIsTrueAndState(String state);
 
-    List<DistrictPlan> findAllByStateAndMMDIsFalse(String state);
+    List<DistrictPlan> findAllByStateAndMMDIsFalseAndEnactedIsFalse(String state);
 
-    List<DistrictPlan> findAllByStateAndMMDIsTrue(String state);
+    List<DistrictPlan> findAllByStateAndMMDIsTrueAndEnactedIsFalse(String state);
 }
