@@ -40,7 +40,7 @@ export default function BoxAndWhiskerCharts({
           <ListItemButton onClick={() => handleClick(8)} divider disabled={state==="" ? true : false}>
             <ListItemText primary="MMD" sx={{paddingLeft: 2}} />
           </ListItemButton>
-          <ListItemButton onClick={() => handleClick(9)} divider disabled={state==="" ? true : false}>
+          <ListItemButton onClick={() => handleClick(9)} divider disabled>
             <ListItemText primary="Comparison" sx={{paddingLeft: 2}} />
           </ListItemButton>
           <br></br>

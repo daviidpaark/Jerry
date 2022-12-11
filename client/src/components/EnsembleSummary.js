@@ -45,7 +45,7 @@ export default function EnsembleSummary({
             {ensembleSMD.ensembleSummary[0].averageOpportunityReps}
           </TableCell>
           <TableCell>
-            mmd
+            {ensembleSMD.ensembleSummary[0].averageOpportunityReps}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -56,7 +56,7 @@ export default function EnsembleSummary({
           {ensembleSMD.ensembleSummary[0].averageEqualPopulation}
           </TableCell>
           <TableCell>
-            mmd
+            {ensembleSMD.ensembleSummary[0].averageEqualPopulation}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -67,7 +67,7 @@ export default function EnsembleSummary({
             {ensembleSMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleSMD.ensembleSummary[0].averageSplit.DEMOCRAT}
           </TableCell>
           <TableCell>
-            mmd
+            {ensembleSMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleSMD.ensembleSummary[0].averageSplit.DEMOCRAT}
           </TableCell>
         </TableRow>
       </TableBody>

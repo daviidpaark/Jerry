@@ -85,10 +85,10 @@ export default function DisplayCharts({
         ></SamplePlanSummary>
       )}
       {graph===11 && (
-        <SamplePlanDistrictSummary>
+        <SamplePlanDistrictSummary
           sampleDistricts={sampleDistricts}
           district={district}
-        </SamplePlanDistrictSummary>
+        ></SamplePlanDistrictSummary>
       )}
       {graph===12 && (
         <ElectionData></ElectionData>

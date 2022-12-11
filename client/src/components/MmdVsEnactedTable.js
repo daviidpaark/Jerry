@@ -42,10 +42,10 @@ export default function MmdVsEnactedTable() {
               Vote Share 
           </TableCell>
           <TableCell align="center">
-              2000/3000
+              2,000/3,000
           </TableCell>
           <TableCell align="center">
-              2500/2500
+              2,500/2,500
           </TableCell>
         </TableBody>
         <TableBody>
@@ -53,10 +53,10 @@ export default function MmdVsEnactedTable() {
               Seat Share
           </TableCell>
           <TableCell align="center">
-              3000/2000
+              3,000/2,000
           </TableCell>
           <TableCell align="center">
-              2000/3000
+              2,000/3,000
           </TableCell>
         </TableBody>
       </Table>

@@ -44,7 +44,7 @@ const StateMap = ({
 	const [districts, setDistricts] = useState(null);
 	useEffect(() => {
 		fetchStateMap();
-		fetchDistricts();
+		//fetchDistricts();
 		fetchEnsembleSMD();
 		//fetchEnsembleMMD();
 	}, [state]);

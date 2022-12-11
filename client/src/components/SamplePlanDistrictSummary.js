@@ -3,13 +3,16 @@ import { Table, TableCell, TableHead, TableRow, Typography } from "@mui/material
 export default function SamplePlanDistrictSummary({
   sampleDistricts,
   district,
-}) {
+  }) {
   let selectedDistrict = sampleDistricts[0];
   for(let d in sampleDistricts) {
-    if(d.districtNumber==district) {
-      selectedDistrict = d;
+    if(sampleDistricts[d].districtNumber==district) {
+      selectedDistrict = sampleDistricts[d];
       break;
     } 
+  }
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   return (
     <Table>
@@ -34,7 +37,7 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
           <TableCell>
             <Typography>
-              {selectedDistrict.opportunityDistrict}
+              {selectedDistrict.opportunityDistrict?"Yes":"No"}
             </Typography>
           </TableCell>
         </TableRow>
@@ -46,7 +49,7 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
           <TableCell>
             <Typography>
-              {selectedDistrict.population}
+              {numberWithCommas(selectedDistrict.population)}
             </Typography>
           </TableCell>
         </TableRow>
@@ -58,7 +61,7 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
           <TableCell>
             <Typography>
-              district.demographics.african_americans
+              {numberWithCommas(selectedDistrict.BLACK)}
             </Typography>
           </TableCell>
         </TableRow>
@@ -70,7 +73,7 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
           <TableCell>
             <Typography>
-              district.demographics.hispanics
+              {numberWithCommas(selectedDistrict.HISPANIC)}
             </Typography>
           </TableCell>
         </TableRow>
@@ -82,7 +85,7 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
           <TableCell>
             <Typography>
-              district.demographics.whites
+              {numberWithCommas(selectedDistrict.WHITE)}
             </Typography>
           </TableCell>
         </TableRow>
@@ -94,7 +97,7 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
           <TableCell>
             <Typography>
-              district.demographics.others
+              {numberWithCommas(selectedDistrict.OTHER)}
             </Typography>
           </TableCell>
         </TableRow>

@@ -1,12 +1,12 @@
 import Plot from 'react-plotly.js';
 import React from 'react';
 
-export default function SeatSharePlotSMD({
-  ensembleSMD
+export default function SeatSharePlotMMD({
+  ensembleMMD
 }) {
-  let dataX = [10, 40, 50, 60, 90];
-  let dataY = [10, 20, 50, 80, 90];
-  // let dataMap = ensembleSMD.seatShare.data;
+  let dataX = [10, 35, 50, 65, 90];
+  let dataY = [10, 25, 50, 75, 90];
+  // let dataMap = ensembleMMD.seatShare.data;
   // for(let key in dataMap) {
   //   dataY.push(dataMap[key]);
   // }
@@ -20,7 +20,7 @@ export default function SeatSharePlotSMD({
       }
     ]}
       layout={{
-        title: "Seat Share vs Vote Share SMD",
+        title: "Seat Share vs Vote Share MMD",
         xaxis: {title: "Hypothetical Republican Seat%"},
         yaxis: {title: "Hypothetical Republican Vote%"}
       }}
