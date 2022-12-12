@@ -104,12 +104,11 @@ public class Controller {
     }
 
     @GetMapping(value = "/data/ensemble/box-and-whisker", produces = MediaType.APPLICATION_JSON_VALUE)
-    public BoxAndWhisker getEnsembleBoxAndWhisker(@RequestParam Map<String, String> params) {
-        TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
-        if (params.get("mmd").equals("false")) {
-            return currentState.getEnsemble(false).getBoxAndWhisker(tag);
+    public Object getEnsembleBoxAndWhisker(@RequestParam String mmd) {
+        if (mmd.equals("false")) {
+            return currentState.getEnsemble(false).getBoxAndWhiskers();
         } else {
-            return currentState.getEnsemble(true).getBoxAndWhisker(tag);
+            return currentState.getEnsemble(true).getBoxAndWhiskers();
         }
 
     }

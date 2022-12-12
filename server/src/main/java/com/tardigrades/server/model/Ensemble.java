@@ -12,16 +12,9 @@ import java.util.List;
 public class Ensemble {
     private List<EnsembleSummary> ensembleSummary;
     private List<EnsembleSummary> ensembleLayoutSummary;
-    private List<BoxAndWhisker> boxAndWhiskers;
+    private Object boxAndWhiskers;
     private BarChart seatShare;
     private BarChart opportunityReps;
     private boolean MMD;
 
-    public BoxAndWhisker getBoxAndWhisker(TagEnum tag) {
-        for (BoxAndWhisker boxAndWhisker : boxAndWhiskers) {
-            if (boxAndWhisker.getTag() != null && boxAndWhisker.getTag().equals(tag))
-                return boxAndWhisker;
-        }
-        return null;
-    }
 }
