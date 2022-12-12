@@ -5,7 +5,9 @@ export default function EnsembleSummary({
   ensembleSMD,
   ensembleMMD
 }) {
-
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <Table>
       <TableHead>
@@ -30,10 +32,10 @@ export default function EnsembleSummary({
             Number of Plans: 
           </TableCell>
           <TableCell>
-            10,000
+            {numberWithCommas(ensembleSMD.ensembleSummary[0].numberOfPlans)}
           </TableCell>
           <TableCell>
-            10,000  
+            {numberWithCommas(ensembleMMD.ensembleSummary[0].numberOfPlans)}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -45,7 +47,7 @@ export default function EnsembleSummary({
             {ensembleSMD.ensembleSummary[0].averageOpportunityReps}
           </TableCell>
           <TableCell>
-            {ensembleSMD.ensembleSummary[0].averageOpportunityReps}
+            {ensembleMMD.ensembleSummary[0].averageOpportunityReps}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -56,18 +58,18 @@ export default function EnsembleSummary({
           {ensembleSMD.ensembleSummary[0].averageEqualPopulation}
           </TableCell>
           <TableCell>
-            {ensembleSMD.ensembleSummary[0].averageEqualPopulation}
+            {ensembleMMD.ensembleSummary[0].averageEqualPopulation}
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell>
-            Average Split: 
+            Average Split (Republican/Democratic): 
           </TableCell>
           <TableCell>
             {ensembleSMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleSMD.ensembleSummary[0].averageSplit.DEMOCRAT}
           </TableCell>
           <TableCell>
-            {ensembleSMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleSMD.ensembleSummary[0].averageSplit.DEMOCRAT}
+            {ensembleMMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleMMD.ensembleSummary[0].averageSplit.DEMOCRAT}
           </TableCell>
         </TableRow>
       </TableBody>

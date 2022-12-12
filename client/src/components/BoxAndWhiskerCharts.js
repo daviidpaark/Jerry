@@ -34,10 +34,10 @@ export default function BoxAndWhiskerCharts({
     <Box backgroundColor="gray">
       <Collapse in={open}>
         <List dense disablePadding>
-          <ListItemButton onClick={() => handleClick(7)} divider disabled={state==="" ? true : false}>
+          <ListItemButton onClick={() => handleClick(7)} divider disabled={state==="" ? true : false} selected={graph===7}>
             <ListItemText primary="SMD" sx={{paddingLeft: 2}} />
           </ListItemButton>
-          <ListItemButton onClick={() => handleClick(8)} divider disabled={state==="" ? true : false}>
+          <ListItemButton onClick={() => handleClick(8)} divider disabled={state==="" ? true : false} selected={graph===8}>
             <ListItemText primary="MMD" sx={{paddingLeft: 2}} />
           </ListItemButton>
           <ListItemButton onClick={() => handleClick(9)} divider disabled>

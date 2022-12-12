@@ -46,7 +46,7 @@ const StateMap = ({
 		fetchStateMap();
 		//fetchDistricts();
 		fetchEnsembleSMD();
-		//fetchEnsembleMMD();
+		fetchEnsembleMMD();
 	}, [state]);
 
 	async function fetchStateMap() {

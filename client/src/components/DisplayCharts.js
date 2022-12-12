@@ -22,6 +22,7 @@ export default function DisplayCharts({
   samplePlan,
   sampleDistricts,
   district,
+  layouts,
 }) {
   return (
     <Box>
@@ -32,21 +33,23 @@ export default function DisplayCharts({
         ></EnsembleSummary>
       )}
       {graph===1 && (
-        <SummaryMMDLayouts>
+        <SummaryMMDLayouts
           ensembleMMD={ensembleMMD}
-        </SummaryMMDLayouts>
+          state={state}
+          layouts={layouts}
+        ></SummaryMMDLayouts>
       )}
       {graph===2 && (
-        <SeatShareDoublePlot>
+        <SeatShareDoublePlot
         ensembleSMD={ensembleSMD}
         ensembleMMD={ensembleMMD}
-        </SeatShareDoublePlot>
+        ></SeatShareDoublePlot>
       )}
       {graph===3 && (
-        <ThresholdDoublePlot>
+        <ThresholdDoublePlot
         ensembleSMD={ensembleSMD}
         ensembleMMD={ensembleMMD}
-        </ThresholdDoublePlot>
+        ></ThresholdDoublePlot>
       )}
       {graph===4 && (
         <OpportunityDoublePlot
@@ -64,7 +67,8 @@ export default function DisplayCharts({
         ></SplitsDoublePlot>
       )}
       {graph===6 && (
-        <MmdVsEnactedTable></MmdVsEnactedTable>
+        <MmdVsEnactedTable
+        ></MmdVsEnactedTable>
       )}
       {graph===7 && (
         <BoxWhiskersPlotSMD
@@ -77,7 +81,8 @@ export default function DisplayCharts({
         ></BoxWhiskersPlotMMD>
       )}
       {graph===9 && (
-        <BoxAndWhisker></BoxAndWhisker>
+        <BoxAndWhisker
+        ></BoxAndWhisker>
       )}
       {graph===10 && (
         <SamplePlanSummary
@@ -91,7 +96,8 @@ export default function DisplayCharts({
         ></SamplePlanDistrictSummary>
       )}
       {graph===12 && (
-        <ElectionData></ElectionData>
+        <ElectionData
+        ></ElectionData>
       )}
     </Box>
   );

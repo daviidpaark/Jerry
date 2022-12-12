@@ -1,12 +1,22 @@
 import { Table, TableHead, TableRow, TableBody, TableCell, Typography } from "@mui/material";
 
-export default function SummaryMMDLayouts({ensembleMMD}) {
-  //let size = ensembleMMD.layouts.size();
-  let size = 3;
+export default function SummaryMMDLayouts({
+  ensembleMMD,
+  state,
+  layouts,
+}) {
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <Table>
       <TableHead>
         <TableRow>
+          <TableCell>
+            <Typography>
+              Layouts:
+            </Typography>
+          </TableCell>
           <TableCell>
             <Typography>
               Number of Plans:
@@ -14,7 +24,7 @@ export default function SummaryMMDLayouts({ensembleMMD}) {
           </TableCell>
           <TableCell>
             <Typography>
-              Average Opportunity District 
+              Average Opportunity District<br></br>
               Representatives per Plan: 
             </Typography>
           </TableCell>
@@ -31,78 +41,37 @@ export default function SummaryMMDLayouts({ensembleMMD}) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {size>0 && (
-          <TableRow>
-            <TableCell>
-              <Typography>
-                3,000
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                2
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                1
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                6/8
-              </Typography>
-            </TableCell>
-          </TableRow>
-        )}
-        {size>1 && (
-          <TableRow>
-            <TableCell>
-              <Typography>
-                3,500
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                2
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                1
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                6/8
-              </Typography>
-            </TableCell>
-          </TableRow>
-        )}
-        {size>2 && (
-          <TableRow>
-            <TableCell>
-              <Typography>
-                3,500
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                2
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                1
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography>
-                6/8
-              </Typography>
-            </TableCell>
-          </TableRow>
-        )}
+        {
+          ensembleMMD.ensembleLayoutSummary.map((summary) => (
+            <TableRow>
+              <TableCell>
+                <Typography>
+                  {summary.layout}
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography>
+                  {numberWithCommas(summary.numberOfPlans)}
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography>
+                  {summary.averageOpportunityReps}
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography>
+                  {summary.averageEqualPopulation}
+                </Typography>
+              </TableCell>
+              <TableCell>
+                <Typography>
+                  {summary.averageSplit.REPUBLICAN}/{summary.averageSplit.DEMOCRAT}
+                </Typography>
+              </TableCell>
+            </TableRow>
+          ))
+        }
       </TableBody>
     </Table>
   );

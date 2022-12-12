@@ -37,6 +37,7 @@ function App() {
   const [enactedPlan, setEnactedPlan] = useState(null);
   const [open, setOpen] = useState(-1);
   const seats = {"Georgia": 14, "Maryland": 8, "Mississippi": 4};
+  const layouts = {"Georgia": ["5/5/4", "5/3/3/3", "4/4/3/3"], "Maryland": ["5/3", "4/4"], "Mississippi": ["4"]};
   return (
     <div>
       <ThemeProvider theme={lightTheme}>
@@ -58,6 +59,7 @@ function App() {
               <Divider></Divider>
               <GraphMenu
                 state={state}
+                graph={graph}
                 setGraph={setGraph}
                 district={district}
                 random={random}
@@ -79,6 +81,7 @@ function App() {
               samplePlan={samplePlan}
               sampleDistricts={sampleDistricts}
               district={district}
+              layouts={layouts}
               ></DisplayCharts>
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">
