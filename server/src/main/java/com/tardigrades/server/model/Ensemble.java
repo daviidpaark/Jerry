@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Ensemble {
     private List<EnsembleSummary> ensembleSummary;
+    private List<EnsembleSummary> ensembleLayoutSummary;
     private List<BoxAndWhisker> boxAndWhiskers;
     private BarChart seatShare;
     private BarChart opportunityReps;

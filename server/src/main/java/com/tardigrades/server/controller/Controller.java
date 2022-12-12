@@ -94,6 +94,15 @@ public class Controller {
         }
     }
 
+    @GetMapping(value = "/data/ensemble/layout-summary", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<EnsembleSummary> getEnsembleLayoutSummary(@RequestParam String mmd) {
+        if (mmd.equals("false")) {
+            return currentState.getEnsemble(false).getEnsembleLayoutSummary();
+        } else {
+            return currentState.getEnsemble(true).getEnsembleLayoutSummary();
+        }
+    }
+
     @GetMapping(value = "/data/ensemble/box-and-whisker", produces = MediaType.APPLICATION_JSON_VALUE)
     public BoxAndWhisker getEnsembleBoxAndWhisker(@RequestParam Map<String, String> params) {
         TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
