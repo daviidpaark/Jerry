@@ -20,6 +20,7 @@ public class Controller {
     private Geography currentMap;
     private State currentState;
     private DistrictPlan currentPlan;
+    private DistrictPlan enactedPlan;
 
     public Controller(StateService stateService, MapService mapService, PlanService planService) {
         this.stateService = stateService;
@@ -39,6 +40,7 @@ public class Controller {
     public Object getStateMap(@PathVariable String state) throws InterruptedException {
         currentState = stateService.getState(state);
         currentPlan = planService.getEnactedPlan(state);
+        enactedPlan = currentPlan;
         currentState.setEnactedPlan(currentPlan);
         planService.getPlans(currentState, false, state);
         planService.getPlans(currentState, true, state);
@@ -47,17 +49,27 @@ public class Controller {
 
     @GetMapping(value = "/maps/plan", produces = MediaType.APPLICATION_JSON_VALUE)
     public Object getDistrictPlanMap(@RequestParam Map<String, String> params) {
-        TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
-        if (params.get("mmd").equals("false")) {
-            currentPlan = currentState.getDistrictPlan(false, tag);
-        } else {
-            currentPlan = currentState.getDistrictPlan(true, tag);
+        if (enactedPlan == currentPlan) {
+            TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
+            if (params.get("mmd").equals("false")) {
+                currentPlan = currentState.getDistrictPlan(false, tag);
+            } else {
+                currentPlan = currentState.getDistrictPlan(true, tag);
+            }
         }
         return currentPlan.getMap();
     }
 
     @GetMapping(value = "/data/plan", produces = MediaType.APPLICATION_JSON_VALUE)
-    public DistrictPlan getDistrictPlan() {
+    public DistrictPlan getDistrictPlan(@RequestParam Map<String, String> params) {
+        if (enactedPlan == currentPlan) {
+            TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
+            if (params.get("mmd").equals("false")) {
+                currentPlan = currentState.getDistrictPlan(false, tag);
+            } else {
+                currentPlan = currentState.getDistrictPlan(true, tag);
+            }
+        }
         return currentPlan;
     }
 
@@ -73,7 +85,7 @@ public class Controller {
 
     @GetMapping(value = "/data/plan/percents", produces = MediaType.APPLICATION_JSON_VALUE)
     public Object getPercents() {
-        return currentPlan.getPercents();
+        return enactedPlan.getPercents();
     }
 
     @GetMapping(value = "/data/ensemble", produces = MediaType.APPLICATION_JSON_VALUE)
