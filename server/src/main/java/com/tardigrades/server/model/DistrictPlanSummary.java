@@ -13,5 +13,5 @@ public class DistrictPlanSummary {
     private int districts;
     private int numberOfOpportunityReps;
     private int numberOfSafeDistricts;
-    private Map<PartyEnum, Integer> split;
+    private String split;
 }
