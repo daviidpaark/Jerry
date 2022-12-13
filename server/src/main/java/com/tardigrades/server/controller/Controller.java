@@ -49,26 +49,22 @@ public class Controller {
 
     @GetMapping(value = "/maps/plan", produces = MediaType.APPLICATION_JSON_VALUE)
     public Object getDistrictPlanMap(@RequestParam Map<String, String> params) {
-        if (enactedPlan == currentPlan) {
-            TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
-            if (params.get("mmd").equals("false")) {
-                currentPlan = currentState.getDistrictPlan(false, tag);
-            } else {
-                currentPlan = currentState.getDistrictPlan(true, tag);
-            }
+        TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
+        if (params.get("mmd").equals("false")) {
+            currentPlan = currentState.getDistrictPlan(false, tag);
+        } else {
+            currentPlan = currentState.getDistrictPlan(true, tag);
         }
         return currentPlan.getMap();
     }
 
     @GetMapping(value = "/data/plan", produces = MediaType.APPLICATION_JSON_VALUE)
     public DistrictPlan getDistrictPlan(@RequestParam Map<String, String> params) {
-        if (enactedPlan == currentPlan) {
-            TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
-            if (params.get("mmd").equals("false")) {
-                currentPlan = currentState.getDistrictPlan(false, tag);
-            } else {
-                currentPlan = currentState.getDistrictPlan(true, tag);
-            }
+        TagEnum tag = TagEnum.valueOf(params.get("tag").toUpperCase());
+        if (params.get("mmd").equals("false")) {
+            currentPlan = currentState.getDistrictPlan(false, tag);
+        } else {
+            currentPlan = currentState.getDistrictPlan(true, tag);
         }
         return currentPlan;
     }
