@@ -1,6 +1,6 @@
 import { Box, FormControl, Select, MenuItem, Typography, Grid, InputLabel } from "@mui/material";
 import MmdVsEnactedTable from "./MmdVsEnactedTable";
-import BoxAndWhisker from "./BoxAndWhisker";
+import BoxAndWhisker from "./BoxWhiskersComparePlot";
 import EnsembleSummary from "./EnsembleSummary";
 import SplitsDoublePlot from "./SplitsDoublePlot";
 import OpportunityDoublePlot from "./OpportunityDoublePlot";
@@ -12,6 +12,7 @@ import BoxWhiskersPlotSMD from "./BoxWhiskersPlotSMD";
 import ElectionData from "./ElectionData";
 import SummaryMMDLayouts from "./SummaryMMDLayouts";
 import SamplePlanDistrictSummary from "./SamplePlanDistrictSummary";
+import BoxWhiskersComparePlot from "./BoxWhiskersComparePlot";
 
 export default function DisplayCharts({
   graph,
@@ -20,7 +21,6 @@ export default function DisplayCharts({
   state,
   seats,
   samplePlan,
-  sampleDistricts,
   district,
   layouts,
   enactedPercentage,
@@ -37,6 +37,27 @@ export default function DisplayCharts({
   }
   return (
     <Box>
+      {graph===-1 && (
+        <Box>
+          <Typography
+            variant="h1"
+            align="center"
+            color="black"
+            paddingTop={5}
+            fontFamily="bold"
+          >
+            Welcome
+          </Typography>
+          <Typography
+          variant="h6"
+          align="center"
+          color="black"
+          paddingTop={5}
+        >
+          To get started, select a state on the map to the right.
+        </Typography>
+        </Box> 
+      )}
       {graph===0 && (
         <EnsembleSummary
         ensembleSMD={ensembleSMD}
@@ -165,8 +186,56 @@ export default function DisplayCharts({
         </Box>
       )}
       {graph===9 && (
-        <BoxAndWhisker
-        ></BoxAndWhisker>
+        <Box>
+          <BoxWhiskersComparePlot
+          ensembleSMD={ensembleSMD}
+          ensembleMMD={ensembleMMD}
+          boxTag={boxTag}
+          layoutTag={layoutTag}
+          enactedPercentage={enactedPercentage}
+          ></BoxWhiskersComparePlot>
+          <Grid container>
+            <Grid item xs={2}>
+              <Typography paddingLeft={2}>Basis for<br></br>Comparison: </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl>
+                <InputLabel>Group</InputLabel>
+                <Select
+                label="Group"
+                variant="filled"
+                onChange={handleChange}
+                defaultValue="REPUBLICAN"
+                >
+                  <MenuItem value="REPUBLICAN">Republicans</MenuItem>
+                  <MenuItem value="DEMOCRATIC">Democratics</MenuItem>
+                  <MenuItem value="BLACK">African Americans</MenuItem>
+                  <MenuItem value="HISPANIC">Hispanics</MenuItem>
+                  <MenuItem value="WHITE">Whites</MenuItem>
+                  <MenuItem value="OTHER">Others</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={1}>
+              <Typography>Layout:</Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <FormControl>
+                <InputLabel>Layout</InputLabel>
+                <Select
+                label="Layout"
+                variant="filled"
+                onChange={handleChangeL}
+                defaultValue={0}
+                >
+                  {layouts[state].map((layout, i) => (
+                    <MenuItem value={i} key={i}>{layout}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Box>
       )}
       {graph===10 && (
         <SamplePlanSummary
@@ -175,7 +244,7 @@ export default function DisplayCharts({
       )}
       {graph===11 && (
         <SamplePlanDistrictSummary
-          sampleDistricts={sampleDistricts}
+          samplePlan={samplePlan}
           district={district}
         ></SamplePlanDistrictSummary>
       )}

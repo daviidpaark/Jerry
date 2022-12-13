@@ -11,7 +11,7 @@ export default function SamplePlanSummary({
             Number of Districts
           </TableCell>
           <TableCell>
-            samplePlan.districts.size()
+            samplePlan.districtPlanSummary.numberOfDistricts
           </TableCell>
         </TableRow>
         <TableRow>
@@ -19,7 +19,7 @@ export default function SamplePlanSummary({
             Number of Opportunity Districts
           </TableCell>
           <TableCell>
-            samplePlan.numberOfOpportunityDistricts
+            samplePlan.districtPlanSummary.numberOfOpportunityDistricts
           </TableCell>
         </TableRow>
       </TableHead>

@@ -1,6 +1,5 @@
 import { Box, Collapse, FormControl, InputLabel, MenuItem, Select, List, ListItemButton, ListItemText } from "@mui/material";
 import * as React from "react";
-import { useState } from "react";
 
 export default function SamplePlanCharts({
   open,
@@ -11,8 +10,8 @@ export default function SamplePlanCharts({
   random,
   setRandom,
   state,
+  setSamplePlanMap,
   setSamplePlan,
-  setSampleDistricts,
   setSwitchMap,
 }) {
   const handleClick = (index) => {
@@ -21,14 +20,14 @@ export default function SamplePlanCharts({
   const handleChange = (event) => {
     let value = event.target.value;
     setRandom(value);
-    fetchSamplePlan(value);
-    fetchSamplePlanDistricts();
+    fetchSamplePlanMap(value);
+    fetchSamplePlan();
     setOpen(1);
     setGraph(10);
     setSwitchMap(true);
   }
 
-  async function fetchSamplePlan(value) {
+  async function fetchSamplePlanMap(value) {
     let tag = "";
     switch(value) {
       case 0:
@@ -38,20 +37,39 @@ export default function SamplePlanCharts({
       case 1:
       case 7:
         tag = "democratic";
+        break;
       case 2:
       case 8:
         tag = "black";
+        break;
       case 3:
       case 9:
         tag = "hispanic";
+        break;
       case 4:
       case 10:
         tag = "white";
+        break;
       case 5:
       case 11:
         tag = "other";
+        break;
+      default:
+        break;
     }
-    const request = new Request("/api/maps/plan?mmd=" + value<6?"false":"true" + "&tag=" + tag, {
+    const request = new Request("/api/maps/plan?mmd=" + (value<6?"false":"true") + "&tag=" + tag, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		await fetch(request)
+			.then((response) => response.json())
+			.then((data) => setSamplePlanMap(data));
+  }
+
+  async function fetchSamplePlan() {
+    const request = new Request("/api/data/plan", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -60,18 +78,6 @@ export default function SamplePlanCharts({
 		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => setSamplePlan(data));
-  }
-
-  async function fetchSamplePlanDistricts() {
-    const request = new Request("/api/data/plan/districts", {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		await fetch(request, {importance: "low"})
-			.then((response) => response.json())
-			.then((data) => setSampleDistricts(data));
   }
   return (
     <Box backgroundColor="dimgray" paddingTop={1}>

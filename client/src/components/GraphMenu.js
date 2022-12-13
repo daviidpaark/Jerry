@@ -13,11 +13,11 @@ export default function GraphMenu({
   district,
   random,
   setRandom, 
-  setSamplePlan,
+  setSamplePlanMap,
   open,
   layouts,
   setOpen,
-  setSampleDistricts,
+  setSamplePlan,
   setBoxTag,
   setLayoutTag,
   setSwitchMap,
@@ -37,7 +37,7 @@ export default function GraphMenu({
         <ListItemButton onClick={() => handleClick(1)} divider disabled={state==="" ? true : false} selected={graph===1}>
           <ListItemText primary="MMD Ensemble Summary by Layout" />
         </ListItemButton>
-        <ListItemButton onClick={() => handleClick(2)} divider disabled={state==="" ? true : false} selected={graph===2}>
+        <ListItemButton onClick={() => handleClick(2)} divider disabled>
           <ListItemText primary="Seat Share-Vote Share Plots" />
         </ListItemButton>
         <ListItemButton onClick={() => handleClick(3)} divider disabled={state==="" ? true : false} selected={graph===3}>
@@ -49,7 +49,7 @@ export default function GraphMenu({
         <ListItemButton onClick={() => handleClick(5)} divider disabled={state==="" ? true : false} selected={graph===5}>
           <ListItemText primary="Range of Republican/Democratic splits" />
         </ListItemButton>
-        <ListItemButton onClick={() => handleClick(6)} divider disabled={state=="" ? true : false} selected={graph===6}>
+        <ListItemButton onClick={() => handleClick(6)} divider disabled={state==="" ? true : false} selected={graph===6}>
           <ListItemText primary="MMD vs Enacted Plan" />
         </ListItemButton>
         <ListItemButton onClick={() => handleOpen(0)} divider disabled={state==="" ? true : false}>
@@ -74,8 +74,8 @@ export default function GraphMenu({
         district={district}
         random={random}
         setRandom={setRandom}
+        setSamplePlanMap={setSamplePlanMap}
         setSamplePlan={setSamplePlan}
-        setSampleDistricts={setSampleDistricts}
         setSwitchMap={setSwitchMap}
         >
         </SamplePlanCharts>

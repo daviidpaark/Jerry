@@ -40,6 +40,9 @@ const StateMap = ({
 	setEnsembleMMD,
 	setOpen,
 	setEnactedPercentage,
+	samplePlanMap,
+	setSamplePlanMap,
+	setSamplePlan,
 }) => {
 	const [geo, fetchMap] = useState(null);
 	const [districts, setDistricts] = useState(null);
@@ -134,6 +137,8 @@ const StateMap = ({
 				setGraph={setGraph}
 				setOpen={setOpen}
 				state={state}
+				setSamplePlan={setSamplePlan}
+				setSamplePlanMap={setSamplePlanMap}
 				handleZoomIn={handleZoomIn}
 				handleZoomOut={handleZoomOut}
 				handleReset={handleReset}
@@ -146,47 +151,91 @@ const StateMap = ({
 					zoom={position.zoom}
 					center={position.coordinates}
 				>
-					<Geographies geography={geo}>
-						{({ geographies }) =>
-							geographies.map((geo) => (
-								<Tooltip
-									title={ 
-                    "District " + geo.properties.districtNumber
-									}
-									placement="top"
-									arrow
-									enterDelay={0}
-									leaveDelay={0}
-									key={geo.rsmKey}
-								>
-									<Geography
+					{switchMap? (
+						<Geographies geography={samplePlanMap}>
+							{({ geographies }) =>
+								geographies.map((samplePlanMap) => (
+									<Tooltip
+										title={ 
+											"District " + samplePlanMap.properties.districtNumber
+										}
+										placement="top"
+										arrow
+										enterDelay={0}
+										leaveDelay={0}
+										key={samplePlanMap.rsmKey}
+									>
+										<Geography
+											key={samplePlanMap.rsmKey}
+											geography={samplePlanMap}
+											onClick={() => {
+												if (switchMap && district !== samplePlanMap.properties.districtNumber)
+													setDistrict(samplePlanMap.properties.districtNumber);
+											}}
+											stroke="#000"
+											strokeWidth={0.1}
+											style={{
+												default: {
+													fill:
+														district === samplePlanMap.properties.districtNumber
+															? "#a5d6a7"
+															: "#EEEEEE",
+													outline: "none",
+												},
+												hover: {
+													fill: "#ce93d8",
+													cursor: "pointer",
+													outline: "none",
+												},
+											}}
+										/>
+									</Tooltip>
+								))
+							}
+						</Geographies>
+					):(
+						<Geographies geography={geo}>
+							{({ geographies }) =>
+								geographies.map((geo) => (
+									<Tooltip
+										title={ 
+											"District " + geo.properties.districtNumber
+										}
+										placement="top"
+										arrow
+										enterDelay={0}
+										leaveDelay={0}
 										key={geo.rsmKey}
-										geography={geo}
-										onClick={() => {
-											if (switchMap && district !== geo.properties.districtNumber)
-												setDistrict(geo.properties.districtNumber);
-										}}
-										stroke="#000"
-										strokeWidth={0.1}
-										style={{
-											default: {
-												fill:
-													district === geo.properties.districtNumber
-														? "#a5d6a7"
-														: "#EEEEEE",
-												outline: "none",
-											},
-											hover: {
-												fill: "#ce93d8",
-												cursor: "pointer",
-												outline: "none",
-											},
-										}}
-									/>
-								</Tooltip>
-							))
-						}
-					</Geographies>
+									>
+										<Geography
+											key={geo.rsmKey}
+											geography={geo}
+											onClick={() => {
+												if (switchMap && district !== geo.properties.districtNumber)
+													setDistrict(geo.properties.districtNumber);
+											}}
+											stroke="#000"
+											strokeWidth={0.1}
+											style={{
+												default: {
+													fill:
+														district === geo.properties.districtNumber
+															? "#a5d6a7"
+															: "#EEEEEE",
+													outline: "none",
+												},
+												hover: {
+													fill: "#ce93d8",
+													cursor: "pointer",
+													outline: "none",
+												},
+											}}
+										/>
+									</Tooltip>
+								))
+							}
+						</Geographies>
+					)}
 				</ZoomableGroup>
 			</ComposableMap>
 		</div>

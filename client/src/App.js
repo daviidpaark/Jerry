@@ -32,8 +32,8 @@ function App() {
   const [random, setRandom] = useState(-1) //which sample plan selected
   const [ensembleSMD, setEnsembleSMD] = useState(null);
   const [ensembleMMD, setEnsembleMMD] = useState(null);
+  const [samplePlanMap, setSamplePlanMap] = useState(null);
   const [samplePlan, setSamplePlan] = useState(null);
-  const [sampleDistricts, setSampleDistricts] = useState(null);
   const [open, setOpen] = useState(-1);
   const [enactedPercentage, setEnactedPercentage] = useState(null);
   const [boxTag, setBoxTag] = useState("REPUBLICAN");
@@ -67,8 +67,8 @@ function App() {
                 district={district}
                 random={random}
                 setRandom={setRandom}
+                setSamplePlanMap={setSamplePlanMap}
                 setSamplePlan={setSamplePlan}
-                setSampleDistricts={setSampleDistricts}
                 setBoxTag={setBoxTag}
                 setLayoutTag={setLayoutTag}
                 layouts={layouts}
@@ -86,7 +86,6 @@ function App() {
               state={state}
               seats={seats}
               samplePlan={samplePlan}
-              sampleDistricts={sampleDistricts}
               district={district}
               layouts={layouts}
               boxTag={boxTag}
@@ -120,6 +119,9 @@ function App() {
                   setEnsembleMMD={setEnsembleMMD}
                   setOpen={setOpen}
                   setEnactedPercentage={setEnactedPercentage}
+                  samplePlanMap={samplePlanMap}
+                  setSamplePlanMap={setSamplePlanMap}
+                  setSamplePlan={setSamplePlan}
                 />
               )}
               {hideMap && switchMap && random>-1 && (

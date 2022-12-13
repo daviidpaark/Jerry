@@ -1,13 +1,13 @@
 import { Table, TableCell, TableHead, TableRow, Typography } from "@mui/material";
 
 export default function SamplePlanDistrictSummary({
-  sampleDistricts,
+  samplePlan,
   district,
   }) {
-  let selectedDistrict = sampleDistricts[0];
-  for(let d in sampleDistricts) {
-    if(sampleDistricts[d].districtNumber==district) {
-      selectedDistrict = sampleDistricts[d];
+  let selectedDistrict = samplePlan.districts[0];
+  for(let d in samplePlan.districts) {
+    if(samplePlan.districts[d].districtNumber==district) {
+      selectedDistrict = samplePlan.districts[d];
       break;
     } 
   }

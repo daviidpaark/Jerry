@@ -8,7 +8,7 @@ import {
 } from "react-simple-maps";
 import MapControls from "./MapControls";
 
-const UsMap = ({ setState, setMap }) => {
+const UsMap = ({ setState, setMap, }) => {
 	const [geo, fetchMap] = useState(null);
 	useEffect(() => {
 		const request = new Request("/api/maps/us", {

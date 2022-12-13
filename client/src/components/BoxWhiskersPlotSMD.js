@@ -45,9 +45,16 @@ export default function BoxWhiskersPlotSMD({ensembleSMD, boxTag, enactedPercenta
           xaxis: {
             title: "Indexed Districts",
             autotick: false,
-            dtick: 1
+            dtick: 1,
+            showline: true,
+            linewidth: 1
           },  
-          yaxis: {title: "Ratio of " + (boxTag==="BLACK"? "african americans" : boxTag.toLowerCase() + "s")},
+          yaxis: {title: "Ratio of " + (boxTag==="BLACK"? "african americans" : boxTag.toLowerCase() + "s"),
+          dtick: 0.1,
+          showline: true,
+          linewidth: 1,
+          range: [0, 1]
+        },
         }}
         style={{
           position: 'relative'

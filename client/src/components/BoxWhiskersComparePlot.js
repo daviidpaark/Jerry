@@ -1,19 +1,22 @@
 import { Box } from "@mui/system";
 import Plot from "react-plotly.js";
 
-export default function BoxWhiskersPlotMMD({ensembleMMD, layoutTag, boxTag, enactedPercentage}) {
-  let dataArr = ensembleMMD.boxAndWhiskers[layoutTag][boxTag];
+export default function BoxWhiskersComparePlot({ensembleSMD, ensembleMMD, layoutTag, boxTag, enactedPercentage}) {
+  let dataSMD = ensembleSMD.boxAndWhiskers[boxTag];
+  let dataMMD = ensembleMMD.boxAndWhiskers[layoutTag][boxTag];
   let s = boxTag.toLowerCase()+"Percentages";
   let dataScatter = enactedPercentage[s];
   let dataX = [];
   let dataY = [];
+  let dataMY = [];
   let dataSX = [];
   let dataSY = [];
   let i = 1;
-  for(let arr in dataArr) {  
-    for(let j in dataArr[arr]) {
+  for(let arr in dataSMD) {  
+    for(let j in dataSMD[arr]) {
       dataX.push(i);
-      dataY.push(dataArr[arr][j]);
+      dataY.push(dataSMD[arr][j]);
+      dataMY.push(dataMMD[arr][j])
     }
     dataSX.push(i);
     dataSY.push(dataScatter.data[i-1][0]);
@@ -29,6 +32,11 @@ export default function BoxWhiskersPlotMMD({ensembleMMD, layoutTag, boxTag, enac
           type: 'box',
           x: dataX,
           y: dataY,
+          name: "SMD"
+        }, {
+          type: 'box',
+          x: dataX,
+          y: dataMY,
           name: "MMD"
         }, {
           type: 'scatter',
@@ -39,7 +47,7 @@ export default function BoxWhiskersPlotMMD({ensembleMMD, layoutTag, boxTag, enac
         }
       ]}
         layout={{
-          title: "Box and Whiskers MMD "+layoutTag,
+          title: "Box and Whiskers Comparison "+layoutTag,
           xaxis: {title: "Indexed Representatives",
           autotick: false,
           dtick: 1,
@@ -52,6 +60,7 @@ export default function BoxWhiskersPlotMMD({ensembleMMD, layoutTag, boxTag, enac
           linewidth: 1,
           range: [0, 1]
         },
+          boxmode: "group"
         }}
         style={{
           position: 'relative'
