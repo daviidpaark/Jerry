@@ -29,7 +29,6 @@ const POSTAL = new Map([
 const StateMap = ({
 	state,
 	district,
-  random,
 	switchMap,
 	setMap,
 	setDistrict,
@@ -128,7 +127,6 @@ const StateMap = ({
 		<div data-tip="">
 			<MapControls
 				exit={1}
-        random={random}
 				setMap={setMap}
 				setDistrict={setDistrict}
 				setState={setState}
@@ -137,6 +135,7 @@ const StateMap = ({
 				setGraph={setGraph}
 				setOpen={setOpen}
 				state={state}
+				samplePlanMap={samplePlanMap}
 				setSamplePlan={setSamplePlan}
 				setSamplePlanMap={setSamplePlanMap}
 				handleZoomIn={handleZoomIn}

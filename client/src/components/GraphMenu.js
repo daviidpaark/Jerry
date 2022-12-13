@@ -11,8 +11,6 @@ export default function GraphMenu({
   graph, 
   setGraph, 
   district,
-  random,
-  setRandom, 
   setSamplePlanMap,
   open,
   layouts,
@@ -65,6 +63,10 @@ export default function GraphMenu({
         setBoxTag={setBoxTag}
         setLayoutTag={setLayoutTag}
         ></BoxAndWhiskerCharts>
+        <ListItemButton onClick={() => handleOpen(1)} divider disabled={state==="" ? true : false}>
+          <ListItemText primary="Sample Plans" />
+          {open===1 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
         <SamplePlanCharts
         open={open}
         setOpen={setOpen}
@@ -72,8 +74,6 @@ export default function GraphMenu({
         setGraph={setGraph}
         state={state}
         district={district}
-        random={random}
-        setRandom={setRandom}
         setSamplePlanMap={setSamplePlanMap}
         setSamplePlan={setSamplePlan}
         setSwitchMap={setSwitchMap}

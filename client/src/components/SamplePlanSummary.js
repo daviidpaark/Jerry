@@ -5,24 +5,26 @@ export default function SamplePlanSummary({
 }) {
   return (
     <Table>
-      <TableHead>
-        <TableRow>
-          <TableCell>
-            Number of Districts
-          </TableCell>
-          <TableCell>
-            samplePlan.districtPlanSummary.numberOfDistricts
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell>
-            Number of Opportunity Districts
-          </TableCell>
-          <TableCell>
-            samplePlan.districtPlanSummary.numberOfOpportunityDistricts
-          </TableCell>
-        </TableRow>
-      </TableHead>
+      {samplePlan!==null && (
+        <TableHead>
+          <TableRow>
+            <TableCell>
+              Number of Districts
+            </TableCell>
+            <TableCell>
+              samplePlan.districtPlanSummary.numberOfDistricts
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              Number of Opportunity Districts
+            </TableCell>
+            <TableCell>
+              samplePlan.districtPlanSummary.numberOfOpportunityDistricts
+            </TableCell>
+          </TableRow>
+        </TableHead>
+      )}
     </Table>
   );
 }

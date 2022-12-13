@@ -29,7 +29,6 @@ function App() {
   const [graph, setGraph] = useState(-1); //which graph/chart to display
   const [switchMap, setSwitchMap] = useState(false); //false for enacted plan, true for sample plan
   const [district, setDistrict] = useState(-1); //which district number is chosen for a sample plan
-  const [random, setRandom] = useState(-1) //which sample plan selected
   const [ensembleSMD, setEnsembleSMD] = useState(null);
   const [ensembleMMD, setEnsembleMMD] = useState(null);
   const [samplePlanMap, setSamplePlanMap] = useState(null);
@@ -38,7 +37,7 @@ function App() {
   const [enactedPercentage, setEnactedPercentage] = useState(null);
   const [boxTag, setBoxTag] = useState("REPUBLICAN");
   const [layoutTag, setLayoutTag] = useState("0");
-  const [OpportunityTag, setOpportunityTag] = useState("BLACK");
+  const [opportunityTag, setOpportunityTag] = useState("BLACK");
   const seats = {"Georgia": 14, "Maryland": 8, "Mississippi": 4};
   const layouts = {"Georgia": ["5/5/4", "5/3/3/3", "4/4/3/3"], "Maryland": ["5/3", "4/4"], "Mississippi": ["4"]};
   return (
@@ -65,8 +64,6 @@ function App() {
                 graph={graph}
                 setGraph={setGraph}
                 district={district}
-                random={random}
-                setRandom={setRandom}
                 setSamplePlanMap={setSamplePlanMap}
                 setSamplePlan={setSamplePlan}
                 setBoxTag={setBoxTag}
@@ -93,6 +90,11 @@ function App() {
               layoutTag={layoutTag}
               setLayoutTag={setLayoutTag}
               enactedPercentage={enactedPercentage}
+              opportunityTag={opportunityTag}
+              setOpportunityTag={setOpportunityTag}
+              setSamplePlan={setSamplePlan}
+              setSamplePlanMap={setSamplePlanMap}
+              setSwitchMap={setSwitchMap}
               ></DisplayCharts>
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">
@@ -102,12 +104,11 @@ function App() {
                   setMap={setMap}
                 />
               )}
-              {hideMap && !switchMap && (
+              {hideMap && (
                 <StateMap
                   state={state}
                   district={district}
                   switchMap={switchMap}
-                  random={random}
                   setMap={setMap}
                   setDistrict={setDistrict}
                   setState={setState}
@@ -122,18 +123,6 @@ function App() {
                   samplePlanMap={samplePlanMap}
                   setSamplePlanMap={setSamplePlanMap}
                   setSamplePlan={setSamplePlan}
-                />
-              )}
-              {hideMap && switchMap && random>-1 && (
-                <StateMap
-                  state={state}
-                  district={district}
-                  switchMap={switchMap}
-                  random={random}
-                  setMap={setMap}
-                  setDistrict={setDistrict}
-                  setState={setState}
-                  setSwitchMap={setSwitchMap}
                 />
               )}
             </Grid>
