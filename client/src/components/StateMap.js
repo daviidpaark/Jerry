@@ -39,14 +39,15 @@ const StateMap = ({
 	setEnsembleSMD,
 	setEnsembleMMD,
 	setOpen,
+	setEnactedPercentage,
 }) => {
 	const [geo, fetchMap] = useState(null);
 	const [districts, setDistricts] = useState(null);
 	useEffect(() => {
 		fetchStateMap();
-		//fetchDistricts();
 		fetchEnsembleSMD();
 		fetchEnsembleMMD();
+		fetchPercentages();
 	}, [state]);
 
 	async function fetchStateMap() {
@@ -85,8 +86,8 @@ const StateMap = ({
 			.then((data) => setEnsembleMMD(data));
   }
 
-	async function fetchDistricts() {
-    const request = new Request("/api/data/plan/districts", {
+	async function fetchPercentages() {
+    const request = new Request("/api/data/plan/percents", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -94,7 +95,7 @@ const StateMap = ({
 		});
 		await fetch(request, {importance: "low"})
 			.then((response) => response.json())
-			.then((data) => setDistricts(data));
+			.then((data) => setEnactedPercentage(data));
   }
 
 	const [position, setPosition] = useState({

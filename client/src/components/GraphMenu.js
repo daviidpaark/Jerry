@@ -15,8 +15,12 @@ export default function GraphMenu({
   setRandom, 
   setSamplePlan,
   open,
+  layouts,
   setOpen,
   setSampleDistricts,
+  setBoxTag,
+  setLayoutTag,
+  setSwitchMap,
   }) {
   const handleClick = (index) => {
     if(index!==graph) setGraph(index);
@@ -57,13 +61,13 @@ export default function GraphMenu({
         graph={graph}
         setGraph={setGraph}
         state={state}
+        layouts={layouts}
+        setBoxTag={setBoxTag}
+        setLayoutTag={setLayoutTag}
         ></BoxAndWhiskerCharts>
-        <ListItemButton onClick={() => handleOpen(1)} divider disabled={state==="" ? true : false}>
-          <ListItemText primary="Sample Plans"></ListItemText>
-          {open===1 ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
         <SamplePlanCharts
-        open={open===1}
+        open={open}
+        setOpen={setOpen}
         graph={graph}
         setGraph={setGraph}
         state={state}
@@ -72,6 +76,7 @@ export default function GraphMenu({
         setRandom={setRandom}
         setSamplePlan={setSamplePlan}
         setSampleDistricts={setSampleDistricts}
+        setSwitchMap={setSwitchMap}
         >
         </SamplePlanCharts>
       </List>

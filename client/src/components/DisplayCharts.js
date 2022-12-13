@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, FormControl, Select, MenuItem, Typography, Grid, InputLabel } from "@mui/material";
 import MmdVsEnactedTable from "./MmdVsEnactedTable";
 import BoxAndWhisker from "./BoxAndWhisker";
 import EnsembleSummary from "./EnsembleSummary";
@@ -23,7 +23,18 @@ export default function DisplayCharts({
   sampleDistricts,
   district,
   layouts,
+  enactedPercentage,
+  boxTag,
+  setBoxTag,
+  layoutTag,
+  setLayoutTag,
 }) {
+  const handleChange = (event) => {
+    setBoxTag(event.target.value);
+  }
+  const handleChangeL = (event) => {
+    setLayoutTag(layouts[state][event.target.value]);
+  }
   return (
     <Box>
       {graph===0 && (
@@ -71,14 +82,87 @@ export default function DisplayCharts({
         ></MmdVsEnactedTable>
       )}
       {graph===7 && (
-        <BoxWhiskersPlotSMD
-        ensembleSMD={ensembleSMD}
-        ></BoxWhiskersPlotSMD>
+        <Box>
+          <BoxWhiskersPlotSMD
+          ensembleSMD={ensembleSMD}
+          boxTag={boxTag}
+          enactedPercentage={enactedPercentage}
+          ></BoxWhiskersPlotSMD>
+          <Grid container>
+            <Grid item xs={2}>
+              <Typography paddingLeft={2}>Basis for<br></br>Comparison: </Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <FormControl>
+                <InputLabel>Group</InputLabel>
+                <Select
+                label="Group"
+                variant="filled"
+                onChange={handleChange}
+                defaultValue="REPUBLICAN"
+                >
+                  <MenuItem value="REPUBLICAN">Republicans</MenuItem>
+                  <MenuItem value="DEMOCRATIC">Democratics</MenuItem>
+                  <MenuItem value="BLACK">African Americans</MenuItem>
+                  <MenuItem value="HISPANIC">Hispanics</MenuItem>
+                  <MenuItem value="WHITE">Whites</MenuItem>
+                  <MenuItem value="OTHER">Others</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Box>
       )}
-      {graph===8 && (   
-        <BoxWhiskersPlotMMD
-        ensembleMMD={ensembleMMD}
-        ></BoxWhiskersPlotMMD>
+      {graph===8 && (
+        <Box>
+          <BoxWhiskersPlotMMD
+          ensembleMMD={ensembleMMD}
+          boxTag={boxTag}
+          layoutTag={layoutTag}
+          enactedPercentage={enactedPercentage}
+          ></BoxWhiskersPlotMMD>
+          <Grid container>
+            <Grid item xs={2}>
+              <Typography paddingLeft={2}>Basis for<br></br>Comparison: </Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <FormControl>
+                <InputLabel>Group</InputLabel>
+                <Select
+                label="Group"
+                variant="filled"
+                onChange={handleChange}
+                defaultValue="REPUBLICAN"
+                >
+                  <MenuItem value="REPUBLICAN">Republicans</MenuItem>
+                  <MenuItem value="DEMOCRATIC">Democratics</MenuItem>
+                  <MenuItem value="BLACK">African Americans</MenuItem>
+                  <MenuItem value="HISPANIC">Hispanics</MenuItem>
+                  <MenuItem value="WHITE">Whites</MenuItem>
+                  <MenuItem value="OTHER">Others</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={1}>
+              <Typography>Layout:</Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <FormControl>
+                <InputLabel>Layout</InputLabel>
+                <Select
+                label="Layout"
+                variant="filled"
+                onChange={handleChangeL}
+                defaultValue={0}
+                >
+                  {layouts[state].map((layout, i) => (
+                    <MenuItem value={i} key={i}>{layout}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Box>
       )}
       {graph===9 && (
         <BoxAndWhisker

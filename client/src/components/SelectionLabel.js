@@ -6,14 +6,16 @@ export default function SelectionLabel({
   district,
   setDistrict
   }) {
-  let label;
+  let stateLabel;
+  let districtLabel = "";
   if (state) {
     if (district>-1) {
-      label = state + " -> District " + district;
+      stateLabel = state;
+      districtLabel = "District " + district;
     } else {
-      label = state;
+      stateLabel = state;
     }
-  } else label = "Select A State";
+  } else stateLabel = "Select A State";
 
   const handleDeselect = () => {
     setDistrict(-1);
@@ -27,9 +29,16 @@ export default function SelectionLabel({
         align="center"
         onClick={() => handleDeselect}
         paddingTop={1}
+      >
+        {stateLabel}
+      </Typography>
+      <Typography
+        color="lightgreen"
+        align="center"
+        onClick={() => handleDeselect}
         gutterBottom
       >
-        {label}
+        {districtLabel}
       </Typography>
     </Box>
     

@@ -31,7 +31,6 @@ export default function MapControls({
   function handleSwitch() {
     setDistrict(-1);
     setSwitchMap(!switchMap);
-    setGraph(-1);
   }
 
   let back;

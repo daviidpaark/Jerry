@@ -28,14 +28,17 @@ function App() {
   const [hideMap, setMap] = useState(false); //decides whether to hide the US map/show state map
   const [graph, setGraph] = useState(-1); //which graph/chart to display
   const [switchMap, setSwitchMap] = useState(false); //false for enacted plan, true for sample plan
-  const [district, setDistrict] = useState(-1); //which district is chosen for a sample plan
+  const [district, setDistrict] = useState(-1); //which district number is chosen for a sample plan
   const [random, setRandom] = useState(-1) //which sample plan selected
   const [ensembleSMD, setEnsembleSMD] = useState(null);
   const [ensembleMMD, setEnsembleMMD] = useState(null);
   const [samplePlan, setSamplePlan] = useState(null);
   const [sampleDistricts, setSampleDistricts] = useState(null);
-  const [enactedPlan, setEnactedPlan] = useState(null);
   const [open, setOpen] = useState(-1);
+  const [enactedPercentage, setEnactedPercentage] = useState(null);
+  const [boxTag, setBoxTag] = useState("REPUBLICAN");
+  const [layoutTag, setLayoutTag] = useState("0");
+  const [OpportunityTag, setOpportunityTag] = useState("BLACK");
   const seats = {"Georgia": 14, "Maryland": 8, "Mississippi": 4};
   const layouts = {"Georgia": ["5/5/4", "5/3/3/3", "4/4/3/3"], "Maryland": ["5/3", "4/4"], "Mississippi": ["4"]};
   return (
@@ -66,8 +69,12 @@ function App() {
                 setRandom={setRandom}
                 setSamplePlan={setSamplePlan}
                 setSampleDistricts={setSampleDistricts}
+                setBoxTag={setBoxTag}
+                setLayoutTag={setLayoutTag}
+                layouts={layouts}
                 open={open}
-                setOpen={setOpen}
+                setOpen={setOpen}            
+                setSwitchMap={setSwitchMap}
                 style={{ position: "absolute", top: "0vh", left: "0vh" }}
               ></GraphMenu>
             </Grid>
@@ -82,6 +89,11 @@ function App() {
               sampleDistricts={sampleDistricts}
               district={district}
               layouts={layouts}
+              boxTag={boxTag}
+              setBoxTag={setBoxTag}
+              layoutTag={layoutTag}
+              setLayoutTag={setLayoutTag}
+              enactedPercentage={enactedPercentage}
               ></DisplayCharts>
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">
@@ -106,8 +118,8 @@ function App() {
                   setEnsembleSMD={setEnsembleSMD}
                   ensembleMMD={ensembleMMD}
                   setEnsembleMMD={setEnsembleMMD}
-                  setEnactedPlan={setEnactedPlan}
                   setOpen={setOpen}
+                  setEnactedPercentage={setEnactedPercentage}
                 />
               )}
               {hideMap && switchMap && random>-1 && (
