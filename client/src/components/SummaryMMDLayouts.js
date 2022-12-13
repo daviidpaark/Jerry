@@ -56,12 +56,12 @@ export default function SummaryMMDLayouts({
               </TableCell>
               <TableCell>
                 <Typography>
-                  {summary.averageOpportunityReps}
+                  {summary.averageOpportunityReps.toFixed(2)}
                 </Typography>
               </TableCell>
               <TableCell>
                 <Typography>
-                  {summary.averageEqualPopulation}
+                  {summary.averageEqualPopulation.toFixed(2)}
                 </Typography>
               </TableCell>
               <TableCell>

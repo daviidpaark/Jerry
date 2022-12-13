@@ -32,10 +32,10 @@ export default function EnsembleSummary({
             Number of Plans: 
           </TableCell>
           <TableCell>
-            {numberWithCommas(ensembleSMD.ensembleSummary[0].numberOfPlans)}
+            {numberWithCommas(ensembleSMD.ensembleSummary[0].numberOfPlans+"0")}
           </TableCell>
           <TableCell>
-            {numberWithCommas(ensembleMMD.ensembleSummary[0].numberOfPlans)}
+            {numberWithCommas(ensembleMMD.ensembleSummary[0].numberOfPlans+"0")}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -44,10 +44,10 @@ export default function EnsembleSummary({
             Representatives per Plan: 
           </TableCell>
           <TableCell>
-            {ensembleSMD.ensembleSummary[0].averageOpportunityReps}
+            {ensembleSMD.ensembleSummary[0].averageOpportunityReps.toFixed(2)}
           </TableCell>
           <TableCell>
-            {ensembleMMD.ensembleSummary[0].averageOpportunityReps}
+            {ensembleMMD.ensembleSummary[0].averageOpportunityReps.toFixed(2)}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -55,10 +55,10 @@ export default function EnsembleSummary({
             Average Equal Population: 
           </TableCell>
           <TableCell>
-          {ensembleSMD.ensembleSummary[0].averageEqualPopulation}
+          {ensembleSMD.ensembleSummary[0].averageEqualPopulation.toFixed(2)}
           </TableCell>
           <TableCell>
-            {ensembleMMD.ensembleSummary[0].averageEqualPopulation}
+            {ensembleMMD.ensembleSummary[0].averageEqualPopulation.toFixed(2)}
           </TableCell>
         </TableRow>
         <TableRow>

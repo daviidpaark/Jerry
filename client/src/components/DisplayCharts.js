@@ -183,7 +183,7 @@ export default function DisplayCharts({
                 defaultValue="REPUBLICAN"
                 >
                   <MenuItem value="REPUBLICAN">Republicans</MenuItem>
-                  <MenuItem value="DEMOCRATIC">Democratics</MenuItem>
+                  <MenuItem value="DEMOCRAT">Democrats</MenuItem>
                   <MenuItem value="BLACK">African Americans</MenuItem>
                   <MenuItem value="HISPANIC">Hispanics</MenuItem>
                   <MenuItem value="WHITE">Whites</MenuItem>
@@ -216,7 +216,7 @@ export default function DisplayCharts({
                 defaultValue="REPUBLICAN"
                 >
                   <MenuItem value="REPUBLICAN">Republicans</MenuItem>
-                  <MenuItem value="DEMOCRATIC">Democratics</MenuItem>
+                  <MenuItem value="DEMOCRAT">Democrats</MenuItem>
                   <MenuItem value="BLACK">African Americans</MenuItem>
                   <MenuItem value="HISPANIC">Hispanics</MenuItem>
                   <MenuItem value="WHITE">Whites</MenuItem>
@@ -268,7 +268,7 @@ export default function DisplayCharts({
                 defaultValue="REPUBLICAN"
                 >
                   <MenuItem value="REPUBLICAN">Republicans</MenuItem>
-                  <MenuItem value="DEMOCRATIC">Democratics</MenuItem>
+                  <MenuItem value="DEMOCRAT">Democrats</MenuItem>
                   <MenuItem value="BLACK">African Americans</MenuItem>
                   <MenuItem value="HISPANIC">Hispanics</MenuItem>
                   <MenuItem value="WHITE">Whites</MenuItem>
