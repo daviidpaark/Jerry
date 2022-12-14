@@ -15,6 +15,7 @@ import BoxWhiskersComparePlot from "./BoxWhiskersComparePlot";
 
 export default function DisplayCharts({
   graph,
+  enactedPlan,
   ensembleSMD,
   ensembleMMD,
   state,
@@ -161,6 +162,7 @@ export default function DisplayCharts({
       )}
       {graph===6 && (
         <MmdVsEnactedTable
+        enactedPlan={enactedPlan}
         ensembleMMD={ensembleMMD}
         ></MmdVsEnactedTable>
       )}

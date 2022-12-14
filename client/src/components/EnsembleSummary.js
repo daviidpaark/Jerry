@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@m
 
 export default function EnsembleSummary({
   ensembleSMD,
-  ensembleMMD
+  ensembleMMD,
 }) {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

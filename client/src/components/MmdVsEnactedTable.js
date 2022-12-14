@@ -1,6 +1,6 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, Typography } from "@mui/material";
 
-export default function MmdVsEnactedTable(ensembleMMD) {
+export default function MmdVsEnactedTable(enactedPlan, ensembleMMD) {
   return (
     <TableContainer>
       <Table>
@@ -20,10 +20,12 @@ export default function MmdVsEnactedTable(ensembleMMD) {
               Republican/Democratic Splits 
           </TableCell>
           <TableCell>
-              8/6
+            <Typography>
+              {enactedPlan.split}
+            </Typography>
           </TableCell>
           <TableCell>
-              9/5
+              MMD split
           </TableCell>
         </TableBody>
         <TableBody>
@@ -31,10 +33,12 @@ export default function MmdVsEnactedTable(ensembleMMD) {
               Number of Opportunity Representatives
           </TableCell>
           <TableCell>
-              1
+            <Typography>
+              {enactedPlan.numberOfOpportunityDistricts}
+            </Typography>
           </TableCell>
           <TableCell>
-              3
+              MMD # of opp reps
           </TableCell>
         </TableBody>
         <TableBody>
@@ -42,10 +46,10 @@ export default function MmdVsEnactedTable(ensembleMMD) {
               Vote Share 
           </TableCell>
           <TableCell>
-              0.49
+              {enactedPlan.republicanPercent}
           </TableCell>
           <TableCell>
-              0.48
+              MMD % of republican votes
           </TableCell>
         </TableBody>
         <TableBody>
@@ -53,10 +57,10 @@ export default function MmdVsEnactedTable(ensembleMMD) {
               Seat Share
           </TableCell>
           <TableCell>
-              0.52
+              {enactedPlan.split}
           </TableCell>
           <TableCell>
-              0.46
+              MMD % of republican wins
           </TableCell>
         </TableBody>
       </Table>

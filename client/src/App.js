@@ -29,6 +29,7 @@ function App() {
   const [graph, setGraph] = useState(-1); //which graph/chart to display
   const [switchMap, setSwitchMap] = useState(false); //false for enacted plan, true for sample plan
   const [district, setDistrict] = useState(-1); //which district number is chosen for a sample plan
+  const [enactedPlan, setEnactedPlan] = useState(null);
   const [ensembleSMD, setEnsembleSMD] = useState(null);
   const [ensembleMMD, setEnsembleMMD] = useState(null);
   const [samplePlanMap, setSamplePlanMap] = useState(null);
@@ -82,6 +83,7 @@ function App() {
               ensembleMMD={ensembleMMD}
               state={state}
               seats={seats}
+              enactedPlan={enactedPlan}
               samplePlan={samplePlan}
               district={district}
               layouts={layouts}
@@ -123,6 +125,7 @@ function App() {
                   samplePlanMap={samplePlanMap}
                   setSamplePlanMap={setSamplePlanMap}
                   setSamplePlan={setSamplePlan}
+                  setEnactedPlan={setEnactedPlan}
                 />
               )}
             </Grid>

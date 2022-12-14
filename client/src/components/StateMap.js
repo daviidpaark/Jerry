@@ -42,14 +42,15 @@ const StateMap = ({
 	samplePlanMap,
 	setSamplePlanMap,
 	setSamplePlan,
+	setEnactedPlan,
 }) => {
 	const [geo, fetchMap] = useState(null);
 	const [districts, setDistricts] = useState(null);
 	useEffect(() => {
 		fetchStateMap();
-		fetchEnsembleSMD();
-		fetchEnsembleMMD();
-		fetchPercentages();
+		// fetchEnsembleSMD();
+		// fetchEnsembleMMD();
+		// fetchPercentages();
 	}, [state]);
 
 	async function fetchStateMap() {
@@ -62,7 +63,23 @@ const StateMap = ({
 		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => fetchMap(data));
+		await fetchEnactedPlan();
+		await fetchEnsembleSMD();
+		await fetchEnsembleMMD();
+		await fetchPercentages();
   }
+
+	async function fetchEnactedPlan() {
+		const request = new Request("/api/data/plan/summary", {
+			method: "GET",
+			headers: {
+				'Content-Type': "applicantion/json",
+			},
+		});
+		await fetch(request)
+		.then((response) => response.json())
+		.then((data) => setEnactedPlan(data));
+	}
 
 	async function fetchEnsembleSMD() {
     const request = new Request("/api/data/ensemble?mmd=false", {
@@ -71,7 +88,7 @@ const StateMap = ({
 				"Content-Type": "application/json",
 			},
 		});
-		await fetch(request, {importance: "low"})
+		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => setEnsembleSMD(data));
   }
@@ -83,7 +100,7 @@ const StateMap = ({
 				"Content-Type": "application/json",
 			},
 		});
-		await fetch(request, {importance: "low"})
+		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => setEnsembleMMD(data));
   }
@@ -95,7 +112,7 @@ const StateMap = ({
 				"Content-Type": "application/json",
 			},
 		});
-		await fetch(request, {importance: "low"})
+		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => setEnactedPercentage(data));
   }
