@@ -34,6 +34,7 @@ function App() {
   const [ensembleMMD, setEnsembleMMD] = useState(null);
   const [samplePlanMap, setSamplePlanMap] = useState(null);
   const [samplePlan, setSamplePlan] = useState(null);
+  const [sampleName, setSampleName] = useState("");
   const [open, setOpen] = useState(-1);
   const [enactedPercentage, setEnactedPercentage] = useState(null);
   const [boxTag, setBoxTag] = useState("REPUBLICAN");
@@ -98,6 +99,8 @@ function App() {
               setSamplePlanMap={setSamplePlanMap}
               setSwitchMap={setSwitchMap}
               setDistrict={setDistrict}
+              sampleName={sampleName}
+              setSampleName={setSampleName}
               ></DisplayCharts>
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">

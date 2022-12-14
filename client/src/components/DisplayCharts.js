@@ -12,6 +12,7 @@ import ElectionData from "./ElectionData";
 import SummaryMMDLayouts from "./SummaryMMDLayouts";
 import SamplePlanDistrictSummary from "./SamplePlanDistrictSummary";
 import BoxWhiskersComparePlot from "./BoxWhiskersComparePlot";
+import DataSource from "./DataSource";
 
 export default function DisplayCharts({
   graph,
@@ -34,6 +35,8 @@ export default function DisplayCharts({
   setSamplePlanMap,
   setSwitchMap,
   setDistrict,
+  sampleName,
+  setSampleName,
 }) {
   const handleChange = (event) => {
     setBoxTag(event.target.value);
@@ -56,7 +59,7 @@ export default function DisplayCharts({
     fetchSamplePlanMap(value);
     setSwitchMap(true);
     setDistrict(-1);
-    //fetchSamplePlan(event.target.value);
+    setSampleName(s);
   }
 
   async function fetchSamplePlanMap(value) {
@@ -311,6 +314,7 @@ export default function DisplayCharts({
                 <Select
                 variant="outlined"
                 onChange={handleChangeT}
+                defaultValue={sampleName}
                 >
                   <MenuItem value={"0republican"}>Favorable Republican SMD</MenuItem>
                   <MenuItem value={"0black"}>Favorable African American SMD</MenuItem>
@@ -341,6 +345,10 @@ export default function DisplayCharts({
           samplePlan={samplePlan}
           district={district}
         ></ElectionData>
+      )}
+      {graph===2 && (
+        <DataSource>
+        </DataSource>
       )}
     </Box>
   );

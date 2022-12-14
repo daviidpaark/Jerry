@@ -73,6 +73,10 @@ export default function GraphMenu({
         setSwitchMap={setSwitchMap}
         >
         </SamplePlanCharts>
+        <br></br>
+        <ListItemButton onClick={() => handleClick(2)} divider disabled={state==="" ? true : false} selected={graph===2}>
+          <ListItemText primary="Data Sources"/>
+        </ListItemButton>
       </List>
     </Box>
   );
