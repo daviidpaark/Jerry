@@ -11,7 +11,10 @@ import java.util.Map;
 @NoArgsConstructor
 public class DistrictPlanSummary {
     private int districts;
-    private int numberOfOpportunityReps;
+    private int numberOfOpportunityDistricts;
     private int numberOfSafeDistricts;
     private String split;
+    private double safeDistrictThreshold;
+    private double democratPercent;
+    private double republicanPercent;
 }
