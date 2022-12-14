@@ -44,7 +44,15 @@ export default function DisplayCharts({
     setOpportunityTag(event.target.value);
   }
   const handleChangeT = (event) => {
-    fetchSamplePlanMap(event.target.value);
+    let s = event.target.value;
+    let value = [];
+    if(s.substring(0,1) === "0") {
+      value.push("false");
+    } else {
+      value.push("true");
+    }
+    value.push(s.substring(1));
+    fetchSamplePlanMap(value);
     setSwitchMap(true);
     //fetchSamplePlan(event.target.value);
   }
@@ -315,18 +323,18 @@ export default function DisplayCharts({
                 variant="outlined"
                 onChange={handleChangeT}
                 >
-                  <MenuItem value={["false", "republican"]}>Favorable Republican SMD</MenuItem>
-                  <MenuItem value={["false", "democratic"]}>Favorable Democratic SMD</MenuItem>
-                  <MenuItem value={["false", "black"]}>Favorable African American SMD</MenuItem>
-                  <MenuItem value={["false", "hispanic"]}>Favorable Hispanic SMD</MenuItem>
-                  <MenuItem value={["false", "white"]}>Favorable White SMD</MenuItem>
-                  <MenuItem value={["false", "other"]}>Favorable Other SMD</MenuItem>
-                  <MenuItem value={["true", "republican"]}>Favorable Republican MMD</MenuItem>
-                  <MenuItem value={["true", "democratic"]}>Favorable Democratic MMD</MenuItem>
-                  <MenuItem value={["true", "black"]}>Favorable African American MMD</MenuItem>
-                  <MenuItem value={["true", "hispanic"]}>Favorable Hispanic MMD</MenuItem>
-                  <MenuItem value={["true", "white"]}>Favorable White SMD</MenuItem>
-                  <MenuItem value={["true", "other"]}>Favorable Other MMD</MenuItem>
+                  <MenuItem value={"0republican"}>Favorable Republican SMD</MenuItem>
+                  <MenuItem value={"0democratic"}>Favorable Democratic SMD</MenuItem>
+                  <MenuItem value={"0black"}>Favorable African American SMD</MenuItem>
+                  <MenuItem value={"0hispanic"}>Favorable Hispanic SMD</MenuItem>
+                  <MenuItem value={"0white"}>Favorable White SMD</MenuItem>
+                  <MenuItem value={"0other"}>Favorable Other SMD</MenuItem>
+                  <MenuItem value={"1republican"}>Favorable Republican MMD</MenuItem>
+                  <MenuItem value={"1democratic"}>Favorable Democratic MMD</MenuItem>
+                  <MenuItem value={"1black"}>Favorable African American MMD</MenuItem>
+                  <MenuItem value={"1hispanic"}>Favorable Hispanic MMD</MenuItem>
+                  <MenuItem value={"1white"}>Favorable White SMD</MenuItem>
+                  <MenuItem value={"1other"}>Favorable Other MMD</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

@@ -48,14 +48,14 @@ export default function SamplePlanSummary({
             </TableCell>
           </TableRow>
           <TableRow>
-            <Typography align="center" variant="h6" paddingTop={4}>
-              For more details, select a district on the map.
-            </Typography>
+              <Typography align="center" variant="h6" paddingTop={4}>
+                For more details, select a district on the map.
+              </Typography>
           </TableRow>
           <TableRow>
-            <Typography align="center" paddingTop={4}>
-              You can click on the swap button on the top right of the map to swap between the enacted plan and the sample plan.
-            </Typography>
+              <Typography align="center" paddingTop={4}>
+                You can click on the swap button on the top right of the map to swap between the enacted plan and the sample plan.
+              </Typography>
           </TableRow>
         </TableHead>
       )}

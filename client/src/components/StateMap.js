@@ -48,9 +48,10 @@ const StateMap = ({
 	const [districts, setDistricts] = useState(null);
 	useEffect(() => {
 		fetchStateMap();
-		// fetchEnsembleSMD();
-		// fetchEnsembleMMD();
-		// fetchPercentages();
+		fetchEnactedPlan();
+		fetchEnsembleSMD();
+		fetchEnsembleMMD();
+		fetchPercentages();
 	}, [state]);
 
 	async function fetchStateMap() {
@@ -63,10 +64,6 @@ const StateMap = ({
 		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => fetchMap(data));
-		await fetchEnactedPlan();
-		await fetchEnsembleSMD();
-		await fetchEnsembleMMD();
-		await fetchPercentages();
   }
 
 	async function fetchEnactedPlan() {

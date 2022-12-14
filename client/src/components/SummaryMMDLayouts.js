@@ -41,8 +41,8 @@ export default function SummaryMMDLayouts({
       </TableHead>
       <TableBody>
         {
-          ensembleMMD.ensembleLayoutSummary.map((summary) => (
-            <TableRow>
+          ensembleMMD.ensembleLayoutSummary.map((summary, key) => (
+            <TableRow key={key}>
               <TableCell>
                 <Typography>
                   {summary.layout}
