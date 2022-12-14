@@ -9,12 +9,10 @@ export default function RangeOfSplitsPlotMMD({
 }) {
 	let seat = seats[state];
   let dataX = [];
-  for(let i = 0; i<=seat; i++) {
-    dataX.push(i+"/"+(seat-i));
-  }
   let dataY = [];
   let dataMap = ensembleMMD.seatShare.data;
   for(let key in dataMap) {
+    dataX.push(key);
     dataY.push(dataMap[key]);
   }
 

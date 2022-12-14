@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import RangeOfSplitsPlotMMD from "./RangeOfSplitsPlotMMD";
 import RangeOfSplitsPlotSMD from "./RangeOfSplitsPlotSMD";
 
-export default function SplitsDoublePlot({graph, ensembleSMD, state, seats}) {
+export default function SplitsDoublePlot({ensembleMMD, ensembleSMD, state, seats}) {
   return (
     <Box
     flex={1}
@@ -14,7 +14,7 @@ export default function SplitsDoublePlot({graph, ensembleSMD, state, seats}) {
       seats={seats}
       ></RangeOfSplitsPlotSMD>
       <RangeOfSplitsPlotMMD
-      ensembleMMD={ensembleSMD}
+      ensembleMMD={ensembleMMD}
       state={state}
       seats={seats}
       ></RangeOfSplitsPlotMMD>

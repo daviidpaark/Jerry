@@ -10,7 +10,6 @@ export default function OpportunityRepsPlotSMD({ensembleSMD, opportunityTag}) {
     dataX.push(key);
     dataY.push(dataMap[key]);
   }
-
   return(
     <Box
       height="50%"

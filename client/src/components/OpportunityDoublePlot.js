@@ -13,7 +13,7 @@ export default function OpportunityDoublePlot({ensembleSMD, ensembleMMD, opportu
         opportunityTag={opportunityTag}
       ></OpportunityRepsPlotSMD>
       <OpportunityRepsPlotMMD
-        ensembleMMD={ensembleSMD}
+        ensembleMMD={ensembleMMD}
         opportunityTag={opportunityTag}
       ></OpportunityRepsPlotMMD>
     </Box>

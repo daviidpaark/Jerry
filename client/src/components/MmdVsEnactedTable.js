@@ -28,7 +28,7 @@ export default function MmdVsEnactedTable({enactedPlan, ensembleMMD}) {
               </Typography>
             </TableCell>
             <TableCell>
-                MMD split
+                7/7
             </TableCell>
           </TableRow>
           <TableRow>
@@ -41,29 +41,29 @@ export default function MmdVsEnactedTable({enactedPlan, ensembleMMD}) {
               </Typography>
             </TableCell>
             <TableCell>
-                MMD # of opp reps
+                3
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-                Vote Share(Republican)
+                Vote Share (Republican)
             </TableCell>
             <TableCell>
-                {enactedPlan.republicanPercent}
+                {enactedPlan.republicanPercent.toFixed(2)}
             </TableCell>
             <TableCell>
-                MMD % of republican votes
+                0.51
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>
-                Seat Share(Republican)
+                Seat Share (Republican)
             </TableCell>
             <TableCell>
-                {enactedPlan.split}
+                0.57
             </TableCell>
             <TableCell>
-                MMD % of republican wins
+                0.50
             </TableCell>
           </TableRow>
         </TableBody>
