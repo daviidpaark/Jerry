@@ -19,12 +19,20 @@ export default function SamplePlanSummary({
           </TableRow>
           <TableRow>
             <TableCell>
-              Number of Opportunity Representatives
+              Number of Opportunity Districts
             </TableCell>
             <TableCell>
               <Typography align="right">
-                {samplePlan.districtPlanSummary.numberOfOpportunityReps}
+                {samplePlan.districtPlanSummary.numberOfOpportunityDistricts}
               </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              Opportunity District Threshold
+            </TableCell>
+            <TableCell>
+              0.50
             </TableCell>
           </TableRow>
           <TableRow>
