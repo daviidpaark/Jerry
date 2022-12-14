@@ -318,12 +318,7 @@ export default function DisplayCharts({
                 >
                   <MenuItem value={"0republican"}>Favorable Republican SMD</MenuItem>
                   <MenuItem value={"0black"}>Favorable African American SMD</MenuItem>
-                  <MenuItem value={"1republican"}>Favorable Republican MMD</MenuItem>
-                  <MenuItem value={"1democratic"}>Favorable Democratic MMD</MenuItem>
                   <MenuItem value={"1black"}>Favorable African American MMD</MenuItem>
-                  <MenuItem value={"1hispanic"}>Favorable Hispanic MMD</MenuItem>
-                  <MenuItem value={"1white"}>Favorable White SMD</MenuItem>
-                  <MenuItem value={"1other"}>Favorable Other MMD</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

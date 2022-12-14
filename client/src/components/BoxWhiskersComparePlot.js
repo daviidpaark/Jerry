@@ -34,18 +34,21 @@ export default function BoxWhiskersComparePlot({ensembleSMD, ensembleMMD, layout
           type: 'box',
           x: dataX,
           y: dataY,
-          name: "SMD"
+          name: "SMD",
+          marker: {color: "#03b1fc"}
         }, {
           type: 'box',
           x: dataX,
           y: dataMY,
-          name: "MMD"
+          name: "MMD",
+          marker: {color: "#0373fc"}
         }, {
           type: 'scatter',
           x: dataSX,
           y: dataSY,
           mode: "markers",
-          name: "Enacted"
+          name: "Enacted",
+          marker: {color: "orange"}
         }
       ]}
         layout={{

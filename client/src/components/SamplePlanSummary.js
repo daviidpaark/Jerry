@@ -9,7 +9,9 @@ export default function SamplePlanSummary({
         <TableHead>
           <TableRow>
             <TableCell>
-              Number of Districts
+              <Typography>
+                Number of Districts
+              </Typography>
             </TableCell>
             <TableCell>
               <Typography align="right">
@@ -19,7 +21,9 @@ export default function SamplePlanSummary({
           </TableRow>
           <TableRow>
             <TableCell>
-              Number of Opportunity Districts
+              <Typography>
+                Number of Opportunity Districts
+              </Typography>
             </TableCell>
             <TableCell>
               <Typography align="right">
@@ -29,7 +33,9 @@ export default function SamplePlanSummary({
           </TableRow>
           <TableRow>
             <TableCell>
-              Number of Safe Districts
+              <Typography>
+                Number of Safe Districts
+              </Typography>
             </TableCell>
             <TableCell>
               <Typography align="right">
@@ -39,7 +45,21 @@ export default function SamplePlanSummary({
           </TableRow>
           <TableRow>
             <TableCell>
-              Republican/Democratic Split
+              <Typography paddingLeft={3}>
+                Safe District Threshold
+              </Typography>
+            </TableCell>
+            <TableCell>
+              <Typography align="right">
+                {samplePlan.districtPlanSummary.safeDistrictThreshold}
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <Typography>
+                Republican/Democratic Split
+              </Typography>
             </TableCell>
             <TableCell>
               <Typography align="right">

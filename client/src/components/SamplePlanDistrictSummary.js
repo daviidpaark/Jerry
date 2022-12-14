@@ -55,7 +55,7 @@ export default function SamplePlanDistrictSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            <Typography>
+            <Typography paddingLeft={3}>
               Opportunity District Threshold
             </Typography>
           </TableCell>
@@ -79,7 +79,7 @@ export default function SamplePlanDistrictSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            <Typography>
+            <Typography paddingLeft={3}>
               African American Population
             </Typography>
           </TableCell>
@@ -91,7 +91,7 @@ export default function SamplePlanDistrictSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            <Typography>
+            <Typography paddingLeft={3}>
               Hispanic Population
             </Typography>
           </TableCell>
@@ -103,7 +103,7 @@ export default function SamplePlanDistrictSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            <Typography>
+            <Typography paddingLeft={3}>
               White Population
             </Typography>
           </TableCell>
@@ -115,7 +115,7 @@ export default function SamplePlanDistrictSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            <Typography>
+            <Typography paddingLeft={3}>
               Other Population
             </Typography>
           </TableCell>
