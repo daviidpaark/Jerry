@@ -14,7 +14,7 @@ public class Ensemble {
     private List<EnsembleSummary> ensembleLayoutSummary;
     private Object boxAndWhiskers;
     private BarChart seatShare;
-    private BarChart opportunityReps;
+    private BarChart opportunityDistricts;
     private boolean MMD;
 
 }

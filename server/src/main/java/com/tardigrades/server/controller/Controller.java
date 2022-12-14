@@ -133,9 +133,9 @@ public class Controller {
     @GetMapping(value = "/data/ensemble/opportunity-reps", produces = MediaType.APPLICATION_JSON_VALUE)
     public BarChart getEnsembleOpportunityReps(@RequestParam String mmd) {
         if (mmd.equals("false")) {
-            return currentState.getEnsemble(false).getOpportunityReps();
+            return currentState.getEnsemble(false).getOpportunityDistricts();
         } else {
-            return currentState.getEnsemble(true).getOpportunityReps();
+            return currentState.getEnsemble(true).getOpportunityDistricts();
         }
     }
 }
