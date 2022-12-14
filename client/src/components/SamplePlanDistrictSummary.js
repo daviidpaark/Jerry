@@ -32,6 +32,18 @@ export default function SamplePlanDistrictSummary({
         <TableRow>
           <TableCell>
             <Typography>
+              Number of Representatives
+            </Typography>
+          </TableCell>
+          <TableCell>
+            <Typography>
+              {selectedDistrict.seats}
+            </Typography>
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>
+            <Typography>
               Opportunity District
             </Typography>
           </TableCell>
@@ -42,13 +54,17 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
         </TableRow>
         <TableRow>
-            <TableCell>
+          <TableCell>
+            <Typography>
               Opportunity District Threshold
-            </TableCell>
-            <TableCell>
+            </Typography>
+          </TableCell>
+          <TableCell>
+            <Typography>
               {selectedDistrict.threshold}
-            </TableCell>
-          </TableRow>
+            </Typography>
+          </TableCell>
+        </TableRow>
         <TableRow>
           <TableCell>
             <Typography>
