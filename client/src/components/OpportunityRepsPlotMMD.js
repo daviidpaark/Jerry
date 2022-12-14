@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 import Plot from "react-plotly.js";
 import React from 'react';
 
-export default function OpportunityRepsPlotMMD(ensembleMMD) {
+export default function OpportunityRepsPlotMMD({ensembleMMD, opportunityTag}) {
   let dataX = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
   let dataY = [];
   //let dataMap = ensembleMMD.opportunityDistricts;
@@ -23,7 +23,7 @@ export default function OpportunityRepsPlotMMD(ensembleMMD) {
         }]}
         layout={{
           title: "Range of Opportunity Representatives MMD",
-          xaxis: {title: "Number of Opportunity Representatives",
+          xaxis: {title: "Number of " + (opportunityTag==="BLACK"?"African American":opportunityTag.slice(0,1)+opportunityTag.slice(1).toLowerCase()) + " Opportunity Representatives",
           autotick: false,
           dtick: 1
         },

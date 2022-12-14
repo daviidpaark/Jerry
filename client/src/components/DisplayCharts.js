@@ -33,6 +33,7 @@ export default function DisplayCharts({
   setSamplePlan,
   setSamplePlanMap,
   setSwitchMap,
+  setDistrict,
 }) {
   const handleChange = (event) => {
     setBoxTag(event.target.value);
@@ -54,6 +55,7 @@ export default function DisplayCharts({
     value.push(s.substring(1));
     fetchSamplePlanMap(value);
     setSwitchMap(true);
+    setDistrict(-1);
     //fetchSamplePlan(event.target.value);
   }
 
@@ -125,6 +127,14 @@ export default function DisplayCharts({
         ></SeatShareDoublePlot>
       )} */}
       {graph===3 && (
+          <ThresholdDoublePlot
+          ensembleSMD={ensembleSMD}
+          ensembleMMD={ensembleMMD}
+          ></ThresholdDoublePlot>
+       
+        
+      )}
+      {graph===4 && (
         <Box>
           <Grid container>
             <Grid item xs={2}>
@@ -145,19 +155,12 @@ export default function DisplayCharts({
               </FormControl>
             </Grid>
           </Grid>
-          <ThresholdDoublePlot
+          <OpportunityDoublePlot
           ensembleSMD={ensembleSMD}
           ensembleMMD={ensembleMMD}
           opportunityTag={opportunityTag}
-          ></ThresholdDoublePlot>
+          ></OpportunityDoublePlot>
         </Box>
-        
-      )}
-      {graph===4 && (
-        <OpportunityDoublePlot
-        ensembleSMD={ensembleSMD}
-        ensembleMMD={ensembleMMD}
-        ></OpportunityDoublePlot>
       )}
       {graph===5 && (
         <SplitsDoublePlot
@@ -324,11 +327,7 @@ export default function DisplayCharts({
                 onChange={handleChangeT}
                 >
                   <MenuItem value={"0republican"}>Favorable Republican SMD</MenuItem>
-                  <MenuItem value={"0democratic"}>Favorable Democratic SMD</MenuItem>
                   <MenuItem value={"0black"}>Favorable African American SMD</MenuItem>
-                  <MenuItem value={"0hispanic"}>Favorable Hispanic SMD</MenuItem>
-                  <MenuItem value={"0white"}>Favorable White SMD</MenuItem>
-                  <MenuItem value={"0other"}>Favorable Other SMD</MenuItem>
                   <MenuItem value={"1republican"}>Favorable Republican MMD</MenuItem>
                   <MenuItem value={"1democratic"}>Favorable Democratic MMD</MenuItem>
                   <MenuItem value={"1black"}>Favorable African American MMD</MenuItem>

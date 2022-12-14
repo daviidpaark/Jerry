@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 import ThresholdPlotMMD from "./ThresholdPlotMMD";
 import ThresholdPlotSMD from "./ThresholdPlotSMD";
 
-export default function ThresholdDoublePlot({ensembleSMD, ensembleMMD, opportunityTag}) {
+export default function ThresholdDoublePlot({ensembleSMD, ensembleMMD}) {
   return (
     <Box
       flex={1}
@@ -10,11 +10,9 @@ export default function ThresholdDoublePlot({ensembleSMD, ensembleMMD, opportuni
     >
       <ThresholdPlotSMD 
       ensembleSMD={ensembleSMD}
-      opportunityTag={opportunityTag}
       ></ThresholdPlotSMD>
       <ThresholdPlotMMD
       ensembleMMD={ensembleMMD}
-      opportunityTag={opportunityTag}
       ></ThresholdPlotMMD>
     </Box>
   );

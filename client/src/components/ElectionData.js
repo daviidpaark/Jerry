@@ -1,6 +1,6 @@
 import { Table, TableCell, TableHead, TableRow } from "@mui/material";
 
-export default function ElectionData() {
+export default function ElectionData({}) {
   return (
     <Table>
       <TableHead>

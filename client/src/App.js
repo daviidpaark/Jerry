@@ -97,6 +97,7 @@ function App() {
               setSamplePlan={setSamplePlan}
               setSamplePlanMap={setSamplePlanMap}
               setSwitchMap={setSwitchMap}
+              setDistrict={setDistrict}
               ></DisplayCharts>
             </Grid>
             <Grid item xs={3} backgroundColor="#e3f2fd">

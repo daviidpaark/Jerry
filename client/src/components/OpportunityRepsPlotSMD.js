@@ -2,12 +2,12 @@ import { Box } from "@mui/system";
 import Plot from "react-plotly.js";
 import React from 'react';
 
-export default function OpportunityRepsPlotSMD(ensembleSMD) {
-  let dataX = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+export default function OpportunityRepsPlotSMD({ensembleSMD, opportunityTag}) {
+  let dataX = [];
   let dataY = [];
-  //let dataMap = ensembleSMD.opportunityDistricts;
-  let dataMap = [3301, 3791, 1895, 830, 101, 6, 0, 0, 0];
+  let dataMap = ensembleSMD.opportunityReps.data;
   for(let key in dataMap) {
+    dataX.push(key);
     dataY.push(dataMap[key]);
   }
 
@@ -23,7 +23,7 @@ export default function OpportunityRepsPlotSMD(ensembleSMD) {
         }]}
         layout={{
           title: "Range of Opportunity Representatives SMD",
-          xaxis: {title: "Number of Opportunity Representatives",
+          xaxis: {title: "Number of " + (opportunityTag==="BLACK"?"African American":opportunityTag.toLowerCase()) + " Opportunity Representatives",
           autotick: false,
           dtick: 1
         },

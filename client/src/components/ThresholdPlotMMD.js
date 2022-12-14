@@ -2,7 +2,7 @@ import Plot from 'react-plotly.js';
 import React from 'react';
 import { Box } from '@mui/system';
 
-export default function ThresholdPlotSMD({ensembleMMD, opportunityTag}) {
+export default function ThresholdPlotSMD({ensembleMMD}) {
   let dataX = [">90%", ">80%", ">70%", ">60%", ">50%", ">40%", ">30%", ">20%", ">10%"];
   //let dataMap = ensembleMMD.thresholdPercentages;
   let dataY = [10000, 9215, 8001, 6111, 4438, 2073, 901, 189, 0];

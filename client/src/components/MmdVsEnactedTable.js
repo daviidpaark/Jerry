@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 
-export default function MmdVsEnactedTable(enactedPlan, ensembleMMD) {
+export default function MmdVsEnactedTable({enactedPlan, ensembleMMD}) {
   return (
     <TableContainer>
       <Table>
