@@ -168,8 +168,10 @@ const StateMap = ({
 											key={samplePlanMap.rsmKey}
 											geography={samplePlanMap}
 											onClick={() => {
-												if (switchMap && district !== samplePlanMap.properties.districtNumber)
+												if (switchMap && district !== samplePlanMap.properties.districtNumber) {
 													setDistrict(samplePlanMap.properties.districtNumber);
+													setGraph(11);
+												}
 											}}
 											stroke="#000"
 											strokeWidth={0.1}
@@ -209,10 +211,6 @@ const StateMap = ({
 										<Geography
 											key={geo.rsmKey}
 											geography={geo}
-											onClick={() => {
-												if (switchMap && district !== geo.properties.districtNumber)
-													setDistrict(geo.properties.districtNumber);
-											}}
 											stroke="#000"
 											strokeWidth={0.1}
 											style={{

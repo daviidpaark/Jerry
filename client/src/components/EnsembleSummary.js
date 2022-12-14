@@ -32,10 +32,10 @@ export default function EnsembleSummary({
             Number of Plans: 
           </TableCell>
           <TableCell>
-            {numberWithCommas(ensembleSMD.ensembleSummary[0].numberOfPlans+"0")}
+            {numberWithCommas(ensembleSMD.ensembleSummary[0].numberOfPlans)}
           </TableCell>
           <TableCell>
-            {numberWithCommas(ensembleMMD.ensembleSummary[0].numberOfPlans+"0")}
+            {numberWithCommas(ensembleMMD.ensembleSummary[0].numberOfPlans)}
           </TableCell>
         </TableRow>
         <TableRow>
@@ -63,7 +63,7 @@ export default function EnsembleSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            Average Split (Republican/Democratic): 
+            Average Republican/Democratic Split: 
           </TableCell>
           <TableCell>
             {ensembleSMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleSMD.ensembleSummary[0].averageSplit.DEMOCRAT}
