@@ -42,6 +42,14 @@ export default function SamplePlanDistrictSummary({
           </TableCell>
         </TableRow>
         <TableRow>
+            <TableCell>
+              Opportunity District Threshold
+            </TableCell>
+            <TableCell>
+              {selectedDistrict.threshold}
+            </TableCell>
+          </TableRow>
+        <TableRow>
           <TableCell>
             <Typography>
               Total Population

@@ -66,10 +66,10 @@ export default function EnsembleSummary({
             Average Republican/Democratic Split: 
           </TableCell>
           <TableCell>
-            {ensembleSMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleSMD.ensembleSummary[0].averageSplit.DEMOCRAT}
+            {ensembleSMD.ensembleSummary[0].averageSplit.REPUBLICAN.toFixed(2)}/{ensembleSMD.ensembleSummary[0].averageSplit.DEMOCRAT.toFixed(2)}
           </TableCell>
           <TableCell>
-            {ensembleMMD.ensembleSummary[0].averageSplit.REPUBLICAN}/{ensembleMMD.ensembleSummary[0].averageSplit.DEMOCRAT}
+            {ensembleMMD.ensembleSummary[0].averageSplit.REPUBLICAN.toFixed(2)}/{ensembleMMD.ensembleSummary[0].averageSplit.DEMOCRAT.toFixed(2)}
           </TableCell>
         </TableRow>
       </TableBody>

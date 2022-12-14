@@ -35,9 +35,6 @@ export default function GraphMenu({
         <ListItemButton onClick={() => handleClick(1)} divider disabled={state==="" ? true : false} selected={graph===1}>
           <ListItemText primary="MMD Ensemble Summary by Layout" />
         </ListItemButton>
-        <ListItemButton onClick={() => handleClick(2)} divider disabled>
-          <ListItemText primary="Seat Share-Vote Share Plots" />
-        </ListItemButton>
         <ListItemButton onClick={() => handleClick(3)} divider disabled={state==="" ? true : false} selected={graph===3}>
           <ListItemText primary="Opportunity District Threshold Sensitivities" />
         </ListItemButton>

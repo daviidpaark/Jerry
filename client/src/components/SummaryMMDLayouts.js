@@ -65,7 +65,7 @@ export default function SummaryMMDLayouts({
               </TableCell>
               <TableCell>
                 <Typography>
-                  {summary.averageSplit.REPUBLICAN}/{summary.averageSplit.DEMOCRAT}
+                  {summary.averageSplit.REPUBLICAN.toFixed(2)}/{summary.averageSplit.DEMOCRAT.toFixed(2)}
                 </Typography>
               </TableCell>
             </TableRow>

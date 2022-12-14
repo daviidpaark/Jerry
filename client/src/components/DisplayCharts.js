@@ -352,6 +352,8 @@ export default function DisplayCharts({
       )}
       {graph===12 && (
         <ElectionData
+          samplePlan={samplePlan}
+          district={district}
         ></ElectionData>
       )}
     </Box>

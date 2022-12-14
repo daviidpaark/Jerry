@@ -29,14 +29,6 @@ export default function SamplePlanSummary({
           </TableRow>
           <TableRow>
             <TableCell>
-              Opportunity District Threshold
-            </TableCell>
-            <TableCell>
-              0.50
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>
               Number of Safe Districts
             </TableCell>
             <TableCell>

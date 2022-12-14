@@ -127,6 +127,7 @@ function App() {
                   setSamplePlanMap={setSamplePlanMap}
                   setSamplePlan={setSamplePlan}
                   setEnactedPlan={setEnactedPlan}
+                  graph={graph}
                 />
               )}
             </Grid>

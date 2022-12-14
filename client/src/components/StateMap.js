@@ -43,6 +43,7 @@ const StateMap = ({
 	setSamplePlanMap,
 	setSamplePlan,
 	setEnactedPlan,
+	graph,
 }) => {
 	const [geo, fetchMap] = useState(null);
 	const [districts, setDistricts] = useState(null);
@@ -184,7 +185,7 @@ const StateMap = ({
 											onClick={() => {
 												if (switchMap && district !== samplePlanMap.properties.districtNumber) {
 													setDistrict(samplePlanMap.properties.districtNumber);
-													setGraph(11);
+													if(graph<11) setGraph(11);
 												}
 											}}
 											stroke="#000"
