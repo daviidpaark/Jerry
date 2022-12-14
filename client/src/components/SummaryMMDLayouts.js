@@ -24,8 +24,7 @@ export default function SummaryMMDLayouts({
           </TableCell>
           <TableCell>
             <Typography>
-              Average Opportunity District<br></br>
-              Representatives per Plan: 
+              Average Opportunity District Representatives per Plan: 
             </Typography>
           </TableCell>
           <TableCell>
@@ -35,7 +34,7 @@ export default function SummaryMMDLayouts({
           </TableCell>
           <TableCell>
             <Typography>
-              Average Split:
+              Average Republican/Democratic Split:
             </Typography>
           </TableCell>
         </TableRow>

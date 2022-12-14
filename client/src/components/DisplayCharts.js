@@ -45,7 +45,7 @@ export default function DisplayCharts({
   const handleChangeT = (event) => {
     fetchSamplePlanMap(event.target.value);
     setSwitchMap(true);
-    fetchSamplePlan(event.target.value);
+    //fetchSamplePlan(event.target.value);
   }
 
   async function fetchSamplePlanMap(value) {
@@ -58,6 +58,7 @@ export default function DisplayCharts({
 		await fetch(request)
 			.then((response) => response.json())
 			.then((data) => setSamplePlanMap(data));
+    await fetchSamplePlan(value);
   }
 
   async function fetchSamplePlan(value) {
@@ -160,6 +161,7 @@ export default function DisplayCharts({
       )}
       {graph===6 && (
         <MmdVsEnactedTable
+        ensembleMMD={ensembleMMD}
         ></MmdVsEnactedTable>
       )}
       {graph===7 && (

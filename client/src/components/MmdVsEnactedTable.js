@@ -1,62 +1,62 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead } from "@mui/material";
 
-export default function MmdVsEnactedTable() {
+export default function MmdVsEnactedTable(ensembleMMD) {
   return (
     <TableContainer>
       <Table>
         <TableHead>
-          <TableCell align="center"> 
+          <TableCell> 
               Catergories
           </TableCell>
-          <TableCell align="center">
+          <TableCell>
               Enacted Plan
           </TableCell>
-          <TableCell align="center">
+          <TableCell>
               MMD Average
           </TableCell>
         </TableHead>
         <TableBody>
-          <TableCell align="center">
+          <TableCell>
               Republican/Democratic Splits 
           </TableCell>
-          <TableCell align="center">
+          <TableCell>
               8/6
           </TableCell>
-          <TableCell align="center">
+          <TableCell>
               9/5
           </TableCell>
         </TableBody>
         <TableBody>
-          <TableCell align="center">
+          <TableCell>
               Number of Opportunity Representatives
           </TableCell>
-          <TableCell align="center">
-              2
-          </TableCell>
-          <TableCell align="center">
+          <TableCell>
               1
           </TableCell>
+          <TableCell>
+              3
+          </TableCell>
         </TableBody>
         <TableBody>
-          <TableCell align="center">
+          <TableCell>
               Vote Share 
           </TableCell>
-          <TableCell align="center">
-              2,000/3,000
+          <TableCell>
+              0.49
           </TableCell>
-          <TableCell align="center">
-              2,500/2,500
+          <TableCell>
+              0.48
           </TableCell>
         </TableBody>
         <TableBody>
-          <TableCell align="center">
+          <TableCell>
               Seat Share
           </TableCell>
-          <TableCell align="center">
-              3,000/2,000
+          <TableCell>
+              0.52
           </TableCell>
-          <TableCell align="center">
-              2,000/3,000
+          <TableCell>
+              0.46
           </TableCell>
         </TableBody>
       </Table>
