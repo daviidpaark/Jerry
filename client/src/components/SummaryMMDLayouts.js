@@ -14,7 +14,7 @@ export default function SummaryMMDLayouts({
         <TableRow>
           <TableCell>
             <Typography>
-              Layouts:
+              Layout:
             </Typography>
           </TableCell>
           <TableCell>

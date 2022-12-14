@@ -120,20 +120,6 @@ export default function DisplayCharts({
           layouts={layouts}
         ></SummaryMMDLayouts>
       )}
-      {/* {graph===2 && (
-        <SeatShareDoublePlot
-        ensembleSMD={ensembleSMD}
-        ensembleMMD={ensembleMMD}
-        ></SeatShareDoublePlot>
-      )} */}
-      {graph===3 && (
-          <ThresholdDoublePlot
-          ensembleSMD={ensembleSMD}
-          ensembleMMD={ensembleMMD}
-          ></ThresholdDoublePlot>
-       
-        
-      )}
       {graph===4 && (
         <Box>
           <Grid container>
@@ -148,9 +134,9 @@ export default function DisplayCharts({
                 defaultValue="BLACK"
                 >
                   <MenuItem value="BLACK">African Americans</MenuItem>
-                  <MenuItem value="HISPANIC">Hispanics</MenuItem>
-                  <MenuItem value="WHITE">Whites</MenuItem>
-                  <MenuItem value="OTHER">Others</MenuItem>
+                  <MenuItem value="HISPANIC" disabled>Hispanics</MenuItem>
+                  <MenuItem value="WHITE" disabled>Whites</MenuItem>
+                  <MenuItem value="OTHER" disabled>Others</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

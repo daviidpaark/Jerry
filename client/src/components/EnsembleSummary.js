@@ -40,8 +40,7 @@ export default function EnsembleSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            Average Opportunity District 
-            Representatives per Plan: 
+            Average Opportunity Representatives per Plan: 
           </TableCell>
           <TableCell>
             {ensembleSMD.ensembleSummary[0].averageOpportunityReps.toFixed(2)}
@@ -52,7 +51,7 @@ export default function EnsembleSummary({
         </TableRow>
         <TableRow>
           <TableCell>
-            Average Equal Population: 
+            Average Equal Population Measure: 
           </TableCell>
           <TableCell>
           {ensembleSMD.ensembleSummary[0].averageEqualPopulation.toFixed(2)}

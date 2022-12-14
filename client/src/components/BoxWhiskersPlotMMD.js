@@ -19,7 +19,9 @@ export default function BoxWhiskersPlotMMD({ensembleMMD, layoutTag, boxTag, enac
     dataSY.push(dataScatter.data[i-1][0]);
     i++;
   }
-
+  const capitalize = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
   return (
     <Box
       height="100%"
@@ -46,7 +48,7 @@ export default function BoxWhiskersPlotMMD({ensembleMMD, layoutTag, boxTag, enac
           showline: true,
           linewidth: 1
         },
-          yaxis: {title: "Ratio of " + (boxTag==="BLACK"? "african americans" : boxTag.toLowerCase() + "s"),
+          yaxis: {title: "Percentage of " + (boxTag==="BLACK"? "african americans" : capitalize(boxTag) + "s"),
           dtick: 0.1,
           showline: true,
           linewidth: 1,
